@@ -107,6 +107,18 @@ Each line draws from its own stream, and a review belongs to the time slice its 
 
 The original `product_reviews.json` is retired as pipeline input. It remains the source for the template writer.
 
+## Growing the dataset
+
+`retail_generator.incremental` (and the `generate-data` command) grows the dataset in batches, each a file per table (`<table>/batch-NNNN.parquet`), recorded in `manifest.json`: the seed, the current `as_of`, a hash of the generator config, and every batch.
+
+- **add-customers** takes the next customer numbers, signed up between the start and `as_of`, with all they bought and reviewed up to `as_of`.
+- **advance** moves `as_of` on: existing customers keep ordering, and reviews land for purchases old and new.
+- **fill-texts** retries review text that failed. Every batch also retries any still missing.
+
+Each customer, order and review draws from its own random stream, so batching never changes the data. Two batches of customers equal one, and an advance equals generating straight to the later date (both tested). A customer's signup falls within the window as it stood when they were added.
+
+Batches are atomic: files first, manifest last. `read_dataset` only reads batches the manifest lists, so an interrupted batch is invisible and is replaced on the next run. A different seed or config is refused, so every batch in a dataset is comparable.
+
 ## Assumptions
 
 - Currency is not modelled; prices are plain numbers.
