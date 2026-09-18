@@ -6,6 +6,7 @@ from .customer_view import (
     SENTIMENTS,
     assign_risk,
     customers,
+    reviews,
     sankey_links,
 )
 from .review_insights import (
@@ -20,6 +21,6 @@ from .review_insights import (
 
 __all__ = [
     "FLAGS", "NO_ISSUE", "RISK_TIERS", "SENTIMENTS", "assign_risk", "cross_mentions", "customers",
-    "flagged", "frustration_by_rating", "needs_review", "problems_by_product", "review_rollup",
+    "flagged", "frustration_by_rating", "needs_review", "problems_by_product", "review_rollup", "reviews",
     "sankey_links",
 ]

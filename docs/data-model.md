@@ -20,7 +20,7 @@ erDiagram
 | `products` | `product_id` `P001` | The catalogue: SKU, name, category, description, list price, fuel type, launch date |
 | `orders` | `order_id` `O000000001` | Who bought, when (`ordered_at`), `order_total` |
 | `order_lines` | `order_line_id` `L0000000001` | One product on an order: quantity, unit price at the time, line total |
-| `reviews` | `review_id` `R000000001` | Who reviewed which purchase, when (`reviewed_at`), and the stars. Nothing else. |
+| `reviews` | `review_id` `R0000000001` (the digits of the order line it reviews) | Who reviewed which purchase, when (`reviewed_at`), and the stars. Nothing else. |
 | `review_texts` | `review_id` + `prompt_hash` | The words of the review, their language, and what wrote them |
 | `review_truth` | `review_id` | What the generator intended: hidden satisfaction, the aspect to focus on, the language asked for |
 
@@ -83,6 +83,29 @@ Text is written from a **brief**: product, stars, how the customer feels, the as
 | Launches | Nothing is sold before the product's `launched_on`. |
 
 Each customer draws from their own streams, so generating to a later date reproduces the earlier history exactly and continues it. IDs encode their parent: `O` + customer (7) + order (2), and `L` + order (9) + line (1). So the same order always has the same ID, however the dataset was built up.
+
+## Reviews and point-in-time features
+
+`retail_generator.generate_reviews` gives every order line a hidden satisfaction drawn from a Beta distribution around its product's quality. Quality is calibrated from the original reviews' mean stars as (★ − 1) / 4, so the BackYard King stays the dud it was. The line is then reviewed with the U-shaped propensity above.
+
+- **When:** a review arrives a lognormal delay after the order (median 9 days), sooner when the customer is unhappy.
+- **About what:** unhappy reviews focus on an *issue* using Jev's own problem-category labels (weighted by product category); happy ones on a *praise* aspect. `review_truth` records it, so Jev can later be scored against it.
+- **Language:** about a third of customers in non-English-speaking countries ask for their own language. Only the Foundry writer honours it.
+- **ID:** `R` + the reviewed line's digits.
+
+Each line draws from its own stream, and a review belongs to the time slice its `reviewed_at` falls in, even when the order came earlier.
+
+`customer_features.review_features` derives what was known about the customer **at the moment of each review**. Every feature goes through one helper, `point_in_time`: an as-of join on running totals that only admits events strictly before the review. That rules out target leakage for machine learning by construction, and a test appends huge future orders and reviews to prove no feature moves.
+
+| Feature | At the review |
+|---|---|
+| `tenure_days` | Days since signup |
+| `lifetime_revenue`, `order_count` | Orders placed before it |
+| `days_since_last_order` | Since the most recent earlier order |
+| `previous_reviews` | This customer's earlier reviews |
+| `age`, `gender`, `country` | Age in whole years; the others are fixed |
+
+The original `product_reviews.json` is retired as pipeline input. It remains the source for the template writer.
 
 ## Assumptions
 

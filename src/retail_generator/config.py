@@ -99,8 +99,48 @@ class OrderPatterns:
 
 
 @dataclass(frozen=True)
+class ReviewContent:
+    """What a review is about, when it is written, and in which language."""
+
+    # Mean hidden satisfaction per product, calibrated from the original reviews'
+    # mean stars as (stars - 1) / 4, so the BackYard King stays the dud it was.
+    product_quality: dict[str, float] = field(default_factory=lambda: {
+        "P001": 0.875, "P002": 0.35, "P003": 0.11, "P004": 0.775, "P005": 0.675, "P006": 0.375,
+        "P007": 0.65, "P008": 0.75, "P009": 0.675, "P010": 0.575, "P011": 0.50, "P012": 0.59,
+        "P013": 0.70, "P014": 0.60, "P015": 0.35, "P016": 0.525, "P017": 0.70,
+    })
+    # How tightly satisfaction clusters around the product's mean (Beta concentration).
+    satisfaction_concentration: float = 5.0
+
+    # What an unhappy review is mainly about. The labels match Jev's problem
+    # categories, so review_truth can score how well Jev recovers them.
+    issues: dict[str, dict[str, float]] = field(default_factory=lambda: {
+        "grills": {"performance": 3, "build_quality": 2.5, "assembly": 1, "ease_of_use": 1,
+                   "cleaning_maintenance": 1, "shipping_delivery": 0.8, "customer_service": 0.8,
+                   "price_value": 1, "safety": 0.4},
+        "accessories": {"build_quality": 3, "ease_of_use": 2, "size_capacity": 1.5, "performance": 1.5,
+                        "price_value": 1, "safety": 0.5},
+        "consumables": {"performance": 3, "price_value": 1.5, "shipping_delivery": 0.8, "build_quality": 1},
+    })
+    praises: tuple[str, ...] = ("performance", "build_quality", "ease_of_use", "price_value")
+
+    # Reviews come a few days to a few weeks after the order; unhappy customers write sooner.
+    median_delay_days: float = 9.0
+    delay_spread: float = 0.7
+    unhappy_delay_factor: float = 0.6
+
+    # Customers in non-English-speaking countries sometimes write in their own language.
+    local_language: dict[str, str] = field(default_factory=lambda: {
+        "Brazil": "portuguese", "China": "chinese", "Costa Rica": "spanish", "Germany": "german",
+        "Japan": "japanese", "South Africa": "zulu", "Tanzania": "swahili",
+    })
+    local_language_share: float = 0.35
+
+
+@dataclass(frozen=True)
 class GeneratorConfig:
     start: datetime = datetime(2023, 1, 1)  # noqa: DTZ001 - the model is naive UTC
     customers: CustomerConfig = field(default_factory=CustomerConfig)
     orders: OrderPatterns = field(default_factory=OrderPatterns)
     reviews: ReviewPropensity = field(default_factory=ReviewPropensity)
+    review_content: ReviewContent = field(default_factory=ReviewContent)

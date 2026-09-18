@@ -15,7 +15,7 @@ from review_writer import (
     write_review_texts,
 )
 
-BRIEF = ReviewBrief(review_id="R000000001", product_name="GrillMaster Elite Tongs", product_category="accessories",
+BRIEF = ReviewBrief(review_id="R0000000001", product_name="GrillMaster Elite Tongs", product_category="accessories",
                     product_description="Stainless steel tongs.", rating=2, satisfaction=0.2, aspect="build_quality",
                     language="german")
 

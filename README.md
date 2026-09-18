@@ -3,21 +3,30 @@ A demo of various techniques for mining insights from semi structured data.
 
 ## Demo: classifying BBQ reviews with Jev
 
-`data/input/product_reviews.json` holds 256 fictional reviews of 17 barbecue products (copied from
-`endjin/endjin-text-analytics-streamlit`). [`notebooks/01_classify_reviews_with_jev.ipynb`](notebooks/01_classify_reviews_with_jev.ipynb)
-loads them into a flat Polars frame, splits them into sentences, and asks
-[TypeSafe AI's Jev](https://docs.typesafe.ai/introduction) about every sentence, with the whole review as context:
+A fictional barbecue retailer, generated deterministically: customers (Faker), their orders over time (with
+seasonality and realistic buying patterns), and the reviews a biased subset of them chose to write. See
+[`docs/data-model.md`](docs/data-model.md). [`notebooks/01_classify_reviews_with_jev.ipynb`](notebooks/01_classify_reviews_with_jev.ipynb)
+generates the dataset, loads one row per review with point-in-time customer features, splits reviews into sentences,
+and asks [TypeSafe AI's Jev](https://docs.typesafe.ai/introduction) about every sentence, with the whole review as context:
 
 - **frustration** (Score 0–4), **problem category** (Choice), **products mentioned** (one Noul per catalogue product), **language** (Choice)
 - plus sentiment, recommendation, churn risk, safety concern, improvement suggestion and competitor mention
 
-The rating and demographics are not sent, so frustration vs star rating is a fair check of the model.
+The rating and customer facts are not sent, so frustration vs star rating is a fair check of the model.
+
+Review text comes from a chat deployment on **Azure AI Foundry** (set `AZURE_FOUNDRY_*` in `.env` and
+`WRITER = "foundry"` in the notebook), or, offline, from the 256 hand-written reviews in
+`data/input/product_reviews.json` (copied from `endjin/endjin-text-analytics-streamlit`), labelled `template`.
 
 | Package | Responsibility |
 |---|---|
-| `src/review_wrangler` | Load and flatten the JSON; split reviews into sentences |
+| `src/retail_model` | Table schemas (pandera), cross-table integrity, review propensity, dataset storage |
+| `src/retail_generator` | Deterministic customers, orders and reviews; every knob in `GeneratorConfig` |
+| `src/review_writer` | Review text from Azure AI Foundry or templates, cached by prompt |
+| `src/customer_features` | Point-in-time features: only data from before each review, never after |
+| `src/review_wrangler` | Load reviews with their text, product and features; split into sentences |
 | `src/jev_classifier` | The question set, and async classification with a Parquet cache |
-| `src/review_insights` | Review and customer rollups, Sankey flows, risk tiers, escalation and review queues |
+| `src/review_insights` | Review and customer views, Sankey flows, risk tiers, escalation and review queues |
 | `src/review_charts` | Plotly figures and endjin colour roles for the dashboard |
 | `app/streamlit_app.py` | The dashboard: layout and state only |
 
@@ -27,14 +36,15 @@ The rating and demographics are not sent, so frustration vs star rating is a fai
 uv run streamlit run app/streamlit_app.py
 ```
 
-Reads `data/output/sentences_classified.parquet`, so run the notebook first. One review is one customer.
+Reads `data/output/sentences_classified.parquet`, so run the notebook first.
 
-- **Sentiment flow** - a Sankey from customer sentiment through product category and product to each customer's
-  *primary issue* (the problem in their most frustrated sentence), so every customer is exactly one path and widths
-  are customer counts. Sentiment can come from the text (Jev) or the star rating; a drill-down lists the customers
+- **Sentiment flow** - a Sankey from review sentiment through product category and product to each review's
+  *primary issue* (the problem in its most frustrated sentence), so every review is exactly one path and widths
+  are review counts. Sentiment can come from the text (Jev) or the star rating; a drill-down lists the reviews
   behind any issue.
-- **Customers at risk** - tenure against lifetime revenue (log scale), shaped and coloured by risk tier. Box or lasso
-  select to list customers. Risk thresholds are set in the sidebar.
+- **Customers at risk** - one mark per customer at their most recent review: tenure against lifetime revenue as at
+  that review (log scale), shaped and coloured by risk tier. Box or lasso select to list customers. Risk thresholds
+  are set in the sidebar.
 
 Colours are endjin's (read from endjin.com), assigned by role and checked for colour-blind separation; see
 `src/review_charts/palette.py`. They are validated for the light theme, which `.streamlit/config.toml` pins.
