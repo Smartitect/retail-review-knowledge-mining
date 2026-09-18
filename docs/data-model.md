@@ -66,6 +66,24 @@ Text is written from a **brief**: product, stars, how the customer feels, the as
 - **Templates** (`TemplateReviewWriter`) reuse the 168 hand-written reviews in `data/input/product_reviews.json`, matched on product and nearest rating. This is for offline runs and tests only. It is chosen explicitly, never as a silent fallback, and its rows say `text_source = "template"`. It writes English only.
 - **Caching.** Texts are cached on `review_id` + `prompt_hash`. The hash covers the model and the rendered prompt, so the same seed reuses the same text: reproducible even though the model is not. A different writer or model, or a changed brief, writes afresh. Each row records `text_source`, `model` and `generated_at`. Failed calls are reported and retried on the next run, never cached.
 
+## Catalogue and buying patterns
+
+`reference_data/products.csv` is the committed catalogue: the 17 products from the original sample, with stable IDs, SKUs, descriptions, list prices, launch dates and a **fuel type**. The fuel type is what ties a grill to the consumables its owner keeps buying.
+
+`retail_generator.generate_orders` simulates each customer in time order from signup. Every rate lives in `OrderPatterns` (`src/retail_generator/config.py`).
+
+| Pattern | How |
+|---|---|
+| Seasonality | Order intensity × (1 + 0.6 cos(day − peak)): peaking mid-July in the north and mid-January in the Southern Hemisphere (Australia, New Zealand, South Africa, Brazil), plus bursts around Father's Day, Black Friday and Christmas. Orders arrive as a Poisson process thinned by this curve. |
+| Grills | Rare: 35% of first orders, 10% of later orders until the customer owns one of ours, 2% after that. |
+| Accessories | Occasional; a new grill brings a cover (45%) and a tool (50%) with it. |
+| Fuel affinity | Pellets for pellet smokers; lump charcoal and lighters for charcoal. 55% of customers already own a grill from elsewhere and buy its fuel. |
+| Replenishment | Fuel owners restock on a cycle (Gamma, mean 75 days), sooner in their barbecue season. |
+| Prices | List price drifts up 4% a year; off-season orders are sometimes discounted 10–20%. Each line stores the price it was sold at. |
+| Launches | Nothing is sold before the product's `launched_on`. |
+
+Each customer draws from their own streams, so generating to a later date reproduces the earlier history exactly and continues it. IDs encode their parent: `O` + customer (7) + order (2), and `L` + order (9) + line (1). So the same order always has the same ID, however the dataset was built up.
+
 ## Assumptions
 
 - Currency is not modelled; prices are plain numbers.

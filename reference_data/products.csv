@@ -1,0 +1,18 @@
+product_id,sku,product_name,category,description,list_price,fuel_type,launched_on
+P001,GRL-FMP3000,FireMaster Pro 3000 Gas Grill,grills,"Four-burner heavy-gauge steel gas grill with a side burner, warming rack and room for twelve burgers.",1299.99,gas,2021-03-01
+P002,GRL-TGPORT,TurboGrill Portable Gas,grills,"Compact folding propane grill for camping and tailgating, with a single burner and push-button ignition.",249.99,gas,2021-05-01
+P003,GRL-BYKCMP,BackYard King Compact Grill,grills,"Budget two-burner gas grill with a lid thermometer, grease tray and electronic ignition.",189.99,gas,2022-02-01
+P004,GRL-SCDKET,SmokeChief Deluxe Charcoal Kettle,grills,"22-inch porcelain-enamelled charcoal kettle with adjustable vents and an ash catcher.",329.99,charcoal,2020-04-01
+P005,GRL-BBPELL,BBQ Baron Pellet Smoker,grills,"Wi-Fi pellet smoker with app temperature control, a 10 lb hopper and a meat probe.",899.99,pellet,2022-09-01
+P006,GRL-FFELEC,FlameForge Electric Indoor Grill,grills,"Smokeless electric grill for indoor use, with removable non-stick plates and adjustable heat.",149.99,electric,2023-10-01
+P007,ACC-HSCOVR,HeatShield Premium Grill Cover,accessories,"Heavy-duty waterproof grill cover with vents and an elastic hem, sized for full-size grills.",59.99,,2020-04-01
+P008,ACC-GMTONG,GrillMaster Elite Tongs,accessories,"16-inch stainless steel locking tongs with heat-resistant grips.",24.99,,2020-04-01
+P009,ACC-CPSPAT,ChefsPride Stainless Steel Spatula Set,accessories,"Three stainless steel spatulas: a wide burger turner, a slotted fish spatula and a thin-edge flipper.",39.99,,2021-06-01
+P010,ACC-FMFORK,FlipMaster Long Handle Fork,accessories,"Two-prong carving fork with an extra-long handle for turning roasts and steaks.",19.99,,2020-04-01
+P011,ACC-GGGLOV,GrillGuard Heat Resistant Gloves,accessories,"Silicone-coated gloves rated for handling hot grates and meat.",29.99,,2021-04-01
+P012,ACC-TCTHRM,TempCheck Digital Thermometer,accessories,"Wireless dual-probe meat thermometer with an app, preset meat temperatures and alarms.",49.99,,2022-04-01
+P013,CON-CBPELL,CleanBurn Pellets,consumables,"20 lb bag of hardwood hickory pellets for pellet smokers.",24.99,pellet,2020-04-01
+P014,CON-SRLUMP,SmokeRing Premium Lump Charcoal,consumables,"20 lb bag of natural hardwood lump charcoal.",29.99,charcoal,2020-04-01
+P015,CON-WCHICK,WoodChips Hickory Smoking Chips,consumables,"Bag of hickory wood chips for adding smoke flavour on any grill or smoker.",14.99,any,2020-04-01
+P016,CON-FSNATL,FlameStarter Natural Fire Lighter,consumables,"Pack of odourless natural fire lighters for charcoal.",9.99,charcoal,2021-04-01
+P017,CON-SPRUBS,SeasonPro BBQ Rub Collection,consumables,"Six regional barbecue rubs, from Memphis sweet to Carolina tang.",34.99,any,2021-08-01
