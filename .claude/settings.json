@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": true,
+    "python-project-setup@endjin-data": true,
+    "python-executable-specifications@endjin-data": true,
+    "github@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "python-polars@endjin-data": true,
+    "python-pandera-validation@endjin-data": true
+  }
+}

@@ -1,0 +1,3330 @@
+[
+  {
+    "rating": 5,
+    "review_text": "Absolutely blown away by the FireMaster Pro 3000! Been grilling for over 20 years and this is hands down the best investment I've ever made. The temperature control is incredible - holds steady within 5 degrees of your target temp. The build quality is outstanding, heavy gauge steel that's going to last decades. Assembly was straightforward with clear instructions, took me about 3 hours working at a leisurely pace. The cooking space is generous, easily fits 12 burgers or a full rack of ribs with room to spare. Heat distribution is perfectly even - no more hot spots burning one side while the other stays raw. The side burner is powerful enough for serious searing, and the warming rack keeps everything at the perfect serving temperature. My neighbors are already asking to borrow it! Worth every penny and then some.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "United States",
+      "days_as_customer": 89,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Really disappointed with these tongs. Handle broke after just 3 uses. Cheap plastic that can't handle any real heat. Going back to my old set.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 32,
+      "country": "Canada",
+      "days_as_customer": 12,
+      "lifetime_revenue": 24.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "This charcoal lights quickly and burns clean with minimal ash. Good heat output and lasts a decent amount of time. Only complaint is the bag design - it's hard to pour without making a mess. The charcoal pieces are uniform size which helps with consistent cooking. Burns hot enough for proper searing but also does well for low and slow cooking when you bank the coals. Price is reasonable compared to other premium brands. Have used it for about 6 months now and it's become my go-to charcoal. Would definitely recommend for anyone serious about their BBQ.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "Australia",
+      "days_as_customer": 184,
+      "lifetime_revenue": 156.47
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Total waste of money! This grill arrived with multiple dents and scratches, clearly damaged in shipping. But that's not even the worst part. The ignition system doesn't work at all - have to light it manually every single time with matches. The temperature gauge is completely inaccurate, shows 300°F when it's clearly much hotter, burned everything I tried to cook. The grease tray is poorly designed and overflows constantly, creating a huge mess on my deck. Paint started peeling after just two weeks of use. Customer service was unhelpful and basically told me it was my fault for not assembling it correctly, even though I followed the instructions to the letter. The cooking grates are flimsy and already showing rust spots. For the price I paid, this is completely unacceptable. Save your money and buy something else, literally anything else would be better than this piece of junk. I'm returning it and will never buy from this company again.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "United Kingdom",
+      "days_as_customer": 21,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect for quick starts! Lights charcoal every time without that awful chemical smell other fluids leave behind. A little goes a long way - one bottle lasts me the whole season. Natural ingredients give me peace of mind when cooking for the family.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Germany",
+      "days_as_customer": 412,
+      "lifetime_revenue": 83.45
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Absolutely blown away by the FireMaster Pro 3000! Been grilling for over 20 years and this is hands down the best investment I've ever made. The temperature control is incredible - holds steady within 5 degrees of your target temp. The build quality is outstanding, heavy gauge steel that's going to last decades. Assembly was straightforward with clear instructions, took me about 3 hours working at a leisurely pace. The cooking space is generous, easily fits 12 burgers or a full rack of ribs with room to spare. Heat distribution is perfectly even - no more hot spots burning one side while the other stays raw. The side burner is powerful enough for serious searing, and the warming rack keeps everything at the perfect serving temperature. My neighbors are already asking to borrow it! Worth every penny and then some.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "Canada",
+      "days_as_customer": 89,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Really disappointed with these tongs. Handle broke after just 3 uses. Cheap plastic that can't handle any real heat. Going back to my old set.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 32,
+      "country": "Canada",
+      "days_as_customer": 12,
+      "lifetime_revenue": 24.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "This charcoal lights quickly and burns clean with minimal ash. Good heat output and lasts a decent amount of time. Only complaint is the bag design - it's hard to pour without making a mess. The charcoal pieces are uniform size which helps with consistent cooking. Burns hot enough for proper searing but also does well for low and slow cooking when you bank the coals. Price is reasonable compared to other premium brands. Have used it for about 6 months now and it's become my go-to charcoal. Would definitely recommend for anyone serious about their BBQ.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "Australia",
+      "days_as_customer": 184,
+      "lifetime_revenue": 156.47
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Total waste of money! This grill arrived with multiple dents and scratches, clearly damaged in shipping. But that's not even the worst part. The ignition system doesn't work at all - have to light it manually every single time with matches. The temperature gauge is completely inaccurate, shows 300°F when it's clearly much hotter, burned everything I tried to cook. The grease tray is poorly designed and overflows constantly, creating a huge mess on my deck. Paint started peeling after just two weeks of use. Customer service was unhelpful and basically told me it was my fault for not assembling it correctly, even though I followed the instructions to the letter. The cooking grates are flimsy and already showing rust spots. For the price I paid, this is completely unacceptable. Save your money and buy something else, literally anything else would be better than this piece of junk. I'm returning it and will never buy from this company again.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "United Kingdom",
+      "days_as_customer": 21,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect for quick starts! Lights charcoal every time without that awful chemical smell other fluids leave behind. A little goes a long way - one bottle lasts me the whole season. Natural ingredients give me peace of mind when cooking for the family.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Germany",
+      "days_as_customer": 412,
+      "lifetime_revenue": 83.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Average grill cover. Fits okay but material feels thin. After 6 months in the sun it's already fading and starting to crack around the edges. Does keep the rain off though.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "New Zealand",
+      "days_as_customer": 203,
+      "lifetime_revenue": 67.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "These gloves are amazing! Can handle scorching hot grates and cast iron with no problem. Dexterity is surprisingly good - can still manipulate small items easily. Easy to clean and haven't shown any wear after 8 months of regular use. Best BBQ purchase I've made.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "South Africa",
+      "days_as_customer": 267,
+      "lifetime_revenue": 145.75
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid kettle grill for the price. Heats evenly and holds temperature well. Assembly took about 90 minutes. Only issue is the ash catcher fills up quickly during long cooks. Would recommend for beginners.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 34,
+      "country": "Brazil",
+      "days_as_customer": 76,
+      "lifetime_revenue": 234.99
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Completely inaccurate thermometer. Shows 200°F when meat is clearly still raw, then jumps to 250°F instantly. Tried calibrating multiple times but it's hopeless. Waste of money.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "Tanzania",
+      "days_as_customer": 15,
+      "lifetime_revenue": 39.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect for apartment living! This electric grill gives great results indoors without any smoke. Heats up fast and cooks evenly. Easy cleanup with removable plates that go in the dishwasher. Have made everything from steaks to vegetables and they all turn out fantastic. Great for year-round grilling when weather doesn't cooperate.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 27,
+      "country": "Japan",
+      "days_as_customer": 128,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Fork is too short and flimsy. Bent the first time I tried to flip a heavy steak. For the price expected much better quality.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 55,
+      "country": "Costa Rica",
+      "days_as_customer": 8,
+      "lifetime_revenue": 18.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great variety of rubs in this collection. The Memphis style is my favorite - perfect balance of sweet and smoky. The Carolina rub is a bit too salty for my taste but the others are excellent. Nice to have different options for different cuts of meat. Packaging could be better as some of the containers leaked during shipping.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 43,
+      "country": "China",
+      "days_as_customer": 156,
+      "lifetime_revenue": 78.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Best pellets I've tried! Clean burn with no chemical taste. The hickory flavor comes through perfectly without being overpowering. Consistent size pellets that feed smoothly through my smoker. Low ash production means less cleanup. Will definitely reorder.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Canada",
+      "days_as_customer": 298,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Decent portable grill but struggles with wind. Takes forever to heat up outdoors. Works fine for camping when you have patience but not great for quick meals.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 31,
+      "country": "Germany",
+      "days_as_customer": 42,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good set of spatulas. Stainless steel construction feels solid and they clean up easily. The different sizes are handy for various foods. Only complaint is the handles get quite hot during longer cooking sessions. Would recommend getting some heat resistant gloves to go with them.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "United Kingdom",
+      "days_as_customer": 95,
+      "lifetime_revenue": 87.25
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Wood chips are too large and don't soak water well. Burn too fast and produce bitter smoke. Better options available for less money.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "Australia",
+      "days_as_customer": 23,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is incredible! Set it and forget it operation makes smoking brisket foolproof. Temperature stays rock steady for 12+ hour cooks. The hopper holds enough pellets for overnight smoking sessions. WiFi connectivity lets me monitor from inside the house. Produces amazing smoke rings and flavor. Customer service is top notch too - they helped me troubleshoot a minor issue within hours. Expensive but worth every cent for serious BBQ enthusiasts.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Very accurate thermometer with quick readings. Display is easy to read even in bright sunlight. Battery life is excellent. Only downside is the probe cord could be longer for larger grills.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 26,
+      "country": "South Africa",
+      "days_as_customer": 67,
+      "lifetime_revenue": 134.50
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Terrible quality control. Grill arrived with uneven legs so it wobbles constantly. Burner distribution is awful - one side barely lights while the other is a blowtorch. Paint job looks like it was done with a rattle can in someone's garage. Customer service is non-existent, never returned my calls. Save yourself the headache and buy something else.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 37,
+      "country": "Brazil",
+      "days_as_customer": 18,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding tongs! Perfect length and the grip is comfortable even for extended cooking sessions. Spring action is smooth and locks securely. Stainless steel construction cleans up beautifully and shows no signs of wear after a year of heavy use. Worth spending a bit more for quality tools that last.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Tanzania",
+      "days_as_customer": 387,
+      "lifetime_revenue": 256.78
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Lights charcoal okay but has strong chemical odor. Works but there are better natural options available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "Costa Rica",
+      "days_as_customer": 91,
+      "lifetime_revenue": 45.75
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid grill cover that fits my FireMaster perfectly. Heavy duty material that's held up through two winters so far. Elastic bottom keeps it secure in windy conditions. Only wish it came in different colors besides basic black.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "Japan",
+      "days_as_customer": 156,
+      "lifetime_revenue": 178.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Gloves are bulky and make it hard to grip smaller items. Heat protection is good but dexterity suffers. Prefer my old leather gloves.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 47,
+      "country": "China",
+      "days_as_customer": 34,
+      "lifetime_revenue": 52.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect kettle grill! Excellent heat retention and the venting system gives precise temperature control. Built like a tank - this thing will outlast me. Great for both direct grilling and smoking. The hinged cooking grate makes adding charcoal easy during long cooks. Classic design that never goes out of style.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 58,
+      "country": "Germany",
+      "days_as_customer": 445,
+      "lifetime_revenue": 891.25
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Indoor grill is a joke. Barely gets warm enough to cook anything properly. Takes 20 minutes just to heat up. Food comes out gray and flavorless. Complete waste of money.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 29,
+      "country": "United Kingdom",
+      "days_as_customer": 12,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good fork for the price. Length is perfect for keeping hands away from heat. Sturdy construction but the handle could be more comfortable for long cooking sessions. Does the job well.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "Canada",
+      "days_as_customer": 78,
+      "lifetime_revenue": 112.50
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rubs are hit and miss. The Kansas City style is fantastic but the Texas blend is way too peppery. Decent value for a sampler pack to find your favorites.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Australia",
+      "days_as_customer": 134,
+      "lifetime_revenue": 167.88
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium pellets that deliver consistent results every time. Clean burning with excellent flavor profiles. The apple blend gives a subtle sweetness that's perfect for pork. Low moisture content means they store well and feed smoothly. Higher price than some brands but the quality shows in the final product.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "New Zealand",
+      "days_as_customer": 289,
+      "lifetime_revenue": 234.67
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill feels cheap and flimsy. Legs are wobbly and the whole thing feels like it might tip over. Heat output is weak too.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 24,
+      "country": "South Africa",
+      "days_as_customer": 19,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Really nice spatula set. The thin edge makes flipping delicate fish easy and the wider one handles burgers perfectly. Easy to clean and dishwasher safe. Handle design is comfortable and provides good control. Would buy again.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 39,
+      "country": "Brazil",
+      "days_as_customer": 167,
+      "lifetime_revenue": 298.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Wood chips are terrible quality. Full of bark and debris. Don't burn evenly and create acrid smoke that ruins the meat. Get your chips elsewhere.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 52,
+      "country": "Tanzania",
+      "days_as_customer": 7,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellet smoker works as advertised but the hopper capacity is smaller than expected. Runs out of pellets during overnight cooks which is frustrating. Temperature control is good though.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 33,
+      "country": "Costa Rica",
+      "days_as_customer": 89,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Excellent thermometer with dual probes. Can monitor meat and grill temperature simultaneously. Wireless range is impressive - works from my kitchen 50 feet away. Preset temperatures for different meats take the guesswork out of cooking. Alarm is loud enough to hear but not annoying. Essential tool for serious grilling.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "China",
+      "days_as_customer": 223,
+      "lifetime_revenue": 445.78
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great charcoal that lights easily and burns hot. Produces minimal ash which makes cleanup easier. Only complaint is some pieces are quite large and need to be broken down for smaller grills. Overall excellent quality.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "Germany",
+      "days_as_customer": 198,
+      "lifetime_revenue": 189.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "This grill is disappointing for the price point. Temperature control is inconsistent and the build quality feels cheap. Paint is already chipping after just a few months of use.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 35,
+      "country": "Japan",
+      "days_as_customer": 67,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "These tongs are perfect! Great length, excellent grip, and the locking mechanism works smoothly. Stainless steel construction means they'll last forever. Handle stays cool even during long cooking sessions. Best grilling tool purchase I've made.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "United Kingdom",
+      "days_as_customer": 145,
+      "lifetime_revenue": 156.75
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Fire lighter barely works. Takes multiple applications to get charcoal going. Strong chemical smell that lingers on food. Much better options available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 54,
+      "country": "Canada",
+      "days_as_customer": 23,
+      "lifetime_revenue": 28.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good quality grill cover that fits snugly. Material is thick and weatherproof. Has survived a harsh winter without any issues. Elastic hem keeps it secure in windy conditions. Worth the investment to protect your grill.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 345.25
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Heat resistant gloves work well for protection but sizing runs small. Ordered large but they're quite tight. Good for grabbing hot items but not comfortable for extended wear.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 43,
+      "country": "Australia",
+      "days_as_customer": 112,
+      "lifetime_revenue": 198.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill! Perfect size for family cooking and the temperature control is excellent. Love the built-in thermometer and the hinged grate makes adding charcoal easy. Cleanup is simple and the cooking results are consistently great. This grill has made me a charcoal convert!",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "South Africa",
+      "days_as_customer": 178,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Indoor electric grill doesn't get hot enough for proper searing. Food turns out more steamed than grilled. Cleanup is easy but that doesn't make up for poor cooking performance.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 32,
+      "country": "Brazil",
+      "days_as_customer": 45,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid fork with good reach. The tines are sharp enough to easily pierce meat but not so sharp as to be dangerous. Handle provides good grip even when wet. Minor complaint is it can be hard to clean between the tines.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 34,
+      "country": "Tanzania",
+      "days_as_customer": 189,
+      "lifetime_revenue": 87.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Amazing collection of BBQ rubs! Each one has a distinct flavor profile that really enhances different cuts of meat. The Memphis style is smoky and sweet, perfect for ribs. The Carolina blend has just the right amount of heat. Packaging is professional and the instruction card with recommended uses is helpful. Great value for the variety you get.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "Costa Rica",
+      "days_as_customer": 267,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellets burn clean but the flavoring seems weak. Doesn't impart much smoke taste compared to other brands I've tried. Decent but not exceptional.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 45,
+      "country": "China",
+      "days_as_customer": 156,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Portable grill is a disaster. Ignition system failed on the second use. Gas connections leak. Avoid this product completely.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 28,
+      "country": "Germany",
+      "days_as_customer": 14,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent spatula set with different sizes for different jobs. The beveled edges make flipping easy and the handles stay reasonably cool. Dishwasher safe which is convenient. Only minor issue is they can be slippery when wet.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "United Kingdom",
+      "days_as_customer": 203,
+      "lifetime_revenue": 267.75
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Wood chips are inconsistent quality. Some pieces are too large while others are sawdust. Burns unevenly and produces harsh smoke. Better chips available elsewhere.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 56,
+      "country": "Japan",
+      "days_as_customer": 34,
+      "lifetime_revenue": 67.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is a game changer! Temperature stays within 5 degrees of target for hours without any intervention. WiFi monitoring means I can go about my day while it does its magic. The meat comes out incredibly tender and flavorful. Yes it's expensive but the convenience and results make it worth every penny. Customer service is excellent too.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "Canada",
+      "days_as_customer": 334,
+      "lifetime_revenue": 2145.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Thermometer is accurate but the app interface is clunky. Connection drops occasionally which is annoying during long cooks. Hardware is good but software needs work.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 30,
+      "country": "New Zealand",
+      "days_as_customer": 89,
+      "lifetime_revenue": 145.25
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great lump charcoal that lights quickly and burns very hot. Perfect for searing steaks. Low ash production makes cleanup easy. Pieces are good sized and consistent. Only downside is it burns a bit faster than some other brands so you go through it quicker.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Australia",
+      "days_as_customer": 278,
+      "lifetime_revenue": 445.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Worst grill ever made. Everything about it is cheap and poorly designed. The temperature knobs don't align with actual heat output. Grease management is terrible. Paint job looks terrible right out of the box. Customer service is rude and unhelpful. Save your money and buy anything else.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 42,
+      "country": "South Africa",
+      "days_as_customer": 28,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect tongs! Length is ideal for safety and the spring action feels just right. Scalloped edges provide excellent grip on everything from delicate fish to heavy steaks. The locking mechanism is secure and easy to operate. After two years of regular use they still look and work like new.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 53,
+      "country": "Brazil",
+      "days_as_customer": 723,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Fire lighter takes forever to work and has a really strong smell. Natural ingredients don't seem very natural. Better to just use newspaper and kindling.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Tanzania",
+      "days_as_customer": 56,
+      "lifetime_revenue": 67.45
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Heavy duty grill cover that really protects against the elements. Survived a year of harsh weather with no signs of wear. Fit is snug and secure. Only complaint is it can be difficult to put on when it's windy.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Costa Rica",
+      "days_as_customer": 367,
+      "lifetime_revenue": 234.75
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Heat resistant gloves offer good protection but they're quite bulky. Hard to manipulate smaller items like thermometer probes. Fine for moving grates and handling large items.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "China",
+      "days_as_customer": 134,
+      "lifetime_revenue": 176.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This kettle grill is fantastic! Heats evenly, holds temperature perfectly, and the build quality is superb. The cooking grate is porcelain coated and easy to clean. Venting system gives excellent control for both hot and low cooking. Great for everything from burgers to brisket. Very happy with this purchase.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 40,
+      "country": "Germany",
+      "days_as_customer": 267,
+      "lifetime_revenue": 789.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Electric grill is useless. Takes 30 minutes to heat up and even then doesn't get hot enough. Food comes out pale and flavorless. Complete waste of space.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 25,
+      "country": "United Kingdom",
+      "days_as_customer": 8,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good quality fork that does the job well. Handle length keeps hands safely away from heat. Tines are sturdy enough for heavy items. Only wish the handle had better grip texture.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 36,
+      "country": "Japan",
+      "days_as_customer": 156,
+      "lifetime_revenue": 234.50
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Mixed results with these rubs. The sweet ones are excellent but the spicy blends are way too hot for my family. Decent quality but not all flavors work for everyone.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 44,
+      "country": "Canada",
+      "days_as_customer": 189,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding pellets that deliver consistent flavor every time. Clean burning with minimal ash. The cherry blend adds a beautiful color to poultry and pork. Feed smoothly through my pellet grill without jamming. Premium price but the quality justifies the cost. My go-to pellets for competition cooking.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "New Zealand",
+      "days_as_customer": 445,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill feels flimsy and cheap. Heat output is weak even with a full propane tank. Regulator seems faulty as flame keeps going out.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Australia",
+      "days_as_customer": 45,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Really nice spatula set with good variety of sizes. Edges are thin enough for delicate flipping but sturdy enough for heavy items. Handles are comfortable and stay relatively cool. Easy cleanup and dishwasher safe. Great addition to any grilling setup.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "South Africa",
+      "days_as_customer": 223,
+      "lifetime_revenue": 345.67
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Terrible wood chips full of dust and debris. Create bitter acrid smoke that ruins meat. Waste of money - get your chips from a reputable supplier instead.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 48,
+      "country": "Brazil",
+      "days_as_customer": 12,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent pellet smoker with precise temperature control. WiFi connectivity works well and the app is user friendly. Hopper capacity could be larger for really long cooks but overall very satisfied with performance and results.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "Tanzania",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Best thermometer I've ever used! Dual probes let me monitor meat and grill temp simultaneously. Readings are fast and accurate. Wireless range is excellent - works throughout my house. Preset temperatures and alarms take all the guesswork out of cooking. Essential tool for anyone serious about grilling.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "Costa Rica",
+      "days_as_customer": 289,
+      "lifetime_revenue": 378.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Decent charcoal but nothing special. Lights okay and burns clean. Price is reasonable but there are better options available for similar money.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "China",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Very disappointed with this grill. Uneven heating and poor build quality. Knobs feel cheap and wobbly. Temperature gauge is completely inaccurate. For this price expected much better.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "Germany",
+      "days_as_customer": 78,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Absolutely love these tongs! Perfect weight and balance. The scalloped gripping surface holds everything securely without damaging delicate items. Spring tension is just right - not too stiff or loose. Locking mechanism works smoothly. These are built to last a lifetime.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "United Kingdom",
+      "days_as_customer": 456,
+      "lifetime_revenue": 678.90
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "This fire lighter is terrible. Takes multiple attempts to light charcoal and leaves a nasty chemical taste on food. Much better products available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "Japan",
+      "days_as_customer": 18,
+      "lifetime_revenue": 28.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great grill cover that fits perfectly and provides excellent protection. Material is thick and weatherproof. Elastic bottom keeps it secure even in strong winds. Only minor complaint is it can be tricky to get on by yourself.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "Canada",
+      "days_as_customer": 298,
+      "lifetime_revenue": 445.75
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Heat resistant gloves are too bulky for detailed work. Protection is good but you lose all dexterity. Fine for moving big items but useless for anything requiring finesse.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 46,
+      "country": "New Zealand",
+      "days_as_customer": 89,
+      "lifetime_revenue": 134.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill that has exceeded all expectations! Temperature control is incredibly precise thanks to the adjustable venting system. Build quality is exceptional - heavy gauge steel construction that feels like it will last forever. The porcelain enamel finish is easy to clean and looks great. Perfect size for family cooking with room for entertaining. Hinged cooking grate makes adding charcoal simple during long smoking sessions. This grill has transformed my BBQ game!",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 43,
+      "country": "Australia",
+      "days_as_customer": 356,
+      "lifetime_revenue": 987.65
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Electric grill is a complete failure. Doesn't get hot enough to cook properly. Food takes forever and comes out looking boiled not grilled. Save your money.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "South Africa",
+      "days_as_customer": 15,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid grilling fork with excellent reach. Tines are properly spaced and sharp enough to pierce meat easily. Handle provides good control and grip. Only minor issue is it can be difficult to clean between the tines after cooking fatty meats.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 40,
+      "country": "Brazil",
+      "days_as_customer": 178,
+      "lifetime_revenue": 267.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rub collection has some winners and some misses. The dry rubs are generally good but the wet marinades are too salty. Decent variety to experiment with different flavors.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "Tanzania",
+      "days_as_customer": 123,
+      "lifetime_revenue": 156.78
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium pellets that deliver exceptional results! Burn cleanly with minimal ash production. The oak blend provides perfect smoke flavor without being overpowering. Consistent size and density means smooth feeding through my pellet grill. Higher price than some brands but the quality difference is noticeable in the final product. These pellets have helped me win several BBQ competitions.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Costa Rica",
+      "days_as_customer": 567,
+      "lifetime_revenue": 789.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill is poorly made with cheap components. Ignition system failed after a few uses. Heat distribution is very uneven. Not worth the money.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 27,
+      "country": "China",
+      "days_as_customer": 34,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent spatula set with great variety. The thin edge spatula is perfect for fish while the wide one handles burgers with ease. Stainless steel construction is durable and easy to clean. Handles stay reasonably cool during use. Very satisfied with this purchase.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Germany",
+      "days_as_customer": 234,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Wood chips are full of dirt and bark. Poor quality control results in inconsistent pieces. Creates harsh bitter smoke that ruins meat. Find a different supplier.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "United Kingdom",
+      "days_as_customer": 21,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is absolutely incredible! Set it and forget it operation makes smoking large cuts foolproof. Temperature control is so precise it holds within 2-3 degrees for 12+ hour cooks. WiFi monitoring with smartphone alerts means I never have to babysit it. The meat comes out with perfect smoke rings and incredible flavor every time. Yes it's a significant investment but if you're serious about BBQ this smoker will change your life. Customer support is outstanding too.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Japan",
+      "days_as_customer": 445,
+      "lifetime_revenue": 2567.89
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Digital thermometer works well but the probe wires are too short for larger grills. Readings are accurate but connection to the app can be spotty at times.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 42,
+      "country": "Canada",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "High quality lump charcoal that lights easily and burns very hot. Perfect for getting a good sear on steaks. Minimal ash makes cleanup simple. Burns a bit fast but the intense heat makes it worth it for high temperature cooking.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 39,
+      "country": "New Zealand",
+      "days_as_customer": 289,
+      "lifetime_revenue": 378.90
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Absolutely terrible grill with major design flaws. Temperature control doesn't work, heat distribution is awful, and the whole thing feels like it's going to fall apart. Customer service refused to help. Complete waste of money - avoid at all costs.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Australia",
+      "days_as_customer": 25,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Absolutely blown away by the FireMaster Pro 3000! Been grilling for over 20 years and this is hands down the best investment I've ever made. The temperature control is incredible - holds steady within 5 degrees of your target temp. The build quality is outstanding, heavy gauge steel that's going to last decades. Assembly was straightforward with clear instructions, took me about 3 hours working at a leisurely pace. The cooking space is generous, easily fits 12 burgers or a full rack of ribs with room to spare. Heat distribution is perfectly even - no more hot spots burning one side while the other stays raw. The side burner is powerful enough for serious searing, and the warming rack keeps everything at the perfect serving temperature. My neighbors are already asking to borrow it! Worth every penny and then some.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "Canada",
+      "days_as_customer": 89,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Really disappointed with these tongs. Handle broke after just 3 uses. Cheap plastic that can't handle any real heat. Going back to my old set.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 32,
+      "country": "Canada",
+      "days_as_customer": 12,
+      "lifetime_revenue": 24.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "This charcoal lights quickly and burns clean with minimal ash. Good heat output and lasts a decent amount of time. Only complaint is the bag design - it's hard to pour without making a mess. The charcoal pieces are uniform size which helps with consistent cooking. Burns hot enough for proper searing but also does well for low and slow cooking when you bank the coals. Price is reasonable compared to other premium brands. Have used it for about 6 months now and it's become my go-to charcoal. Would definitely recommend for anyone serious about their BBQ.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "Australia",
+      "days_as_customer": 184,
+      "lifetime_revenue": 156.47
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Total waste of money! This grill arrived with multiple dents and scratches, clearly damaged in shipping. But that's not even the worst part. The ignition system doesn't work at all - have to light it manually every single time with matches. The temperature gauge is completely inaccurate, shows 300°F when it's clearly much hotter, burned everything I tried to cook. The grease tray is poorly designed and overflows constantly, creating a huge mess on my deck. Paint started peeling after just two weeks of use. Customer service was unhelpful and basically told me it was my fault for not assembling it correctly, even though I followed the instructions to the letter. The cooking grates are flimsy and already showing rust spots. For the price I paid, this is completely unacceptable. Save your money and buy something else, literally anything else would be better than this piece of junk. I'm returning it and will never buy from this company again.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "United Kingdom",
+      "days_as_customer": 21,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect for quick starts! Lights charcoal every time without that awful chemical smell other fluids leave behind. A little goes a long way - one bottle lasts me the whole season. Natural ingredients give me peace of mind when cooking for the family.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Germany",
+      "days_as_customer": 412,
+      "lifetime_revenue": 83.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Average grill cover. Fits okay but material feels thin. After 6 months in the sun it's already fading and starting to crack around the edges. Does keep the rain off though.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "New Zealand",
+      "days_as_customer": 203,
+      "lifetime_revenue": 67.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "These gloves are amazing! Can handle scorching hot grates and cast iron with no problem. Dexterity is surprisingly good - can still manipulate small items easily. Easy to clean and haven't shown any wear after 8 months of regular use. Best BBQ purchase I've made.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "South Africa",
+      "days_as_customer": 267,
+      "lifetime_revenue": 145.75
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid kettle grill for the price. Heats evenly and holds temperature well. Assembly took about 90 minutes. Only issue is the ash catcher fills up quickly during long cooks. Would recommend for beginners.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 34,
+      "country": "Brazil",
+      "days_as_customer": 76,
+      "lifetime_revenue": 234.99
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Completely inaccurate thermometer. Shows 200°F when meat is clearly still raw, then jumps to 250°F instantly. Tried calibrating multiple times but it's hopeless. Waste of money.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "Tanzania",
+      "days_as_customer": 15,
+      "lifetime_revenue": 39.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect for apartment living! This electric grill gives great results indoors without any smoke. Heats up fast and cooks evenly. Easy cleanup with removable plates that go in the dishwasher. Have made everything from steaks to vegetables and they all turn out fantastic. Great for year-round grilling when weather doesn't cooperate.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 27,
+      "country": "Japan",
+      "days_as_customer": 128,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Fork is too short and flimsy. Bent the first time I tried to flip a heavy steak. For the price expected much better quality.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 55,
+      "country": "Costa Rica",
+      "days_as_customer": 8,
+      "lifetime_revenue": 18.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great variety of rubs in this collection. The Memphis style is my favorite - perfect balance of sweet and smoky. The Carolina rub is a bit too salty for my taste but the others are excellent. Nice to have different options for different cuts of meat. Packaging could be better as some of the containers leaked during shipping.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 43,
+      "country": "China",
+      "days_as_customer": 156,
+      "lifetime_revenue": 78.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Best pellets I've tried! Clean burn with no chemical taste. The hickory flavor comes through perfectly without being overpowering. Consistent size pellets that feed smoothly through my smoker. Low ash production means less cleanup. Will definitely reorder.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Canada",
+      "days_as_customer": 298,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Decent portable grill but struggles with wind. Takes forever to heat up outdoors. Works fine for camping when you have patience but not great for quick meals.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 31,
+      "country": "Germany",
+      "days_as_customer": 42,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good set of spatulas. Stainless steel construction feels solid and they clean up easily. The different sizes are handy for various foods. Only complaint is the handles get quite hot during longer cooking sessions. Would recommend getting some heat resistant gloves to go with them.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "United Kingdom",
+      "days_as_customer": 95,
+      "lifetime_revenue": 87.25
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Wood chips are too large and don't soak water well. Burn too fast and produce bitter smoke. Better options available for less money.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "Australia",
+      "days_as_customer": 23,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is incredible! Set it and forget it operation makes smoking brisket foolproof. Temperature stays rock steady for 12+ hour cooks. The hopper holds enough pellets for overnight smoking sessions. WiFi connectivity lets me monitor from inside the house. Produces amazing smoke rings and flavor. Customer service is top notch too - they helped me troubleshoot a minor issue within hours. Expensive but worth every cent for serious BBQ enthusiasts.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Very accurate thermometer with quick readings. Display is easy to read even in bright sunlight. Battery life is excellent. Only downside is the probe cord could be longer for larger grills.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 26,
+      "country": "South Africa",
+      "days_as_customer": 67,
+      "lifetime_revenue": 134.50
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Terrible quality control. Grill arrived with uneven legs so it wobbles constantly. Burner distribution is awful - one side barely lights while the other is a blowtorch. Paint job looks like it was done with a rattle can in someone's garage. Customer service is non-existent, never returned my calls. Save yourself the headache and buy something else.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 37,
+      "country": "Brazil",
+      "days_as_customer": 18,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding tongs! Perfect length and the grip is comfortable even for extended cooking sessions. Spring action is smooth and locks securely. Stainless steel construction cleans up beautifully and shows no signs of wear after a year of heavy use. Worth spending a bit more for quality tools that last.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Tanzania",
+      "days_as_customer": 387,
+      "lifetime_revenue": 256.78
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Lights charcoal okay but has strong chemical odor. Works but there are better natural options available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "Costa Rica",
+      "days_as_customer": 91,
+      "lifetime_revenue": 45.75
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid grill cover that fits my FireMaster perfectly. Heavy duty material that's held up through two winters so far. Elastic bottom keeps it secure in windy conditions. Only wish it came in different colors besides basic black.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "Japan",
+      "days_as_customer": 156,
+      "lifetime_revenue": 178.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Gloves are bulky and make it hard to grip smaller items. Heat protection is good but dexterity suffers. Prefer my old leather gloves.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 47,
+      "country": "China",
+      "days_as_customer": 34,
+      "lifetime_revenue": 52.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect kettle grill! Excellent heat retention and the venting system gives precise temperature control. Built like a tank - this thing will outlast me. Great for both direct grilling and smoking. The hinged cooking grate makes adding charcoal easy during long cooks. Classic design that never goes out of style.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 58,
+      "country": "Germany",
+      "days_as_customer": 445,
+      "lifetime_revenue": 891.25
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Indoor grill is a joke. Barely gets warm enough to cook anything properly. Takes 20 minutes just to heat up. Food comes out gray and flavorless. Complete waste of money.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 29,
+      "country": "United Kingdom",
+      "days_as_customer": 12,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good fork for the price. Length is perfect for keeping hands away from heat. Sturdy construction but the handle could be more comfortable for long cooking sessions. Does the job well.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "Canada",
+      "days_as_customer": 78,
+      "lifetime_revenue": 112.50
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rubs are hit and miss. The Kansas City style is fantastic but the Texas blend is way too peppery. Decent value for a sampler pack to find your favorites.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Australia",
+      "days_as_customer": 134,
+      "lifetime_revenue": 167.88
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium pellets that deliver consistent results every time. Clean burning with excellent flavor profiles. The apple blend gives a subtle sweetness that's perfect for pork. Low moisture content means they store well and feed smoothly. Higher price than some brands but the quality shows in the final product.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "New Zealand",
+      "days_as_customer": 289,
+      "lifetime_revenue": 234.67
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill feels cheap and flimsy. Legs are wobbly and the whole thing feels like it might tip over. Heat output is weak too.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 24,
+      "country": "South Africa",
+      "days_as_customer": 19,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Really nice spatula set. The thin edge makes flipping delicate fish easy and the wider one handles burgers perfectly. Easy to clean and dishwasher safe. Handle design is comfortable and provides good control. Would buy again.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 39,
+      "country": "Brazil",
+      "days_as_customer": 167,
+      "lifetime_revenue": 298.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Wood chips are terrible quality. Full of bark and debris. Don't burn evenly and create acrid smoke that ruins the meat. Get your chips elsewhere.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 52,
+      "country": "Tanzania",
+      "days_as_customer": 7,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellet smoker works as advertised but the hopper capacity is smaller than expected. Runs out of pellets during overnight cooks which is frustrating. Temperature control is good though.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 33,
+      "country": "Costa Rica",
+      "days_as_customer": 89,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Excellent thermometer with dual probes. Can monitor meat and grill temperature simultaneously. Wireless range is impressive - works from my kitchen 50 feet away. Preset temperatures for different meats take the guesswork out of cooking. Alarm is loud enough to hear but not annoying. Essential tool for serious grilling.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "China",
+      "days_as_customer": 223,
+      "lifetime_revenue": 445.78
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great charcoal that lights easily and burns hot. Produces minimal ash which makes cleanup easier. Only complaint is some pieces are quite large and need to be broken down for smaller grills. Overall excellent quality.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "Germany",
+      "days_as_customer": 198,
+      "lifetime_revenue": 189.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "This grill is disappointing for the price point. Temperature control is inconsistent and the build quality feels cheap. Paint is already chipping after just a few months of use.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 35,
+      "country": "Japan",
+      "days_as_customer": 67,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "These tongs are perfect! Great length, excellent grip, and the locking mechanism works smoothly. Stainless steel construction means they'll last forever. Handle stays cool even during long cooking sessions. Best grilling tool purchase I've made.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "United Kingdom",
+      "days_as_customer": 145,
+      "lifetime_revenue": 156.75
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Fire lighter barely works. Takes multiple applications to get charcoal going. Strong chemical smell that lingers on food. Much better options available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 54,
+      "country": "Canada",
+      "days_as_customer": 23,
+      "lifetime_revenue": 28.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good quality grill cover that fits snugly. Material is thick and weatherproof. Has survived a harsh winter without any issues. Elastic hem keeps it secure in windy conditions. Worth the investment to protect your grill.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 345.25
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Heat resistant gloves work well for protection but sizing runs small. Ordered large but they're quite tight. Good for grabbing hot items but not comfortable for extended wear.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 43,
+      "country": "Australia",
+      "days_as_customer": 112,
+      "lifetime_revenue": 198.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill! Perfect size for family cooking and the temperature control is excellent. Love the built-in thermometer and the hinged grate makes adding charcoal easy. Cleanup is simple and the cooking results are consistently great. This grill has made me a charcoal convert!",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "South Africa",
+      "days_as_customer": 178,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Indoor electric grill doesn't get hot enough for proper searing. Food turns out more steamed than grilled. Cleanup is easy but that doesn't make up for poor cooking performance.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 32,
+      "country": "Brazil",
+      "days_as_customer": 45,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid fork with good reach. The tines are sharp enough to easily pierce meat but not so sharp as to be dangerous. Handle provides good grip even when wet. Minor complaint is it can be hard to clean between the tines.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 34,
+      "country": "Tanzania",
+      "days_as_customer": 189,
+      "lifetime_revenue": 87.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Amazing collection of BBQ rubs! Each one has a distinct flavor profile that really enhances different cuts of meat. The Memphis style is smoky and sweet, perfect for ribs. The Carolina blend has just the right amount of heat. Packaging is professional and the instruction card with recommended uses is helpful. Great value for the variety you get.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "Costa Rica",
+      "days_as_customer": 267,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellets burn clean but the flavoring seems weak. Doesn't impart much smoke taste compared to other brands I've tried. Decent but not exceptional.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 45,
+      "country": "China",
+      "days_as_customer": 156,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Portable grill is a disaster. Ignition system failed on the second use. Gas connections leak. Avoid this product completely.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 28,
+      "country": "Germany",
+      "days_as_customer": 14,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent spatula set with different sizes for different jobs. The beveled edges make flipping easy and the handles stay reasonably cool. Dishwasher safe which is convenient. Only minor issue is they can be slippery when wet.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "United Kingdom",
+      "days_as_customer": 203,
+      "lifetime_revenue": 267.75
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Wood chips are inconsistent quality. Some pieces are too large while others are sawdust. Burns unevenly and produces harsh smoke. Better chips available elsewhere.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 56,
+      "country": "Japan",
+      "days_as_customer": 34,
+      "lifetime_revenue": 67.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is a game changer! Temperature stays within 5 degrees of target for hours without any intervention. WiFi monitoring means I can go about my day while it does its magic. The meat comes out incredibly tender and flavorful. Yes it's expensive but the convenience and results make it worth every penny. Customer service is excellent too.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "Canada",
+      "days_as_customer": 334,
+      "lifetime_revenue": 2145.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Thermometer is accurate but the app interface is clunky. Connection drops occasionally which is annoying during long cooks. Hardware is good but software needs work.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 30,
+      "country": "New Zealand",
+      "days_as_customer": 89,
+      "lifetime_revenue": 145.25
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great lump charcoal that lights quickly and burns very hot. Perfect for searing steaks. Low ash production makes cleanup easy. Pieces are good sized and consistent. Only downside is it burns a bit faster than some other brands so you go through it quicker.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Australia",
+      "days_as_customer": 278,
+      "lifetime_revenue": 445.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Worst grill ever made. Everything about it is cheap and poorly designed. The temperature knobs don't align with actual heat output. Grease management is terrible. Paint job looks terrible right out of the box. Customer service is rude and unhelpful. Save your money and buy anything else.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 42,
+      "country": "South Africa",
+      "days_as_customer": 28,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect tongs! Length is ideal for safety and the spring action feels just right. Scalloped edges provide excellent grip on everything from delicate fish to heavy steaks. The locking mechanism is secure and easy to operate. After two years of regular use they still look and work like new.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 53,
+      "country": "Brazil",
+      "days_as_customer": 723,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Fire lighter takes forever to work and has a really strong smell. Natural ingredients don't seem very natural. Better to just use newspaper and kindling.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Tanzania",
+      "days_as_customer": 56,
+      "lifetime_revenue": 67.45
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Heavy duty grill cover that really protects against the elements. Survived a year of harsh weather with no signs of wear. Fit is snug and secure. Only complaint is it can be difficult to put on when it's windy.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Costa Rica",
+      "days_as_customer": 367,
+      "lifetime_revenue": 234.75
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Heat resistant gloves offer good protection but they're quite bulky. Hard to manipulate smaller items like thermometer probes. Fine for moving grates and handling large items.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "China",
+      "days_as_customer": 134,
+      "lifetime_revenue": 176.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This kettle grill is fantastic! Heats evenly, holds temperature perfectly, and the build quality is superb. The cooking grate is porcelain coated and easy to clean. Venting system gives excellent control for both hot and low cooking. Great for everything from burgers to brisket. Very happy with this purchase.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 40,
+      "country": "Germany",
+      "days_as_customer": 267,
+      "lifetime_revenue": 789.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Electric grill is useless. Takes 30 minutes to heat up and even then doesn't get hot enough. Food comes out pale and flavorless. Complete waste of space.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 25,
+      "country": "United Kingdom",
+      "days_as_customer": 8,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good quality fork that does the job well. Handle length keeps hands safely away from heat. Tines are sturdy enough for heavy items. Only wish the handle had better grip texture.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 36,
+      "country": "Japan",
+      "days_as_customer": 156,
+      "lifetime_revenue": 234.50
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Mixed results with these rubs. The sweet ones are excellent but the spicy blends are way too hot for my family. Decent quality but not all flavors work for everyone.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 44,
+      "country": "Canada",
+      "days_as_customer": 189,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding pellets that deliver consistent flavor every time. Clean burning with minimal ash. The cherry blend adds a beautiful color to poultry and pork. Feed smoothly through my pellet grill without jamming. Premium price but the quality justifies the cost. My go-to pellets for competition cooking.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "New Zealand",
+      "days_as_customer": 445,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill feels flimsy and cheap. Heat output is weak even with a full propane tank. Regulator seems faulty as flame keeps going out.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Australia",
+      "days_as_customer": 45,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Really nice spatula set with good variety of sizes. Edges are thin enough for delicate flipping but sturdy enough for heavy items. Handles are comfortable and stay relatively cool. Easy cleanup and dishwasher safe. Great addition to any grilling setup.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "South Africa",
+      "days_as_customer": 223,
+      "lifetime_revenue": 345.67
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Terrible wood chips full of dust and debris. Create bitter acrid smoke that ruins meat. Waste of money - get your chips from a reputable supplier instead.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 48,
+      "country": "Brazil",
+      "days_as_customer": 12,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent pellet smoker with precise temperature control. WiFi connectivity works well and the app is user friendly. Hopper capacity could be larger for really long cooks but overall very satisfied with performance and results.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "Tanzania",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Best thermometer I've ever used! Dual probes let me monitor meat and grill temp simultaneously. Readings are fast and accurate. Wireless range is excellent - works throughout my house. Preset temperatures and alarms take all the guesswork out of cooking. Essential tool for anyone serious about grilling.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "Costa Rica",
+      "days_as_customer": 289,
+      "lifetime_revenue": 378.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Decent charcoal but nothing special. Lights okay and burns clean. Price is reasonable but there are better options available for similar money.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "China",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Very disappointed with this grill. Uneven heating and poor build quality. Knobs feel cheap and wobbly. Temperature gauge is completely inaccurate. For this price expected much better.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "Germany",
+      "days_as_customer": 78,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Absolutely love these tongs! Perfect weight and balance. The scalloped gripping surface holds everything securely without damaging delicate items. Spring tension is just right - not too stiff or loose. Locking mechanism works smoothly. These are built to last a lifetime.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "United Kingdom",
+      "days_as_customer": 456,
+      "lifetime_revenue": 678.90
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "This fire lighter is terrible. Takes multiple attempts to light charcoal and leaves a nasty chemical taste on food. Much better products available.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "Japan",
+      "days_as_customer": 18,
+      "lifetime_revenue": 28.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great grill cover that fits perfectly and provides excellent protection. Material is thick and weatherproof. Elastic bottom keeps it secure even in strong winds. Only minor complaint is it can be tricky to get on by yourself.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "Canada",
+      "days_as_customer": 298,
+      "lifetime_revenue": 445.75
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Heat resistant gloves are too bulky for detailed work. Protection is good but you lose all dexterity. Fine for moving big items but useless for anything requiring finesse.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 46,
+      "country": "New Zealand",
+      "days_as_customer": 89,
+      "lifetime_revenue": 134.25
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill that has exceeded all expectations! Temperature control is incredibly precise thanks to the adjustable venting system. Build quality is exceptional - heavy gauge steel construction that feels like it will last forever. The porcelain enamel finish is easy to clean and looks great. Perfect size for family cooking with room for entertaining. Hinged cooking grate makes adding charcoal simple during long smoking sessions. This grill has transformed my BBQ game!",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 43,
+      "country": "Australia",
+      "days_as_customer": 356,
+      "lifetime_revenue": 987.65
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Electric grill is a complete failure. Doesn't get hot enough to cook properly. Food takes forever and comes out looking boiled not grilled. Save your money.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "South Africa",
+      "days_as_customer": 15,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid grilling fork with excellent reach. Tines are properly spaced and sharp enough to pierce meat easily. Handle provides good control and grip. Only minor issue is it can be difficult to clean between the tines after cooking fatty meats.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 40,
+      "country": "Brazil",
+      "days_as_customer": 178,
+      "lifetime_revenue": 267.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rub collection has some winners and some misses. The dry rubs are generally good but the wet marinades are too salty. Decent variety to experiment with different flavors.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "Tanzania",
+      "days_as_customer": 123,
+      "lifetime_revenue": 156.78
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium pellets that deliver exceptional results! Burn cleanly with minimal ash production. The oak blend provides perfect smoke flavor without being overpowering. Consistent size and density means smooth feeding through my pellet grill. Higher price than some brands but the quality difference is noticeable in the final product. These pellets have helped me win several BBQ competitions.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Costa Rica",
+      "days_as_customer": 567,
+      "lifetime_revenue": 789.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill is poorly made with cheap components. Ignition system failed after a few uses. Heat distribution is very uneven. Not worth the money.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 27,
+      "country": "China",
+      "days_as_customer": 34,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent spatula set with great variety. The thin edge spatula is perfect for fish while the wide one handles burgers with ease. Stainless steel construction is durable and easy to clean. Handles stay reasonably cool during use. Very satisfied with this purchase.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Germany",
+      "days_as_customer": 234,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Wood chips are full of dirt and bark. Poor quality control results in inconsistent pieces. Creates harsh bitter smoke that ruins meat. Find a different supplier.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "United Kingdom",
+      "days_as_customer": 21,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "This pellet smoker is absolutely incredible! Set it and forget it operation makes smoking large cuts foolproof. Temperature control is so precise it holds within 2-3 degrees for 12+ hour cooks. WiFi monitoring with smartphone alerts means I never have to babysit it. The meat comes out with perfect smoke rings and incredible flavor every time. Yes it's a significant investment but if you're serious about BBQ this smoker will change your life. Customer support is outstanding too.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Japan",
+      "days_as_customer": 445,
+      "lifetime_revenue": 2567.89
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Digital thermometer works well but the probe wires are too short for larger grills. Readings are accurate but connection to the app can be spotty at times.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 42,
+      "country": "Canada",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "High quality lump charcoal that lights easily and burns very hot. Perfect for getting a good sear on steaks. Minimal ash makes cleanup simple. Burns a bit fast but the intense heat makes it worth it for high temperature cooking.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 39,
+      "country": "New Zealand",
+      "days_as_customer": 289,
+      "lifetime_revenue": 378.90
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Absolutely terrible grill with major design flaws. Temperature control doesn't work, heat distribution is awful, and the whole thing feels like it's going to fall apart. Customer service refused to help. Complete waste of money - avoid at all costs.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Australia",
+      "days_as_customer": 25,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Really impressed with this FireMaster Pro! Temperature stays consistent and the build quality is excellent. Only minor gripe is the assembly instructions could be clearer - took me longer than expected to put together. But once it's up and running, it's a fantastic grill.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "Germany",
+      "days_as_customer": 156,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "These tongs are perfection! After years of using cheap ones that broke or bent, these are a revelation. The grip is fantastic and they feel balanced in your hand. Locking mechanism works smoothly every time.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 37,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Charcoal is okay but overpriced for what you get. Burns clean but nothing special compared to other premium brands at this price point.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "Tanzania",
+      "days_as_customer": 67,
+      "lifetime_revenue": 89.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Grill cover does the job but material feels thin for the price. Fits my grill well and keeps it dry, but I'm concerned about long-term durability in harsh weather.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "Costa Rica",
+      "days_as_customer": 89,
+      "lifetime_revenue": 145.75
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Heat resistant gloves are a joke. Claimed to handle 932°F but my hands got burned picking up a moderately hot grate. False advertising and dangerous. Returning immediately.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 34,
+      "country": "Brazil",
+      "days_as_customer": 5,
+      "lifetime_revenue": 52.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill that's become the centerpiece of our backyard gatherings! The heat retention is incredible - holds steady temps for hours. Perfect for everything from quick weeknight dinners to all-day smoking sessions. The hinged grate is genius for adding charcoal mid-cook. Build quality is restaurant grade and it looks beautiful too. Worth every penny and has already paid for itself in amazing meals.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "Canada",
+      "days_as_customer": 298,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good thermometer with accurate readings. Love the dual probe setup for monitoring meat and grill temp simultaneously. App could use some improvements but overall very satisfied.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "United Kingdom",
+      "days_as_customer": 134,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Electric grill is underwhelming. Takes forever to heat up and doesn't get hot enough for proper searing. Cleanup is easy but that doesn't make up for poor cooking performance.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 31,
+      "country": "Japan",
+      "days_as_customer": 43,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect fork for serious grilling! Length keeps hands safely away from heat and the tines are perfectly spaced. Sturdy enough for heavy roasts but precise enough for delicate fish. Essential tool.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 43,
+      "country": "Australia",
+      "days_as_customer": 178,
+      "lifetime_revenue": 123.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rub collection is decent but some flavors are too salty. The sweet rubs are good but the spicy ones are overwhelming. Good for trying different styles.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "South Africa",
+      "days_as_customer": 156,
+      "lifetime_revenue": 234.67
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Clean burning pellets with good flavor. The hickory blend gives a nice smoky taste without being overpowering. Burns consistently and produces minimal ash. Slightly expensive but quality shows.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "China",
+      "days_as_customer": 267,
+      "lifetime_revenue": 345.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Portable grill is terrible. Ignition doesn't work and when you finally get it lit, the heat output is pathetic. Feels like a toy not a real grill.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 26,
+      "country": "Germany",
+      "days_as_customer": 12,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Excellent spatula set with perfect balance and feel. The different sizes handle every grilling task beautifully. Stainless steel construction is top quality and cleans up effortlessly. Handles stay comfortable even during long cooking sessions. Best grilling tools I've ever owned.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "New Zealand",
+      "days_as_customer": 234,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Wood chips are inconsistent quality. Some pieces too large, others are basically sawdust. Creates uneven smoke and bitter flavors.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 55,
+      "country": "Tanzania",
+      "days_as_customer": 45,
+      "lifetime_revenue": 78.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Pellet smoker delivers consistent results with minimal effort. Temperature control is excellent and the WiFi monitoring is convenient. Only complaint is the hopper could be larger for really long cooks.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 44,
+      "country": "Costa Rica",
+      "days_as_customer": 189,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Fire lighter works but takes several applications. Natural formula is nice but effectiveness is questionable. Decent for occasional use.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "Brazil",
+      "days_as_customer": 78,
+      "lifetime_revenue": 156.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Worst grill purchase ever made. Everything about this BackYard King is cheap and poorly designed. Temperature control is non-existent, build quality is laughable, and customer service is rude. Avoid this brand completely - you've been warned!",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 32,
+      "country": "Canada",
+      "days_as_customer": 21,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "FireMaster Pro is absolutely incredible! Perfect temperature control, even heat distribution, and rock-solid construction. This grill has transformed my outdoor cooking completely. The side burner is powerful enough for restaurant-quality searing. Assembly was straightforward and everything fits together perfectly. Expensive but worth every cent for serious grillers.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "United Kingdom",
+      "days_as_customer": 345,
+      "lifetime_revenue": 1567.89
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Tongs are okay for the price. Spring action could be smoother and the handles get warm during extended use. Decent starter tongs but you'll want to upgrade eventually.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 27,
+      "country": "Japan",
+      "days_as_customer": 56,
+      "lifetime_revenue": 89.25
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent charcoal that lights quickly and burns very hot. Perfect for searing steaks. Low ash production makes cleanup easier. Only downside is it burns faster than regular charcoal so you use more.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "Australia",
+      "days_as_customer": 234,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Grill cover fits poorly and material feels cheap. Started tearing at the seams after just a few months. Expected better quality for this price.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "South Africa",
+      "days_as_customer": 89,
+      "lifetime_revenue": 67.50
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Amazing heat resistant gloves! Can handle extremely hot surfaces with confidence. Dexterity is surprisingly good for such thick protection. Easy to clean and show no signs of wear after months of use. Essential safety equipment for any serious griller.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "China",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Kettle grill arrived with scratches and dents. Poor packaging led to damage during shipping. When I finally assembled it, the legs were uneven. Complete disappointment.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "Germany",
+      "days_as_customer": 15,
+      "lifetime_revenue": 234.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Very accurate thermometer with fast readings. Bluetooth connectivity works well and the app is user-friendly. Only complaint is the probe cables could be longer for larger grills.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "New Zealand",
+      "days_as_customer": 123,
+      "lifetime_revenue": 345.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Electric grill works for apartment living but don't expect miracles. Adequate for basic cooking but lacks the char and flavor of real grilling.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Tanzania",
+      "days_as_customer": 67,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Fork feels flimsy and the handle is too short for comfort. Bent slightly when trying to move a heavy roast. Not worth the price.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 33,
+      "country": "Costa Rica",
+      "days_as_customer": 34,
+      "lifetime_revenue": 45.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding BBQ rub collection! Each blend has a unique character that really enhances different cuts of meat. The Memphis style is my favorite - perfect balance of sweet and smoky. The Carolina rub adds great tangy flavor to pork. Instructions are helpful and the resealable containers keep everything fresh. Great value for the variety and quality.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 40,
+      "country": "Brazil",
+      "days_as_customer": 198,
+      "lifetime_revenue": 178.90
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Pellets are terrible quality. Inconsistent sizes cause feeding problems in my smoker. Burns dirty with lots of ash. Find a better brand.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "Canada",
+      "days_as_customer": 23,
+      "lifetime_revenue": 67.89
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Portable grill is great for camping and tailgating. Heats up quickly and provides good cooking surface for a compact unit. Wind can be an issue but overall very pleased with portability.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "United Kingdom",
+      "days_as_customer": 89,
+      "lifetime_revenue": 234.75
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Spatula set is decent quality but handles get quite hot during use. The thin edges work well for flipping but overall nothing special for the price.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 39,
+      "country": "Japan",
+      "days_as_customer": 145,
+      "lifetime_revenue": 267.45
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium wood chips that deliver excellent flavor! Consistent size pieces that soak water well and burn evenly. The hickory flavor comes through perfectly without being overpowering. Clean burning with minimal bitter smoke. Perfect for both hot grilling and low-and-slow smoking.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 44,
+      "country": "Australia",
+      "days_as_customer": 234,
+      "lifetime_revenue": 156.78
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Pellet smoker has too many electronic issues. WiFi constantly disconnects and temperature swings are frustrating. When it works it's okay but reliability is poor.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 35,
+      "country": "South Africa",
+      "days_as_customer": 78,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good fire lighter that works consistently. Natural formula gives peace of mind and doesn't leave chemical taste. Takes a bit longer than some brands but worth it for the clean burn.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "China",
+      "days_as_customer": 156,
+      "lifetime_revenue": 123.45
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "This grill is a complete disaster. Poor quality materials, terrible design, and non-existent customer service. Temperature control doesn't work and the whole thing feels like it's about to collapse. Worst purchase I've ever made.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Germany",
+      "days_as_customer": 32,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Absolutely love this FireMaster Pro! The precision temperature control makes cooking foolproof. Even heat distribution means no more hot spots or burnt edges. The construction is top-notch with heavy gauge steel that will last decades. Side burner provides serious BTUs for perfect searing. Assembly was straightforward with clear instructions. This grill has elevated my outdoor cooking to restaurant quality. Worth every penny!",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 48,
+      "country": "New Zealand",
+      "days_as_customer": 267,
+      "lifetime_revenue": 1456.78
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Great tongs with excellent grip and balance. Locking mechanism works smoothly and the length is perfect for safety. Only minor complaint is they can be difficult to clean after cooking fatty meats.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 42,
+      "country": "Tanzania",
+      "days_as_customer": 134,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Charcoal lights well and burns clean but nothing exceptional. Price is reasonable but there are better options available. Decent for occasional use.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 34,
+      "country": "Costa Rica",
+      "days_as_customer": 89,
+      "lifetime_revenue": 123.67
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding grill cover that provides excellent protection! Heavy duty material has survived two harsh winters without any issues. Fits perfectly with elastic bottom that stays secure in wind. Easy to clean and still looks new after extended use.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "Brazil",
+      "days_as_customer": 456,
+      "lifetime_revenue": 678.90
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Heat resistant gloves are bulky and awkward. Protection is adequate but you lose all dexterity. Hard to grip smaller items like thermometer probes.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 30,
+      "country": "Canada",
+      "days_as_customer": 67,
+      "lifetime_revenue": 89.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Excellent kettle grill with precise temperature control. The venting system works beautifully for both hot grilling and low smoking. Build quality is impressive and cleanup is easy. Perfect size for family cooking.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 46,
+      "country": "United Kingdom",
+      "days_as_customer": 178,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Thermometer is completely unreliable. Readings jump around constantly and the wireless connection fails regularly. Waste of money - get a different brand.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 26,
+      "country": "Japan",
+      "days_as_customer": 12,
+      "lifetime_revenue": 39.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect electric grill for apartment living! Heats evenly and provides excellent results indoors. No smoke but still gets great grill marks. Easy cleanup with removable plates. Great for year-round grilling when outdoor space is limited.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 29,
+      "country": "Australia",
+      "days_as_customer": 123,
+      "lifetime_revenue": 345.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Fork does the job but handle could be more comfortable. Length is good for safety but the grip texture is inadequate when hands get greasy.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "South Africa",
+      "days_as_customer": 156,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good variety of BBQ rubs with distinct flavor profiles. The Kansas City blend is excellent for ribs. Some are a bit salty but overall good quality. Nice packaging and helpful usage instructions.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 52,
+      "country": "China",
+      "days_as_customer": 234,
+      "lifetime_revenue": 345.78
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Pellets don't provide much smoke flavor. Burns clean but the taste is very mild compared to other brands. Decent for basic cooking but lacks character.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Germany",
+      "days_as_customer": 78,
+      "lifetime_revenue": 134.56
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding portable grill! Perfect for camping and tailgating. Heats up quickly and provides excellent cooking performance in a compact package. Sturdy construction and easy to transport. Wind screen works well to maintain consistent heat. Best investment for mobile grilling!",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 38,
+      "country": "New Zealand",
+      "days_as_customer": 189,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Spatula set is poorly made with thin metal that bends easily. Handles get extremely hot and become uncomfortable to use. Save your money and buy quality tools elsewhere.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 45,
+      "country": "Tanzania",
+      "days_as_customer": 23,
+      "lifetime_revenue": 87.25
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good quality wood chips that soak well and burn evenly. Hickory flavor is authentic without being overpowering. Consistent size pieces make for predictable smoking. Would buy again.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Costa Rica",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellet smoker works as advertised but WiFi connectivity is unreliable. Temperature control is good when you can connect. Decent smoker but tech features need improvement.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Brazil",
+      "days_as_customer": 134,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Excellent fire lighter that works consistently every time! Natural formula gives peace of mind and doesn't leave any chemical residue. Lights charcoal quickly and burns clean. A little goes a long way so the bottle lasts a full season. Perfect for anyone who cares about food safety.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 55,
+      "country": "Canada",
+      "days_as_customer": 378,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Grill has major temperature control issues. Hot spots are severe and the ignition system is unreliable. Build quality feels cheap for the price point.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 36,
+      "country": "United Kingdom",
+      "days_as_customer": 56,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "FireMaster Pro delivers excellent results with consistent performance. Temperature control is precise and heat distribution is even. Only complaint is the price but you get what you pay for in build quality.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 43,
+      "country": "Japan",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Tongs broke on first use. Spring mechanism failed and one handle cracked. Completely unacceptable quality control. Returning immediately.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 28,
+      "country": "Australia",
+      "days_as_customer": 3,
+      "lifetime_revenue": 24.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium lump charcoal that performs flawlessly every time! Lights quickly, burns extremely hot, and produces minimal ash. Perfect uniform pieces that stack well and burn evenly. Creates beautiful sear marks and amazing flavor. More expensive than regular charcoal but the results speak for themselves. Essential for serious grilling.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "South Africa",
+      "days_as_customer": 345,
+      "lifetime_revenue": 567.89
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Grill cover fits well and provides adequate protection. Material feels sturdy but time will tell how it holds up to UV exposure and weather.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 42,
+      "country": "China",
+      "days_as_customer": 89,
+      "lifetime_revenue": 156.75
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Heat resistant gloves work well for their intended purpose. Good protection from high temperatures and easy to clean. Sizing runs a bit large but that's better than too small.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 40,
+      "country": "Germany",
+      "days_as_customer": 167,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Kettle grill has poor quality control. Venting system doesn't seal properly and legs are uneven. Expected better for this price point.",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 31,
+      "country": "New Zealand",
+      "days_as_customer": 45,
+      "lifetime_revenue": 234.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding thermometer with lightning-fast accurate readings! Dual probes let me monitor both meat and grill temperature simultaneously. Wireless range is excellent and the app interface is intuitive. Preset temperatures for different meats eliminate guesswork. Essential tool for perfect results every time.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 48,
+      "country": "Tanzania",
+      "days_as_customer": 278,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Electric grill is completely inadequate. Doesn't get hot enough for proper cooking and takes forever to heat up. Food comes out gray and flavorless.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 24,
+      "country": "Costa Rica",
+      "days_as_customer": 8,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid fork with good reach and sturdy construction. Tines are properly spaced and sharp enough for easy food handling. Handle provides good grip even when wet.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 37,
+      "country": "Brazil",
+      "days_as_customer": 145,
+      "lifetime_revenue": 198.45
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "BBQ rub collection has some good flavors but others are too intense. The mild blends work well but the hot ones are overwhelming. Decent sampler pack.",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 45,
+      "country": "Canada",
+      "days_as_customer": 123,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Exceptional pellets that deliver consistent flavor and performance! Clean burning with virtually no ash production. The apple blend provides subtle sweetness perfect for pork and poultry. Feeds smoothly through my pellet grill without jamming. Premium quality that shows in the final results. Worth the extra cost for serious BBQ enthusiasts.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 50,
+      "country": "United Kingdom",
+      "days_as_customer": 445,
+      "lifetime_revenue": 678.90
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill feels cheap and flimsy. Heat output is weak and the whole unit feels unstable. Not worth the price for such poor quality.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 29,
+      "country": "Japan",
+      "days_as_customer": 34,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good spatula set with solid construction. Different sizes handle various foods well. Handles stay reasonably cool and the stainless steel cleans up easily. Worth the investment.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 41,
+      "country": "Australia",
+      "days_as_customer": 189,
+      "lifetime_revenue": 345.67
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Wood chips are full of bark and debris. Poor quality control results in inconsistent pieces that burn unevenly. Creates bitter smoke that ruins meat.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "South Africa",
+      "days_as_customer": 15,
+      "lifetime_revenue": 22.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Incredible pellet smoker that has revolutionized my BBQ game! Temperature control is incredibly precise, holding within 2-3 degrees for 15+ hour cooks. WiFi monitoring means I can leave it overnight without worry. The meat comes out with perfect smoke rings and incredible flavor every single time. Yes it's expensive but the convenience and consistent results make it worth every penny. Customer service is excellent too - they helped me optimize my settings for even better results.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 53,
+      "country": "China",
+      "days_as_customer": 567,
+      "lifetime_revenue": 2345.67
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Fire lighter works but requires multiple applications. Natural formula is appreciated but effectiveness could be better. Decent for occasional use.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 35,
+      "country": "Germany",
+      "days_as_customer": 78,
+      "lifetime_revenue": 89.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Grill has serious design flaws. Temperature gauge is inaccurate and heat distribution is terrible. Customer service is unresponsive to complaints.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 34,
+      "country": "New Zealand",
+      "days_as_customer": 67,
+      "lifetime_revenue": 189.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "FireMaster Pro is an excellent grill with impressive temperature control and even heating. Build quality is solid and it's built to last. Only downside is the learning curve to master all the features.",
+    "product_name": "FireMaster Pro 3000 Gas Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 46,
+      "country": "Tanzania",
+      "days_as_customer": 234,
+      "lifetime_revenue": 1299.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Perfect tongs with excellent balance and feel! The scalloped gripping surface holds everything securely without damaging delicate foods. Spring action is smooth and the locking mechanism works perfectly. Stainless steel construction will last forever. Best grilling tool purchase I've made.",
+    "product_name": "GrillMaster Elite Tongs",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 49,
+      "country": "Costa Rica",
+      "days_as_customer": 345,
+      "lifetime_revenue": 456.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Charcoal is overpriced and underwhelming. Burns too fast and doesn't provide much heat. Better options available for less money.",
+    "product_name": "SmokeRing Premium Lump Charcoal",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 32,
+      "country": "Brazil",
+      "days_as_customer": 23,
+      "lifetime_revenue": 45.67
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Heavy duty grill cover that provides excellent protection. Fits snugly and the material quality is impressive. Elastic hem keeps it secure in windy conditions. Good investment to protect your grill.",
+    "product_name": "HeatShield Premium Grill Cover",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "male",
+      "age": 44,
+      "country": "Canada",
+      "days_as_customer": 167,
+      "lifetime_revenue": 267.89
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Heat resistant gloves offer good protection but sizing is inconsistent. Ordered medium but they feel more like large. Protection is adequate though.",
+    "product_name": "GrillGuard Heat Resistant Gloves",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 37,
+      "country": "United Kingdom",
+      "days_as_customer": 89,
+      "lifetime_revenue": 134.56
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Outstanding kettle grill that exceeds expectations in every way! Temperature control is incredibly precise thanks to the sophisticated venting system. Build quality is exceptional with heavy gauge steel that feels like it will last forever. Perfect size for family cooking with room for entertaining. The hinged cooking grate makes adding charcoal effortless during long smoking sessions. This grill has transformed my outdoor cooking completely!",
+    "product_name": "SmokeChief Deluxe Charcoal Kettle",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 51,
+      "country": "Japan",
+      "days_as_customer": 378,
+      "lifetime_revenue": 789.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Thermometer gives inconsistent readings and the app constantly crashes. Wireless connection is unreliable. Better options available for the same price.",
+    "product_name": "TempCheck Digital Thermometer",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 30,
+      "country": "Australia",
+      "days_as_customer": 45,
+      "lifetime_revenue": 89.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good electric grill for indoor use. Gets hot enough for decent cooking and cleanup is easy. Not as good as outdoor grilling but perfect for apartment living.",
+    "product_name": "FlameForge Electric Indoor Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 28,
+      "country": "South Africa",
+      "days_as_customer": 123,
+      "lifetime_revenue": 234.67
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Fork is poorly designed with inadequate handle length. Tines are too close together for effective food handling. Complete waste of money.",
+    "product_name": "FlipMaster Long Handle Fork",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 41,
+      "country": "China",
+      "days_as_customer": 12,
+      "lifetime_revenue": 18.99
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Exceptional BBQ rub collection with incredible variety and quality! Each blend has been carefully crafted with unique flavor profiles. The Memphis style is smoky and sweet, perfect for ribs. The Texas blend provides excellent heat for beef. The Carolina rub adds great tangy flavor to pork. Professional packaging keeps everything fresh and the instruction guide is very helpful. Outstanding value for serious BBQ enthusiasts!",
+    "product_name": "SeasonPro BBQ Rub Collection",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 54,
+      "country": "Germany",
+      "days_as_customer": 456,
+      "lifetime_revenue": 678.90
+    }
+  },
+  {
+    "rating": 3,
+    "review_text": "Pellets burn clean but flavor is mild compared to other brands. Decent quality but nothing exceptional. Good for basic smoking needs.",
+    "product_name": "CleanBurn Pellets",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "female",
+      "age": 43,
+      "country": "New Zealand",
+      "days_as_customer": 134,
+      "lifetime_revenue": 189.45
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Portable grill has major ignition problems. Gas flow seems restricted and heat output is inconsistent. Not reliable enough for camping trips.",
+    "product_name": "TurboGrill Portable Gas",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "male",
+      "age": 36,
+      "country": "Tanzania",
+      "days_as_customer": 56,
+      "lifetime_revenue": 123.50
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Solid spatula set with good variety of sizes. Stainless steel construction is durable and easy to maintain. Handles could be more comfortable but overall good value.",
+    "product_name": "ChefsPride Stainless Steel Spatula Set",
+    "product_category": "accessories",
+    "demographics": {
+      "gender": "female",
+      "age": 39,
+      "country": "Costa Rica",
+      "days_as_customer": 178,
+      "lifetime_revenue": 234.56
+    }
+  },
+  {
+    "rating": 5,
+    "review_text": "Premium wood chips that deliver authentic hickory flavor! Perfect size pieces that soak water well and burn evenly. Creates beautiful smoke that enhances meat without overpowering. Clean burning with minimal ash. Consistent quality batch after batch. Essential for anyone serious about smoking meats.",
+    "product_name": "WoodChips Hickory Smoking Chips",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 47,
+      "country": "Brazil",
+      "days_as_customer": 267,
+      "lifetime_revenue": 345.78
+    }
+  },
+  {
+    "rating": 1,
+    "review_text": "Pellet smoker is a complete disappointment. Temperature swings wildly and the WiFi never works properly. Poor build quality for such an expensive product.",
+    "product_name": "BBQ Baron Pellet Smoker",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 33,
+      "country": "Canada",
+      "days_as_customer": 45,
+      "lifetime_revenue": 1899.99
+    }
+  },
+  {
+    "rating": 4,
+    "review_text": "Good fire lighter that works consistently. Natural formula provides peace of mind and doesn't leave chemical residue. Takes a bit longer than some brands but worth it for clean burning.",
+    "product_name": "FlameStarter Natural Fire Lighter",
+    "product_category": "consumables",
+    "demographics": {
+      "gender": "male",
+      "age": 45,
+      "country": "United Kingdom",
+      "days_as_customer": 234,
+      "lifetime_revenue": 167.89
+    }
+  },
+  {
+    "rating": 2,
+    "review_text": "Grill has poor temperature control and uneven heating. Build quality feels cheap with flimsy components. Expected much better for this price point.",
+    "product_name": "BackYard King Compact Grill",
+    "product_category": "grills",
+    "demographics": {
+      "gender": "female",
+      "age": 38,
+      "country": "Japan",
+      "days_as_customer": 78,
+      "lifetime_revenue": 189.99
+    }
+  }
+]
