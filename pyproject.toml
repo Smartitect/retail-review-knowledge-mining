@@ -9,7 +9,11 @@ authors = [
 ]
 license = "MIT"
 dependencies = [
+    "faker>=40.39.0",
     "ipykernel",
+    "numpy>=2.5.3",
+    "openai>=3.16.0",
+    "pandera[polars]>=0.33.1",
     "plotly>=7.1.0",
     "polars>=1.44.2",
     "python-dotenv>=1.2.3",
@@ -24,8 +28,10 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = [
     "src/jev_classifier",
+    "src/retail_model",
     "src/review_charts",
     "src/review_insights",
+    "src/review_writer",
     "src/review_wrangler",
 ]
 
@@ -41,3 +47,8 @@ required-version = ">=0.9.0"
 default-groups = ["dev"]
 # Let uv download the interpreter rather than requiring one in the image.
 python-downloads = "automatic"
+
+[tool.ruff.lint.per-file-ignores]
+# The retail data model stores naive UTC timestamps by design (docs/data-model.md),
+# so tests build naive datetimes to match it.
+"tests/**" = ["DTZ001"]
