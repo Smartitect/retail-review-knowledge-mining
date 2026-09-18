@@ -222,3 +222,4 @@ __marimo__/
 
 # Pipeline outputs (Jev answers are cached here; regenerate by running the notebook)
 data/output/
+data/generated/

@@ -20,7 +20,7 @@ from .palette import (
 
 LEVEL_ORDER = ["sentiment", "category", "product", "issue"]
 SENTIMENT_ORDER = ["negative", "mixed", "positive"]
-REVENUE_TICKS = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000]
+REVENUE_TICKS = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
 
 
 def _style(figure: go.Figure, height: int) -> go.Figure:
@@ -52,11 +52,11 @@ def _nodes(links: pl.DataFrame) -> pl.DataFrame:
     A node's size is what flows *into* it, except at the first level, which has
     no inflow and is sized by what flows out.
     """
-    inflow = links.group_by(level="target_level", name="target").agg(pl.col("customers").sum())
+    inflow = links.group_by(level="target_level", name="target").agg(pl.col("reviews").sum())
     outflow = (
         links.filter(pl.col("source_level") == LEVEL_ORDER[0])
         .group_by(level="source_level", name="source")
-        .agg(pl.col("customers").sum())
+        .agg(pl.col("reviews").sum())
     )
     return (
         pl.concat([outflow, inflow])
@@ -65,7 +65,7 @@ def _nodes(links: pl.DataFrame) -> pl.DataFrame:
             sentiment_rank=pl.col("name").replace_strict(SENTIMENT_ORDER, [0, 1, 2], default=9),
             no_issue_last=pl.col("name") == "no_issue",
         )
-        .sort("level_rank", "sentiment_rank", "no_issue_last", "customers", descending=[False, False, False, True])
+        .sort("level_rank", "sentiment_rank", "no_issue_last", "reviews", descending=[False, False, False, True])
         .with_row_index("index")
     )
 
@@ -83,7 +83,7 @@ def sankey_figure(links: pl.DataFrame) -> go.Figure:
             arrangement="snap",
             valueformat=",d",
             node={
-                "label": [f"{_label(lvl, n)}  {c:,}" for lvl, n, c in nodes.select("level", "name", "customers").rows()],
+                "label": [f"{_label(lvl, n)}  {c:,}" for lvl, n, c in nodes.select("level", "name", "reviews").rows()],
                 "color": node_colour,
                 "pad": 10,
                 "thickness": 14,
@@ -93,13 +93,13 @@ def sankey_figure(links: pl.DataFrame) -> go.Figure:
             link={
                 "source": [index[(r["source_level"], r["source"])] for r in rows],
                 "target": [index[(r["target_level"], r["target"])] for r in rows],
-                "value": [r["customers"] for r in rows],
+                "value": [r["reviews"] for r in rows],
                 "color": [with_alpha(SENTIMENT[r["sentiment"]], LINK_ALPHA) for r in rows],
                 "customdata": [
                     [pretty(r["sentiment"]), _label(r["source_level"], r["source"]), _label(r["target_level"], r["target"])]
                     for r in rows
                 ],
-                "hovertemplate": "%{customdata[0]} customers<br>%{customdata[1]} → %{customdata[2]}: "
+                "hovertemplate": "%{customdata[0]} reviews<br>%{customdata[1]} → %{customdata[2]}: "
                 "<b>%{value}</b><extra></extra>",
             },
         )
@@ -109,6 +109,9 @@ def sankey_figure(links: pl.DataFrame) -> go.Figure:
 
 def risk_scatter(customers: pl.DataFrame) -> go.Figure:
     """Tenure against lifetime revenue, one mark per customer, shaped and coloured by risk tier.
+
+    Each customer is placed as at their most recent review: the tenure and
+    lifetime value they had when they wrote it, and the risk it signals.
 
     Revenue runs over two orders of magnitude, so its axis is logarithmic.
     Dashed hairlines mark the medians of the customers shown, splitting the
@@ -122,7 +125,7 @@ def risk_scatter(customers: pl.DataFrame) -> go.Figure:
         style = RISK[tier]
         figure.add_trace(
             go.Scatter(
-                x=subset["days_as_customer"],
+                x=subset["tenure_days"],
                 y=subset["lifetime_revenue"],
                 mode="markers",
                 name=f"{tier} ({subset.height})",
@@ -135,14 +138,14 @@ def risk_scatter(customers: pl.DataFrame) -> go.Figure:
                     "line": {"width": 1.5, "color": "rgba(255,255,255,0.9)"},
                 },
                 customdata=subset.select(
-                    "review_row", "product_name", "country", "rating",
+                    "review_id", "product_name", "country", "rating",
                     pl.col("peak_frustration").round(1),
                     pl.col("primary_issue").replace_strict(issue_names),
                     pl.col("review_text").str.slice(0, 110),
                 ).rows(),
                 hovertemplate=(
                     "<b>%{customdata[1]}</b> · %{customdata[2]}<br>"
-                    "Tenure %{x:,} days · lifetime revenue %{y:,.2f}<br>"
+                    "Tenure %{x:,.0f} days · lifetime revenue %{y:,.2f} (at this review)<br>"
                     "%{customdata[3]}★ · peak frustration %{customdata[4]} of 4 · %{customdata[5]}<br>"
                     "<i>%{customdata[6]}…</i><extra></extra>"
                 ),
@@ -151,8 +154,8 @@ def risk_scatter(customers: pl.DataFrame) -> go.Figure:
     if customers.height:
         line = {"line_dash": "dash", "line_width": 1, "line_color": MUTED_INK, "opacity": 0.6,
                 "annotation_font_color": MUTED_INK, "annotation_font_size": 11}
-        tenure, revenue = customers["days_as_customer"].median(), customers["lifetime_revenue"].median()
-        figure.add_vline(tenure, annotation_text=f"median tenure {tenure:,.0f} days", **line)
+        tenure, revenue = customers["tenure_days"].median(), customers["lifetime_revenue"].median()
+        figure.add_vline(tenure, annotation_text=f"median {tenure:,.0f} days", **line)
         # On a log axis Plotly places shapes in data units but annotations in log10 units,
         # so the line and its label are added separately.
         figure.add_hline(revenue, **{k: v for k, v in line.items() if not k.startswith("annotation")})
@@ -163,8 +166,8 @@ def risk_scatter(customers: pl.DataFrame) -> go.Figure:
     figure.update_layout(
         margin={"t": 40},
         legend={"orientation": "h", "yanchor": "bottom", "y": 1.02, "x": 0, "title": None},
-        xaxis={"title": "Tenure (days as customer)", "rangemode": "tozero", "showgrid": False},
-        yaxis={"title": "Lifetime revenue (log scale)", "type": "log",
+        xaxis={"title": "Tenure at latest review (days)", "rangemode": "tozero", "showgrid": False},
+        yaxis={"title": "Lifetime revenue at latest review (log scale)", "type": "log",
                "tickvals": REVENUE_TICKS, "ticktext": [f"{t:,}" for t in REVENUE_TICKS]},
         hovermode="closest",
     )

@@ -13,13 +13,21 @@ from jev_classifier import NOUL_THRESHOLD
 
 FLAGS = ["churn_risk", "safety_concern", "suggestion", "competitor_mention"]
 
+# Per-review facts carried through from the loader: the review itself, and the
+# point-in-time customer features as at the moment it was written.
+CARRIED = [
+    "customer_id", "product_id", "product_name", "product_category", "rating", "reviewed_at", "review_text",
+    "text_language", "text_source", "tenure_days", "lifetime_revenue", "order_count", "days_since_last_order",
+    "previous_reviews", "age", "gender", "country",
+]
+
 
 def review_rollup(sentences: pl.LazyFrame, threshold: float = NOUL_THRESHOLD) -> pl.LazyFrame:
-    """One row per review: its peak and average frustration, problems and flags."""
+    """One row per review: its facts, peak and average frustration, problems and flags."""
     return (
-        sentences.group_by("review_row")
+        sentences.group_by("review_id")
         .agg(
-            pl.col("rating", "product_name", "product_category", "country", "review_text").first(),
+            pl.col(*CARRIED).first(),
             pl.len().alias("sentences"),
             pl.col("frustration").max().alias("peak_frustration"),
             pl.col("frustration").mean().alias("mean_frustration"),
@@ -27,7 +35,7 @@ def review_rollup(sentences: pl.LazyFrame, threshold: float = NOUL_THRESHOLD) ->
             pl.col("products_mentioned").list.explode(keep_nulls=False, empty_as_null=False).unique().sort().alias("products_mentioned"),
             *[(pl.col(f) >= threshold).any().alias(f) for f in FLAGS],
         )
-        .sort("review_row")
+        .sort("review_id")
     )
 
 
@@ -51,7 +59,7 @@ def problems_by_product(sentences: pl.LazyFrame) -> pl.LazyFrame:
         .group_by("product_name", "problem_category")
         .agg(
             pl.len().alias("sentences"),
-            pl.col("review_row").n_unique().alias("reviews"),
+            pl.col("review_id").n_unique().alias("reviews"),
             pl.col("frustration").mean().round(2).alias("mean_frustration"),
         )
         .sort("sentences", descending=True)

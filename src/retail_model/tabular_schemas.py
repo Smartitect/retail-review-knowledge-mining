@@ -103,7 +103,7 @@ class OrderLineSchema(pa.DataFrameModel):
 
 
 class ReviewSchema(pa.DataFrameModel):
-    review_id: str = _id("R", 9, unique=True)
+    review_id: str = _id("R", 10, unique=True)
     customer_id: str = _id("C", 7)
     product_id: str = _id("P", 3)
     order_line_id: str = _id("L", 10, unique=True)  # at most one review per purchase
@@ -118,7 +118,7 @@ class ReviewSchema(pa.DataFrameModel):
 class ReviewTextSchema(pa.DataFrameModel):
     """Generated text, cached by review and prompt so a rerun reuses it rather than regenerating."""
 
-    review_id: str = _id("R", 9)
+    review_id: str = _id("R", 10)
     prompt_hash: str
     review_text: str = pa.Field(str_length={"min_value": 1})
     language: str  # as written: a template is English whatever the brief asked for
@@ -133,7 +133,7 @@ class ReviewTextSchema(pa.DataFrameModel):
 class ReviewTruthSchema(pa.DataFrameModel):
     """What the generator intended. For evaluating classifiers - never a feature."""
 
-    review_id: str = _id("R", 9, unique=True)
+    review_id: str = _id("R", 10, unique=True)
     satisfaction: float = pa.Field(in_range={"min_value": 0.0, "max_value": 1.0})
     aspect: str
     language: str

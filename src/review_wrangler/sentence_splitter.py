@@ -31,7 +31,7 @@ def split_sentences(reviews: pl.LazyFrame) -> pl.LazyFrame:
         .with_columns(pl.col("sentence").str.strip_chars())
         .filter(pl.col("sentence").str.len_chars() > 0)
         .with_columns(
-            sentence_index=pl.int_range(pl.len(), dtype=pl.UInt32).over("review_row"),
-            sentence_count=pl.len().over("review_row").cast(pl.UInt32),
+            sentence_index=pl.int_range(pl.len(), dtype=pl.UInt32).over("review_id"),
+            sentence_count=pl.len().over("review_id").cast(pl.UInt32),
         )
     )

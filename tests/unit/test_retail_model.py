@@ -24,7 +24,7 @@ def tables(**overrides):
         "order_lines": pl.DataFrame({"order_line_id": ["L0000000001", "L0000000002"],
                                      "order_id": ["O000000001", "O000000001"], "product_id": ["P001", "P002"],
                                      "line_total": [10.0, 20.0]}),
-        "reviews": pl.DataFrame({"review_id": ["R000000001"], "customer_id": ["C0000001"], "product_id": ["P001"],
+        "reviews": pl.DataFrame({"review_id": ["R0000000001"], "customer_id": ["C0000001"], "product_id": ["P001"],
                                  "order_line_id": ["L0000000001"], "reviewed_at": [datetime(2025, 2, 10)]}),
     }
     return t | overrides
