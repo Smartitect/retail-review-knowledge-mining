@@ -37,9 +37,10 @@ class FoundryReviewWriter:
     source = "foundry"
 
     def __init__(self, *, endpoint: str, api_key: str, deployment: str, api_version: str = "v1",
-                 temperature: float = 0.9, max_tokens: int = 400, http_client=None):
+                 temperature: float | None = None, max_tokens: int = 400, http_client=None):
         """`endpoint` is the resource root. API version "v1" is the version-less `/openai/v1/` API;
-        a dated version goes through the classic Azure OpenAI deployment routes."""
+        a dated version goes through the classic Azure OpenAI deployment routes. `temperature` is
+        left to the model unless given: reasoning models accept only their default."""
         from openai import AsyncAzureOpenAI, AsyncOpenAI
 
         self.model = deployment
@@ -68,9 +69,9 @@ class FoundryReviewWriter:
         response = await self._client.chat.completions.create(
             model=self.model,
             messages=[{"role": "system", "content": SYSTEM}, {"role": "user", "content": render(brief)}],
-            temperature=self.temperature,
-            max_tokens=self.max_tokens,
+            max_completion_tokens=self.max_tokens,
             seed=stable_int(brief.review_id) % 2**31,  # best effort: not every model honours it
+            **({} if self.temperature is None else {"temperature": self.temperature}),
         )
         text = (response.choices[0].message.content or "").strip().strip('"').strip()
         if not text:
