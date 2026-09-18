@@ -1,0 +1,16 @@
+# endjin's light palette (read from endjin.com). The chart colours in
+# src/review_charts/palette.py are validated against this surface only, so the
+# theme is pinned rather than following the viewer's OS setting.
+[theme]
+base = "light"
+primaryColor = "#60991a"
+backgroundColor = "#fafafa"
+secondaryBackgroundColor = "#f2f4f8"
+textColor = "#181a1d"
+font = "sans-serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
