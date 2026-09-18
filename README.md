@@ -14,8 +14,9 @@ and asks [TypeSafe AI's Jev](https://docs.typesafe.ai/introduction) about every 
 
 The rating and customer facts are not sent, so frustration vs star rating is a fair check of the model.
 
-Review text comes from a chat deployment on **Azure AI Foundry** (set `AZURE_FOUNDRY_*` in `.env` and
-`WRITER = "foundry"` in the notebook), or, offline, from the 256 hand-written reviews in
+Review text comes from a chat deployment on **Azure AI Foundry** (its endpoint, key, API version and
+deployment are read from Key Vault with your `az login` identity: set `KG_KEY_VAULT_URI` and
+`KG_REFLECTION_MODEL_SECRETS` in `.env`, see `.env.example`, and `WRITER = "foundry"` in the notebook), or, offline, from the 256 hand-written reviews in
 `data/input/product_reviews.json` (copied from `endjin/endjin-text-analytics-streamlit`), labelled `template`.
 
 | Package | Responsibility |

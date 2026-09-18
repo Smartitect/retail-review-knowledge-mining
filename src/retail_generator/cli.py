@@ -9,7 +9,7 @@
     uv run generate-data fill-texts                                # retry failed text
     uv run generate-data status
 
-Review text comes from Azure AI Foundry by default (`AZURE_FOUNDRY_*` in .env).
+Review text comes from Azure AI Foundry by default (settings in Key Vault, see .env.example).
 `--writer template` reuses hand-written reviews offline instead; it is never
 chosen silently.
 """
