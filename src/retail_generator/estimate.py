@@ -6,8 +6,8 @@ sentence plus its whole review as state): about 2,750 input tokens and 300 ms
 per sentence, at $0.042 per million input tokens (output is free).
 
 Sentence counts come from the briefs: each asks for a fixed number of
-sentences, so the count is exact for Foundry and an upper bound for templates.
-Template text repeats, and Jev's cache answers a repeated sentence for free.
+sentences. That is an estimate: the model does not always write exactly as many,
+and Jev's cache answers a sentence it has seen before for free.
 
 Foundry pricing depends on the deployment, so tokens are always reported and
 cost only when prices are given.

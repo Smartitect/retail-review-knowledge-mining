@@ -26,7 +26,6 @@ TEXT_SCHEMA = {
     "prompt_hash": pl.String,
     "review_text": pl.String,
     "language": pl.String,
-    "text_source": pl.String,
     "model": pl.String,
     "generated_at": pl.Datetime("us"),
 }
@@ -46,8 +45,7 @@ async def _write_one(writer: ReviewWriter, brief: ReviewBrief, key: str, gate: a
             return brief.review_id, f"{type(exc).__name__}: {exc}"
         return {
             "review_id": brief.review_id, "prompt_hash": key, "review_text": text,
-            "language": writer.language_written(brief), "text_source": writer.source,
-            "model": writer.model, "generated_at": datetime.now(UTC).replace(tzinfo=None),
+            "language": brief.language, "model": writer.model, "generated_at": datetime.now(UTC).replace(tzinfo=None),
         }
 
 

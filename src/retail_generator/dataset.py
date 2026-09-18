@@ -2,8 +2,8 @@
 A whole dataset in one call: customers, their orders, and the reviews they wrote.
 
 Structured data is generated synchronously and deterministically. Review text
-is a separate, asynchronous step, because it calls a model (Azure AI Foundry)
-or reads templates, and is cached by prompt.
+is a separate, asynchronous step, because it calls a model (Azure AI Foundry),
+and is cached by prompt.
 """
 
 from datetime import datetime

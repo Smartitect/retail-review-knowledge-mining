@@ -8,8 +8,7 @@ of that, so these are point-in-time facts with no leakage from the future.
 
 `review_key` hashes the product and the text. The same words about the same
 product get the same answer from a classifier, so classification is keyed on
-it and joined back. Template text repeats across reviews, which makes that
-worth doing.
+it and joined back, so a repeated text is only classified once.
 
 Reviews without text (the text step failed or has not run) are left out, and
 the count is printed, so a gap is never silent.
@@ -36,7 +35,7 @@ def load_reviews(directory: Path | str = DEFAULT_DIR) -> pl.LazyFrame:
     reviews = tables["reviews"]
     with_text = reviews.join(
         tables["review_texts"].select("review_id", "review_text", pl.col("language").alias("text_language"),
-                                      "text_source"),
+                                      pl.col("model").alias("text_model")),
         on="review_id",
     )
     if missing := reviews.height - with_text.height:
@@ -51,9 +50,9 @@ def load_reviews(directory: Path | str = DEFAULT_DIR) -> pl.LazyFrame:
     return (
         frame.with_columns(review_key=pl.Series(keys, dtype=pl.String))
         .select("review_id", "review_key", "customer_id", "product_id", "product_name", "product_category",
-                "rating", "reviewed_at", "review_text", "text_language", "text_source",
+                "rating", "reviewed_at", "review_text", "text_language", "text_model",
                 pl.exclude("review_id", "review_key", "customer_id", "product_id", "product_name", "product_category",
-                           "rating", "reviewed_at", "review_text", "text_language", "text_source", "order_line_id",
+                           "rating", "reviewed_at", "review_text", "text_language", "text_model", "order_line_id",
                            "batch_id"))
         .lazy()
     )

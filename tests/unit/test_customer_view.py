@@ -11,7 +11,7 @@ def sentence(review, customer, sentiment, problem, frustration, *, churn=0.1, ra
     return {
         "review_id": review, "customer_id": customer, "product_id": "P008", "product_name": product,
         "product_category": category, "rating": rating, "reviewed_at": datetime(2025, 1, day),
-        "review_text": f"review {review}", "text_language": "english", "text_source": "template",
+        "review_text": f"review {review}", "text_language": "english", "text_model": "stub",
         "tenure_days": 100.0 + day, "lifetime_revenue": revenue, "order_count": 3, "days_since_last_order": 5.0,
         "previous_reviews": 0, "age": 40, "gender": "female", "country": "UK",
         "sentiment": sentiment, "problem_category": problem, "frustration": frustration,

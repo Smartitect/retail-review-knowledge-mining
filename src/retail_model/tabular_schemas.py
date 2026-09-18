@@ -29,7 +29,6 @@ COUNTRIES = [
 ]
 CATEGORIES = ["grills", "accessories", "consumables"]
 FUEL_TYPES = ["gas", "pellet", "charcoal", "electric", "any"]
-TEXT_SOURCES = ["foundry", "template"]
 
 
 def _id(prefix: str, digits: int, **kwargs):
@@ -121,9 +120,8 @@ class ReviewTextSchema(pa.DataFrameModel):
     review_id: str = _id("R", 10)
     prompt_hash: str
     review_text: str = pa.Field(str_length={"min_value": 1})
-    language: str  # as written: a template is English whatever the brief asked for
-    text_source: str = pa.Field(isin=TEXT_SOURCES)
-    model: str
+    language: str
+    model: str  # the Foundry deployment that wrote it
     generated_at: pl.Datetime
 
     class Config:

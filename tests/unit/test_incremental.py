@@ -7,6 +7,7 @@ from datetime import datetime
 import polars as pl
 import pytest
 from polars.testing import assert_frame_equal
+from stub_writer import StubReviewWriter
 
 from retail_generator import (
     GeneratorConfig,
@@ -23,10 +24,10 @@ from retail_generator import (
 )
 from retail_generator.cli import main
 from retail_model import batch_file, read_dataset
-from review_writer import ReviewBrief, TemplateReviewWriter
+from review_writer import ReviewBrief
 
 T1, T2 = datetime(2025, 12, 31), datetime(2026, 6, 30)
-WRITER = TemplateReviewWriter()
+WRITER = StubReviewWriter()
 
 
 def run(coro):
@@ -120,7 +121,7 @@ def test_files_from_an_interrupted_batch_are_ignored_then_replaced(tmp_path):
     assert customers.height == 40 and customers["customer_id"].is_unique().all()
 
 
-class FlakyWriter(TemplateReviewWriter):
+class FlakyWriter(StubReviewWriter):
     """Fails for every other review, as a service under load might."""
 
     async def write(self, brief):
@@ -154,13 +155,15 @@ def test_estimate_scales_with_sentences():
 def test_cli_end_to_end(tmp_path, capsys, monkeypatch):
     d = str(tmp_path / "ds")
     assert main(["--dir", d, "init", "--seed", "3", "--as-of", "2025-12-31"]) == 0
-    assert main(["--dir", d, "add-customers", "--count", "20", "--writer", "template"]) == 0
-    assert main(["--dir", d, "advance", "--to", "2026-03-31", "--writer", "template"]) == 0
+    monkeypatch.setattr("retail_generator.cli.FoundryReviewWriter.from_env", StubReviewWriter)
+    assert main(["--dir", d, "add-customers", "--count", "20"]) == 0
+    assert main(["--dir", d, "advance", "--to", "2026-03-31"]) == 0
     assert main(["--dir", d, "status"]) == 0
     out = capsys.readouterr().out
     assert "Wrote batch 1 (add-customers)" in out and "Wrote batch 2 (advance)" in out and "20 customers" in out
     assert json.loads((tmp_path / "ds" / "manifest.json").read_text())["as_of"].startswith("2026-03-31")
 
+    monkeypatch.undo()  # the real writer again, now with no configuration
     for name in ("KG_KEY_VAULT_URI", "KG_REFLECTION_MODEL_SECRETS"):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr("retail_generator.cli.load_dotenv", lambda: None)
