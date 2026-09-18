@@ -30,6 +30,36 @@ Review text comes from a chat deployment on **Azure AI Foundry** (set `AZURE_FOU
 | `src/review_charts` | Plotly figures and endjin colour roles for the dashboard |
 | `app/streamlit_app.py` | The dashboard: layout and state only |
 
+### Scaling the dataset
+
+The dataset grows in batches with `generate-data`, so you choose how much compute, storage and API spend to take on:
+
+```powershell
+uv run generate-data init --seed 42 --as-of 2026-06-30
+uv run generate-data add-customers --count 1000 --dry-run --foundry-input-price 0.15 --foundry-output-price 0.60
+uv run generate-data add-customers --count 1000            # review text from Azure AI Foundry
+uv run generate-data add-customers --total 5000 --writer template
+uv run generate-data advance --to 2026-12-31               # existing customers keep buying and reviewing
+uv run generate-data fill-texts                            # retry any review text that failed
+uv run generate-data status
+```
+
+- **Batches** are files: `data/generated/<table>/batch-NNNN.parquet`, plus `manifest.json`. A batch is atomic: the manifest is written last, and readers only see batches it lists.
+- **Deterministic:** the same seed gives the same data, and two batches of 1,000 customers equal one batch of 2,000. Advancing time gives exactly what generating to the later date would have.
+- **Idempotent:** `--total` and `advance --to` do nothing when the dataset is already there.
+- **Explicit about text:** Foundry is the default writer and refuses to run unconfigured; `--writer template` must be chosen explicitly.
+- **Costed first:** every batch reports what its reviews will cost to write and to classify, and `--dry-run` reports without writing. Jev only pays for sentences it has not seen: the notebook classifies from a cache, and template text is almost all cached already.
+
+Measured on the defaults (1,000 and 10,000 customers; 100,000 extrapolated). Jev is at ~2,750 input tokens and ~0.3 s per sentence, $0.042 per million tokens, concurrency 8. Foundry times assume ~2.5 s per review at concurrency 8, and its cost depends on the deployment's prices.
+
+| Customers | Orders | Reviews | Sentences | Generate | Storage | Foundry tokens (in / out) | Foundry time | Jev cost | Jev time |
+|---|---|---|---|---|---|---|---|---|---|
+| 1,000 | ~8,400 | ~1,500 | ~6,800 | ~2 s | ~0.4 MB | 0.4M / 0.2M | ~8 min | ~$0.79 | ~4 min |
+| 10,000 | ~76,000 | ~13,700 | ~61,000 | ~15 s | ~3 MB | 3.6M / 1.7M | ~70 min | ~$7 | ~40 min |
+| 100,000 | ~760,000 | ~137,000 | ~610,000 | ~2.5 min | ~30 MB | 36M / 17M | ~12 h | ~$71 | ~8.5 h |
+
+At 100,000 customers Jev's published limit of 1,200 requests a minute, not concurrency, sets the pace. Grow in batches, and classify each before adding the next.
+
 ### Dashboard
 
 ```powershell
