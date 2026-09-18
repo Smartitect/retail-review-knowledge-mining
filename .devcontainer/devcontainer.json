@@ -5,7 +5,8 @@
   // No Python feature: uv owns the interpreter. A second Python on PATH wins silently.
   "features": {
     "ghcr.io/devcontainers/features/powershell:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/azure-cli:1": {}
   },
 
   "postCreateCommand": "pwsh ./.devcontainer/postCreateCommand.ps1",
