@@ -32,7 +32,75 @@ class CustomerConfig:
 
 
 @dataclass(frozen=True)
+class Holiday:
+    """A short burst of extra orders around a date each year, e.g. Black Friday."""
+
+    month: int
+    day: int
+    boost: float = 0.6
+    width_days: float = 7.0
+
+
+@dataclass(frozen=True)
+class OrderPatterns:
+    """How customers buy. Rates are per order unless they say otherwise."""
+
+    # How often: a customer's everyday order rate is Gamma-distributed around this mean.
+    orders_per_year: float = 2.5
+    orders_per_year_shape: float = 2.0
+
+    # When: order intensity x (1 + amplitude * cos(day of year - peak)). The peak is
+    # mid-July in the north and six months later in the Southern Hemisphere.
+    seasonal_amplitude: float = 0.6
+    northern_peak_day_of_year: int = 196
+    holidays: tuple[Holiday, ...] = (
+        Holiday(month=6, day=16, boost=0.5),    # Father's Day (northern)
+        Holiday(month=11, day=28, boost=0.7),   # Black Friday
+        Holiday(month=12, day=12, boost=0.4),   # Christmas gifting
+    )
+
+    # Grills are bought rarely: on a first order, on a later order while the
+    # customer has not bought one from us, or (much less often) as another grill.
+    grill_first_order: float = 0.35
+    grill_without_one: float = 0.10
+    grill_again: float = 0.02
+    grill_popularity: dict[str, float] = field(default_factory=lambda: {
+        "P001": 0.8, "P002": 1.2, "P003": 1.5, "P004": 1.6, "P005": 0.9, "P006": 1.0,
+    })
+    # Customers who arrive already owning a grill from elsewhere still buy its fuel.
+    owns_grill_elsewhere: float = 0.55
+    elsewhere_fuel_weights: dict[str, float] = field(default_factory=lambda: {
+        "gas": 0.4, "charcoal": 0.4, "pellet": 0.12, "electric": 0.08,
+    })
+
+    # Accessories occasionally; far more likely alongside a new grill.
+    accessories_per_order: float = 0.35
+    accessory_weights: dict[str, float] = field(default_factory=lambda: {
+        "P007": 0.6, "P008": 1.4, "P009": 1.0, "P010": 0.8, "P011": 1.0, "P012": 1.2,
+    })
+    cover_with_new_grill: float = 0.45
+    tool_with_new_grill: float = 0.50
+
+    # Consumables repeatedly: fuel matches the grill (pellets for pellet
+    # smokers; lump charcoal and lighters for charcoal), chips and rubs suit any.
+    fuel_per_order: float = 0.55
+    lighter_with_charcoal: float = 0.35
+    chips_per_order: float = 0.12
+    rub_per_order: float = 0.18
+    # Fuel owners also restock on a cycle, more often in their barbecue season.
+    replenish_every_days: float = 75.0
+    replenish_shape: float = 4.0
+    max_quantity: int = 3
+
+    # Prices drift up over time, and off-season orders sometimes get a discount.
+    price_drift_per_year: float = 0.04
+    off_season_discount_chance: float = 0.25
+    discount_range: tuple[float, float] = (0.10, 0.20)
+
+
+@dataclass(frozen=True)
 class GeneratorConfig:
     start: datetime = datetime(2023, 1, 1)  # noqa: DTZ001 - the model is naive UTC
     customers: CustomerConfig = field(default_factory=CustomerConfig)
+    orders: OrderPatterns = field(default_factory=OrderPatterns)
     reviews: ReviewPropensity = field(default_factory=ReviewPropensity)
