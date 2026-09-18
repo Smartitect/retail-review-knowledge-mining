@@ -10,7 +10,6 @@ from review_writer import (
     FoundryReviewWriter,
     ModelSettings,
     ReviewBrief,
-    TemplateReviewWriter,
     model_settings,
     prompt_hash,
     render,
@@ -93,22 +92,6 @@ def test_foundry_writer_routes_by_api_version():
     assert "api-version=2024-10-21" in urls[1]
 
 
-def test_template_writer_picks_the_same_product_nearest_rating(tmp_path):
-    path = tmp_path / "t.json"
-    path.write_text(json.dumps([
-        {"product_name": "GrillMaster Elite Tongs", "rating": 1, "review_text": "Awful."},
-        {"product_name": "GrillMaster Elite Tongs", "rating": 5, "review_text": "Great."},
-        {"product_name": "Other", "rating": 2, "review_text": "Not these."},
-    ]))
-    writer = TemplateReviewWriter(path)
-    assert asyncio.run(writer.write(BRIEF)) == "Awful."
-    assert writer.language_written(BRIEF) == "english"
-
-
-def test_template_writer_works_on_the_real_file():
-    assert asyncio.run(TemplateReviewWriter().write(BRIEF))
-
-
 def test_cache_reuses_text_and_regenerates_when_the_prompt_changes(tmp_path):
     cache = tmp_path / "cache.parquet"
     calls = []
@@ -118,7 +101,7 @@ def test_cache_reuses_text_and_regenerates_when_the_prompt_changes(tmp_path):
         return completion(request)
 
     first = asyncio.run(write_review_texts([BRIEF], foundry(counting), cache_path=cache))
-    assert first.row(0, named=True)["language"] == "german" and first["text_source"][0] == "foundry"
+    assert first.row(0, named=True)["language"] == "german" and first["model"][0] == "gpt-test"
     asyncio.run(write_review_texts([BRIEF], foundry(counting), cache_path=cache))
     assert len(calls) == 1
 

@@ -33,7 +33,7 @@ def load_reviews() -> tuple[pl.DataFrame, dict]:
     sentences = pl.scan_parquet(DATA)
     meta = sentences.select(
         pl.col("jev_model").first(), pl.col("question_set_version").first(),
-        pl.col("text_source").unique().sort().str.join(", "),
+        pl.col("text_model").unique().sort().str.join(", "),
     ).collect().row(0, named=True)
     return reviews(sentences).collect(), meta
 
@@ -62,7 +62,7 @@ with st.sidebar:
                "won't buy again - also counts as at risk. A customer is judged on their most recent review.")
     st.divider()
     st.caption(f"Classified by TypeSafe AI's {meta['jev_model']} · question set {meta['question_set_version']}"
-               f" · review text: {meta['text_source']}")
+               f" · review text by {meta['text_model']}")
 
 st.title("BBQ review insights")
 st.caption("Fictional customers, orders and reviews; every review sentence classified by TypeSafe AI's Jev. "

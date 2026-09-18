@@ -3,6 +3,7 @@ from datetime import datetime
 
 import polars as pl
 import pytest
+from stub_writer import StubReviewWriter
 
 from retail_generator import add_review_texts, build_dataset
 from retail_model import write_dataset
@@ -12,13 +13,12 @@ from review_wrangler import (
     product_catalogue,
     split_sentences,
 )
-from review_writer import TemplateReviewWriter
 
 
 @pytest.fixture(scope="module")
 def dataset(tmp_path_factory):
     tables = build_dataset(60, seed=4, as_of=datetime(2026, 6, 30))
-    tables = asyncio.run(add_review_texts(tables, TemplateReviewWriter()))
+    tables = asyncio.run(add_review_texts(tables, StubReviewWriter()))
     return write_dataset(tables, tmp_path_factory.mktemp("ds")), tables
 
 
@@ -63,3 +63,8 @@ def test_split_sentences():
     ]
     assert by_review["sentence_index"].to_list() == [[0, 1, 2], [0, 1]]
     assert df["sentence_count"].to_list() == [3, 3, 3, 2, 2]
+
+
+def test_split_sentences_on_full_width_punctuation():
+    reviews = pl.LazyFrame({"review_id": ["R1"], "review_text": ["点火器坏了。客服不管！还能用吗？ 不买了。"]})
+    assert split_sentences(reviews).collect()["sentence"].to_list() == ["点火器坏了。", "客服不管！", "还能用吗？", "不买了。"]

@@ -17,7 +17,7 @@ FLAGS = ["churn_risk", "safety_concern", "suggestion", "competitor_mention"]
 # point-in-time customer features as at the moment it was written.
 CARRIED = [
     "customer_id", "product_id", "product_name", "product_category", "rating", "reviewed_at", "review_text",
-    "text_language", "text_source", "tenure_days", "lifetime_revenue", "order_count", "days_since_last_order",
+    "text_language", "text_model", "tenure_days", "lifetime_revenue", "order_count", "days_since_last_order",
     "previous_reviews", "age", "gender", "country",
 ]
 
