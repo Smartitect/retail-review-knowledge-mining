@@ -151,3 +151,8 @@ TABLES = {
     "review_texts": ReviewTextSchema,
     "review_truth": ReviewTruthSchema,
 }
+
+
+def polars_schema(model: type[pa.DataFrameModel]) -> dict[str, pl.DataType]:
+    """The Polars dtypes a schema declares, in order - so even an empty frame is typed."""
+    return {name: column.dtype.type for name, column in model.to_schema().columns.items()}

@@ -28,6 +28,7 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = [
     "src/jev_classifier",
+    "src/retail_generator",
     "src/retail_model",
     "src/review_charts",
     "src/review_insights",
