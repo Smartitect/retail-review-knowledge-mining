@@ -161,7 +161,7 @@ def test_cli_end_to_end(tmp_path, capsys, monkeypatch):
     assert "Wrote batch 1 (add-customers)" in out and "Wrote batch 2 (advance)" in out and "20 customers" in out
     assert json.loads((tmp_path / "ds" / "manifest.json").read_text())["as_of"].startswith("2026-03-31")
 
-    for name in ("AZURE_FOUNDRY_ENDPOINT", "AZURE_FOUNDRY_API_KEY", "AZURE_FOUNDRY_DEPLOYMENT"):
+    for name in ("KG_KEY_VAULT_URI", "KG_REFLECTION_MODEL_SECRETS"):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr("retail_generator.cli.load_dotenv", lambda: None)
     assert main(["--dir", d, "add-customers", "--count", "5"]) == 1

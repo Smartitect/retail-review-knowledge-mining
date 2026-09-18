@@ -62,7 +62,7 @@ The result is a review corpus that over-represents 1★ and 5★ against the pur
 
 Text is written from a **brief**: product, stars, how the customer feels, the aspect to focus on, the language and a length. See `src/review_writer`.
 
-- **Azure AI Foundry** (`FoundryReviewWriter`) is the intended source. It uses the OpenAI-compatible `/openai/v1` API, so any chat deployment works. Configure `AZURE_FOUNDRY_ENDPOINT`, `AZURE_FOUNDRY_API_KEY` and `AZURE_FOUNDRY_DEPLOYMENT` in `.env`; they are never committed.
+- **Azure AI Foundry** (`FoundryReviewWriter`) is the intended source. It uses the OpenAI-compatible API, so any chat deployment works. Its endpoint, key, API version and deployment are secrets in Key Vault, read with your `az login` identity; `.env` holds only `KG_KEY_VAULT_URI` and `KG_REFLECTION_MODEL_SECRETS`, the prefix of the four secrets (see `.env.example`).
 - **Templates** (`TemplateReviewWriter`) reuse the 168 hand-written reviews in `data/input/product_reviews.json`, matched on product and nearest rating. This is for offline runs and tests only. It is chosen explicitly, never as a silent fallback, and its rows say `text_source = "template"`. It writes English only.
 - **Caching.** Texts are cached on `review_id` + `prompt_hash`. The hash covers the model and the rendered prompt, so the same seed reuses the same text: reproducible even though the model is not. A different writer or model, or a changed brief, writes afresh. Each row records `text_source`, `model` and `generated_at`. Failed calls are reported and retried on the next run, never cached.
 

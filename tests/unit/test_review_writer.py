@@ -8,8 +8,10 @@ import pytest
 
 from review_writer import (
     FoundryReviewWriter,
+    ModelSettings,
     ReviewBrief,
     TemplateReviewWriter,
+    model_settings,
     prompt_hash,
     render,
     write_review_texts,
@@ -31,7 +33,7 @@ def completion(request: httpx2.Request) -> httpx2.Response:
 
 def foundry(handler=completion, deployment="gpt-test"):
     client = httpx2.AsyncClient(transport=httpx2.MockTransport(handler))
-    return FoundryReviewWriter(endpoint="https://example.invalid/openai/v1/", api_key="k", deployment=deployment,
+    return FoundryReviewWriter(endpoint="https://example.invalid/", api_key="k", deployment=deployment,
                                http_client=client)
 
 
@@ -56,10 +58,39 @@ def test_foundry_writer_sends_the_prompt_to_the_deployment():
 
 
 def test_foundry_writer_explains_missing_configuration(monkeypatch):
-    for name in ("AZURE_FOUNDRY_ENDPOINT", "AZURE_FOUNDRY_API_KEY", "AZURE_FOUNDRY_DEPLOYMENT"):
+    for name in ("KG_KEY_VAULT_URI", "KG_REFLECTION_MODEL_SECRETS"):
         monkeypatch.delenv(name, raising=False)
-    with pytest.raises(RuntimeError, match="AZURE_FOUNDRY_ENDPOINT"):
+    with pytest.raises(RuntimeError, match="KG_KEY_VAULT_URI, KG_REFLECTION_MODEL_SECRETS"):
         FoundryReviewWriter.from_env()
+
+
+def test_model_settings_come_from_the_prefixed_secret_bundle(monkeypatch):
+    monkeypatch.setenv("KG_KEY_VAULT_URI", "https://vault.invalid/")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_SECRETS", "reflection")
+    vault = {"reflection-endpoint": "https://r.services.ai.azure.com/", "reflection-key": "secret\n",
+             "reflection-api-version": "v1", "reflection-deployment": "gpt-test"}
+    settings = model_settings(get_secret=vault.__getitem__)
+    assert settings == ModelSettings(endpoint="https://r.services.ai.azure.com/", api_key="secret",
+                                     api_version="v1", deployment="gpt-test")
+    assert "secret" not in repr(settings)
+
+
+def test_foundry_writer_routes_by_api_version():
+    urls = []
+
+    def handler(request):
+        urls.append(str(request.url))
+        return completion(request)
+
+    for api_version in ("v1", "2024-10-21"):
+        client = httpx2.AsyncClient(transport=httpx2.MockTransport(handler))
+        writer = FoundryReviewWriter.from_settings(
+            ModelSettings(endpoint="https://r.services.ai.azure.com", api_key="k", api_version=api_version,
+                          deployment="gpt-test"), http_client=client)
+        asyncio.run(writer.write(BRIEF))
+    assert urls[0] == "https://r.services.ai.azure.com/openai/v1/chat/completions"
+    assert urls[1].startswith("https://r.services.ai.azure.com/openai/deployments/gpt-test/chat/completions")
+    assert "api-version=2024-10-21" in urls[1]
 
 
 def test_template_writer_picks_the_same_product_nearest_rating(tmp_path):
