@@ -15,10 +15,11 @@ from .tabular_schemas import (
     ReviewSchema,
     ReviewTextSchema,
     ReviewTruthSchema,
+    polars_schema,
 )
 
 __all__ = [
     "CATEGORIES", "COUNTRIES", "FUEL_TYPES", "TABLES", "TEXT_SOURCES", "CustomerSchema", "IntegrityError",
     "OrderLineSchema", "OrderSchema", "ProductSchema", "ReviewPropensity", "ReviewSchema", "ReviewTextSchema",
-    "ReviewTruthSchema", "check_integrity",
+    "ReviewTruthSchema", "check_integrity", "polars_schema",
 ]
