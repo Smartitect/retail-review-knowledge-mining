@@ -1,4 +1,11 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(gh pr merge:*)",
+      "Bash(git push origin --delete:*)",
+      "Bash(git branch -d:*)"
+    ]
+  },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
     "python-project-setup@endjin-data": true,
@@ -9,6 +16,9 @@
     "claude-md-management@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "python-polars@endjin-data": true,
-    "python-pandera-validation@endjin-data": true
+    "python-pandera-validation@endjin-data": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true
   }
 }
