@@ -19,6 +19,7 @@ The demo is a batch pipeline in four stages. Every stage writes Parquet, so any 
 | 2. Load and split | Notebook sections 2–3 | `data/generated/` | In memory | None |
 | 3. Classify | Notebook section 4 | Sentences | `data/output/jev_sentence_answers.parquet` (cache), `data/output/sentences_classified.parquet` | TypeSafe AI Jev |
 | 4. Explore | `uv run streamlit run app/streamlit_app.py`, or notebook section 5 | `data/output/sentences_classified.parquet` | Nothing | None |
+| Compare (optional) | `notebooks/02_compare_jev_and_foundry.ipynb` | Sentences, `review_truth` | `data/output/comparison/` | TypeSafe AI Jev and Azure AI Foundry, live |
 
 The notebook [`notebooks/01_classify_reviews_with_jev.ipynb`](../notebooks/01_classify_reviews_with_jev.ipynb) runs stages 1 to 3 and the analysis half of stage 4. It contains no logic of its own: every cell calls a function in `src/`.
 
@@ -31,7 +32,7 @@ Each package under `src/` has one job. Dependencies only point one way, and the 
   <img alt="Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles." src="diagrams/packages.svg">
 </picture>
 
-*Each arrow points from a package to one it imports, and each badge counts a package's importers. Every arrow points downwards, so there are no cycles. `retail_model` is the one package two others share. The notebook sits outside the diagram and may import any package.*
+*Each arrow points from a package to one it imports, and each badge counts a package's importers. Every arrow points downwards, so there are no cycles. `retail_model` is the one package two others share. The notebook sits outside the diagram and may import any package. Also not shown: `dspy_classifier`, the optional foundation-model classifier, which imports `jev_classifier` (for the question set) and `review_writer` (for the Foundry settings).*
 
 | Package | Responsibility | Key modules |
 |---|---|---|
@@ -43,9 +44,10 @@ Each package under `src/` has one job. Dependencies only point one way, and the 
 | `jev_classifier` | The question set, async classification with a Parquet cache, and a wire transcript for debugging | `questions.py`, `sentence_classifier.py`, `transcript.py` |
 | `review_insights` | Roll sentences up to reviews and customers; Sankey flows, risk tiers, escalation and review queues | `review_insights.py`, `customer_view.py` |
 | `review_charts` | Plotly figures and colour roles for the dashboard | `charts.py`, `palette.py` |
+| `dspy_classifier` | Jev's questions asked of a foundation model on Azure AI Foundry through DSPy, as a drop-in alternative to `jev_classifier`; and the comparison of the two | `signature.py`, `sentence_classifier.py`, `foundry.py`, `comparison.py` |
 | `app/streamlit_app.py` | The dashboard: layout, filters and state only | |
 
-All eight packages are registered in `pyproject.toml` (`[tool.hatch.build.targets.wheel]`), so they import by name from anywhere: the notebook, the app and the tests need no `sys.path` changes. A new package must be added to that list.
+All nine packages are registered in `pyproject.toml` (`[tool.hatch.build.targets.wheel]`), so they import by name from anywhere: the notebook, the app and the tests need no `sys.path` changes. A new package must be added to that list.
 
 ## Where data lives
 
@@ -57,6 +59,7 @@ All eight packages are registered in `pyproject.toml` (`[tool.hatch.build.target
 | `data/generated/review_text_cache.parquet` | Every review text Foundry has written, keyed on `review_id` + `prompt_hash` | No | **Costly**: deleting it means paying Foundry to write every text again |
 | `data/output/jev_sentence_answers.parquet` | Every Jev answer, keyed on `review_key` + `sentence_index` + `question_set_version` | No | **Costly**: deleting it means paying Jev to classify every sentence again |
 | `data/output/sentences_classified.parquet` | The flat result the dashboard reads | No | Yes: the notebook rewrites it from the cache |
+| `data/output/comparison/` | The saved live runs of each classifier from notebook 02, with their timings | No | **Costly**: deleting them means paying both services again to repeat the comparison |
 | `.env` | `TYPESAFE_API_KEY`, the Key Vault URI and the secret prefix | No | No: copy it from `.env.example` |
 
 ## Cross-cutting design
@@ -135,6 +138,7 @@ Jev is also never sent the star rating or the customer's demographics (`question
 | Add a country or language | `COUNTRIES` in `tabular_schemas.py`, `LOCALES` and `local_language` in `config.py`, `LANGUAGE_NAMES` in `review_writer/prompt.py` | Add it to Jev's `LANGUAGES` if Jev should recognise it. |
 | Use a different Foundry model | Point the secrets in Key Vault at another deployment | Text is rewritten (the hash includes the model). The old text stays cached in case you switch back. |
 | Write review text another way | Implement the `ReviewWriter` protocol (`model`, `write`, `aclose`) in `review_writer/writers.py` | |
+| Compare Jev with another foundation model | Store its deployment as another secret bundle, and build its LM with `foundry_lm(model_settings("<ENV_VAR>"))` | Its answers are cached separately: the cache key includes the model. |
 | Split sentences properly | Replace `review_wrangler/sentence_splitter.py` | Nothing downstream depends on how the split was made. |
 | Add a dashboard view | Build the frame in `review_insights` and the figure in `review_charts` | Keep `app/streamlit_app.py` to layout and state. |
 
