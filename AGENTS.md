@@ -80,3 +80,4 @@ These are what make the demo trustworthy. Each one has tests that will fail if y
 - Before opening a PR, run `uv run pytest` and `uv run ruff check`. CI runs both.
 - Write the description with **Why**, **What changed** and **Testing** sections, as the existing PRs do.
 - Update the README and the docs in `docs/` when behaviour, commands or setup change.
+- Diagrams are SVGs exported from HTML sources in `docs/diagrams/`, each with a light and a dark variant. See [`docs/diagrams/README.md`](docs/diagrams/README.md) before changing one, and never replace them with Mermaid.

@@ -6,30 +6,12 @@ How the pieces fit together, where data lives, and the decisions that shape the 
 
 The demo is a batch pipeline in four stages. Every stage writes Parquet, so any stage can be rerun without repeating the ones before it, and each external call is cached so a rerun costs nothing.
 
-```mermaid
-flowchart LR
-    subgraph Generate["1. Generate"]
-        CLI["generate-data CLI<br/>or notebook"] --> GEN["retail_generator"]
-        GEN --> WRITER["review_writer"]
-        WRITER -- "chat completion" --> FOUNDRY[("Azure AI Foundry")]
-        WRITER -- "endpoint, key,<br/>deployment" --> KV[("Azure Key Vault")]
-    end
-    subgraph Load["2. Load and split"]
-        WR["review_wrangler"] --> CF["customer_features"]
-    end
-    subgraph Classify["3. Classify"]
-        JEV["jev_classifier"] -- "26 typed questions<br/>per sentence" --> TYPESAFE[("TypeSafe AI Jev")]
-    end
-    subgraph Explore["4. Explore"]
-        INS["review_insights"] --> CH["review_charts"] --> APP["Streamlit app"]
-    end
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/pipeline-dark.svg">
+  <img alt="Generate, classify and explore stages run left to right; each paid service, Azure AI Foundry and TypeSafe AI Jev, is reached only through a cache, so only cache misses are paid for." src="diagrams/pipeline.svg">
+</picture>
 
-    GEN -- "batches" --> GENDATA[/"data/generated/"/]
-    GENDATA --> WR
-    WR -- "sentences" --> JEV
-    JEV -- "answers" --> OUT[/"data/output/"/]
-    OUT --> INS
-```
+*The stages run left to right, each handing the next a Parquet file. Each paid service is reached only through its cache (green), so a rerun pays only for what is new. Not shown: `review_writer` reads the Foundry endpoint and key from Azure Key Vault, as your `az login` identity.*
 
 | Stage | Entry point | Reads | Writes | External service |
 |---|---|---|---|---|
@@ -44,16 +26,12 @@ The notebook [`notebooks/01_classify_reviews_with_jev.ipynb`](../notebooks/01_cl
 
 Each package under `src/` has one job. Dependencies only point one way, and the packages that model the domain know nothing of the services or the UI.
 
-```mermaid
-flowchart TD
-    APP["app/streamlit_app.py"] --> RC["review_charts"]
-    APP --> RI["review_insights"]
-    RI --> JC["jev_classifier"]
-    RG["retail_generator"] --> RM["retail_model"]
-    RG --> RW["review_writer"]
-    RWR["review_wrangler"] --> RM
-    RWR --> CF["customer_features"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/packages-dark.svg">
+  <img alt="Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles." src="diagrams/packages.svg">
+</picture>
+
+*Each arrow points from a package to one it imports, and each badge counts a package's importers. Every arrow points downwards, so there are no cycles. `retail_model` is the one package two others share. The notebook sits outside the diagram and may import any package.*
 
 | Package | Responsibility | Key modules |
 |---|---|---|
@@ -104,13 +82,24 @@ Both paid services sit behind a Parquet cache, and every cache key includes what
 
 Before any batch is written, `estimate.py` reports the tokens, cost and time it will take for both services. `--dry-run` reports without writing.
 
+### How a batch is committed
+
+Every `generate-data` command that changes the dataset (`add-customers`, `advance` and `fill-texts`) goes through the same commit in `retail_generator/incremental.py`:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/batch-commit-dark.svg">
+  <img alt="A batch is generated and costed first; a dry run stops there, otherwise review text is written through the cache, the batch files are written, and swapping in the new manifest commits it." src="diagrams/batch-commit.svg">
+</picture>
+
+*Swapping in the new manifest (a write to `manifest.json.tmp`, then a rename) is the commit. A run that stops at any earlier step leaves files that no manifest lists, so readers never see them, and the next run deletes and rewrites them. The text cache is written before the commit, so text that was paid for survives a crash.*
+
 ### Failure handling
 
 A failed external call is never papered over:
 
 - **Foundry:** a failed review text is reported, not cached, and retried on the next batch or by `generate-data fill-texts`. The review stays in the dataset, and the loader leaves it out and prints how many it left out.
 - **Jev:** a failed sentence gets a row with the error and nulls. It is not cached, so the next run retries it.
-- **Batches are atomic:** files are written first and `manifest.json` last, so readers never see a half-written batch, and the next run replaces its files.
+- **Batches are atomic:** files are written first and `manifest.json` last, so readers never see a half-written batch, and the next run replaces its files. See [How a batch is committed](#how-a-batch-is-committed).
 
 ### Validation at the boundaries
 

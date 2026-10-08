@@ -2,17 +2,12 @@
 
 A small, realistic retail model. Customers buy products over time, and review a biased subset of what they bought. For how the dataset fits into the pipeline, see [`architecture.md`](architecture.md).
 
-```mermaid
-erDiagram
-    customers ||--o{ orders : places
-    orders ||--|{ order_lines : contains
-    products ||--o{ order_lines : "sold as"
-    order_lines ||--o| reviews : "reviewed in"
-    customers ||--o{ reviews : writes
-    products ||--o{ reviews : about
-    reviews ||--|| review_texts : "text of"
-    reviews ||--|| review_truth : "intended as"
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/data-model-dark.svg">
+  <img alt="Customers place orders of order lines for products; a review covers at most one order line, always has its generator truth, and has text once it has been written." src="diagrams/data-model.svg">
+</picture>
+
+*A purchase is reviewed at most once, and every review has its generator truth. Text is optional: a review whose text failed to generate has none until `generate-data fill-texts` succeeds.*
 
 | Table | Key | What it holds |
 |---|---|---|

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The retail data model</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Drawn with the diagram-design skill, endjin profile (tokens from endjin.com). Light and dark share one layout. -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #181a1d; color: #f7f9fc; padding: 3rem 2rem; }
+    .frame { max-width: 1160px; margin: 0 auto; }
+    .eyebrow { font-family: Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em;
+               text-transform: uppercase; color: #a3a7af; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: 1.75rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    svg { width: 100%; min-width: 1120px; display: block; }
+    @media print { .diagram-container { overflow-x: visible; } svg { min-width: 0; } }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Data model · retail review knowledge mining</p>
+    <h1>The retail data model</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1120 712" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="data-model-dark-title data-model-dark-desc">
+        <title id="data-model-dark-title">The retail data model</title>
+        <desc id="data-model-dark-desc">Customers place orders of order lines for products; a review covers at most one order line, always has its generator truth, and has text once it has been written.</desc>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a3a7af"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#78c021"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7f9cf0"/></marker></defs>
+        <rect width="100%" height="100%" fill="#181a1d"/>
+        <path d="M 240,100 H 320" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 520,100 H 600" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 880,100 H 800" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 668,192 V 280" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 140,152 V 392 Q 140,400 148,400 H 600" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 960,172 V 232 Q 960,240 952,240 H 740 Q 732,240 732,248 V 280" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 800,320 H 880" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <path d="M 800,420 H 832 Q 840,420 840,428 V 532 Q 840,540 848,540 H 880" fill="none" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="244" y="94" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="252" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="300" y="94" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="308" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">N</text>
+        <rect x="524" y="94" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="532" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="564" y="94" width="32" height="12" rx="2" fill="#181a1d"/>
+        <text x="580" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1..*</text>
+        <rect x="860" y="94" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="868" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="804" y="94" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="812" y="104" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">N</text>
+        <rect x="660" y="198" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="668" y="208" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="652" y="258" width="32" height="12" rx="2" fill="#181a1d"/>
+        <text x="668" y="268" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0..1</text>
+        <rect x="132" y="158" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="140" y="168" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="580" y="394" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="588" y="404" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">N</text>
+        <rect x="952" y="178" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="960" y="188" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="724" y="260" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="732" y="270" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">N</text>
+        <rect x="804" y="314" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="812" y="324" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="844" y="314" width="32" height="12" rx="2" fill="#181a1d"/>
+        <text x="860" y="324" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0..1</text>
+        <rect x="804" y="414" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="812" y="424" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="860" y="534" width="16" height="12" rx="2" fill="#181a1d"/>
+        <text x="868" y="544" fill="#a3a7af" font-size="10" font-weight="600" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1</text>
+        <rect x="40" y="40" width="200" height="112" rx="6" fill="#181a1d"/>
+        <rect x="40" y="40" width="200" height="112" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 40.5,80 V 46 Q 40.5,40.5 46,40.5 H 234 Q 239.5,40.5 239.5,46 V 80 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="40" y1="80" x2="240" y2="80" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="56" y="56" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY</text>
+        <text x="56" y="73" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">customers</text>
+        <text x="56" y="100" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># customer_id</text>
+        <text x="224" y="100" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="56" y="120" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">country</text>
+        <text x="224" y="120" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="56" y="140" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">signup_at</text>
+        <text x="224" y="140" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">datetime</text>
+        <rect x="320" y="40" width="200" height="132" rx="6" fill="#181a1d"/>
+        <rect x="320" y="40" width="200" height="132" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 320.5,80 V 46 Q 320.5,40.5 326,40.5 H 514 Q 519.5,40.5 519.5,46 V 80 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="320" y1="80" x2="520" y2="80" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="336" y="56" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY</text>
+        <text x="336" y="73" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">orders</text>
+        <text x="336" y="100" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># order_id</text>
+        <text x="504" y="100" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="336" y="120" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ customer_id</text>
+        <text x="504" y="120" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="336" y="140" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">ordered_at</text>
+        <text x="504" y="140" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">datetime</text>
+        <text x="336" y="160" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">order_total</text>
+        <text x="504" y="160" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">float</text>
+        <rect x="600" y="40" width="200" height="152" rx="6" fill="#181a1d"/>
+        <rect x="600" y="40" width="200" height="152" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 600.5,80 V 46 Q 600.5,40.5 606,40.5 H 794 Q 799.5,40.5 799.5,46 V 80 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="600" y1="80" x2="800" y2="80" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="616" y="56" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY</text>
+        <text x="616" y="73" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">order_lines</text>
+        <text x="616" y="100" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># order_line_id</text>
+        <text x="784" y="100" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="120" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ order_id</text>
+        <text x="784" y="120" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="140" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ product_id</text>
+        <text x="784" y="140" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="160" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">quantity</text>
+        <text x="784" y="160" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">int</text>
+        <text x="616" y="180" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">unit_price</text>
+        <text x="784" y="180" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">float</text>
+        <rect x="880" y="40" width="200" height="132" rx="6" fill="#181a1d"/>
+        <rect x="880" y="40" width="200" height="132" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 880.5,80 V 46 Q 880.5,40.5 886,40.5 H 1074 Q 1079.5,40.5 1079.5,46 V 80 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="880" y1="80" x2="1080" y2="80" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="896" y="56" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY</text>
+        <text x="896" y="73" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">products</text>
+        <text x="896" y="100" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># product_id</text>
+        <text x="1064" y="100" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="120" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">category</text>
+        <text x="1064" y="120" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="140" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">fuel_type</text>
+        <text x="1064" y="140" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str?</text>
+        <text x="896" y="160" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">list_price</text>
+        <text x="1064" y="160" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">float</text>
+        <rect x="600" y="280" width="200" height="172" rx="6" fill="#181a1d"/>
+        <rect x="600" y="280" width="200" height="172" rx="6" fill="rgba(120,192,33,0.04)" stroke="#78c021" stroke-width="1"/>
+        <path d="M 600.5,320 V 286 Q 600.5,280.5 606,280.5 H 794 Q 799.5,280.5 799.5,286 V 320 Z" fill="rgba(120,192,33,0.10)"/>
+        <line x1="600" y1="320" x2="800" y2="320" stroke="rgba(120,192,33,0.40)" stroke-width="1"/>
+        <text x="616" y="296" fill="#78c021" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY · CENTRAL</text>
+        <text x="616" y="313" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">reviews</text>
+        <text x="616" y="340" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># review_id</text>
+        <text x="784" y="340" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="360" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ order_line_id</text>
+        <text x="784" y="360" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="380" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ customer_id</text>
+        <text x="784" y="380" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="400" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ product_id</text>
+        <text x="784" y="400" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="616" y="420" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">reviewed_at</text>
+        <text x="784" y="420" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">datetime</text>
+        <text x="616" y="440" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">rating</text>
+        <text x="784" y="440" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">1–5</text>
+        <rect x="880" y="280" width="200" height="152" rx="6" fill="#181a1d"/>
+        <rect x="880" y="280" width="200" height="152" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 880.5,320 V 286 Q 880.5,280.5 886,280.5 H 1074 Q 1079.5,280.5 1079.5,286 V 320 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="880" y1="320" x2="1080" y2="320" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="896" y="296" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY · OPTIONAL</text>
+        <text x="896" y="313" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">review_texts</text>
+        <text x="896" y="340" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">→ review_id</text>
+        <text x="1064" y="340" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="360" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># prompt_hash</text>
+        <text x="1064" y="360" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="380" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">review_text</text>
+        <text x="1064" y="380" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="400" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">language</text>
+        <text x="1064" y="400" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="420" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">model</text>
+        <text x="1064" y="420" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <rect x="880" y="480" width="200" height="132" rx="6" fill="#181a1d"/>
+        <rect x="880" y="480" width="200" height="132" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <path d="M 880.5,520 V 486 Q 880.5,480.5 886,480.5 H 1074 Q 1079.5,480.5 1079.5,486 V 520 Z" fill="rgba(247,249,252,0.04)"/>
+        <line x1="880" y1="520" x2="1080" y2="520" stroke="rgba(247,249,252,0.22)" stroke-width="1"/>
+        <text x="896" y="496" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.14em">ENTITY · EVALUATION ONLY</text>
+        <text x="896" y="513" fill="#f7f9fc" font-size="14" font-weight="600" font-family="'Inter', system-ui, sans-serif">review_truth</text>
+        <text x="896" y="540" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace"># → review_id</text>
+        <text x="1064" y="540" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="560" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">satisfaction</text>
+        <text x="1064" y="560" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">0–1</text>
+        <text x="896" y="580" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">aspect</text>
+        <text x="1064" y="580" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <text x="896" y="600" fill="#f7f9fc" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace">language</text>
+        <text x="1064" y="600" fill="#a3a7af" font-size="10" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="end">str</text>
+        <line x1="40" y1="652" x2="1080" y2="652" stroke="rgba(247,249,252,0.10)" stroke-width="0.8"/>
+        <text x="40" y="668" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.18em">LEGEND</text>
+        <rect x="40" y="684" width="14" height="10" rx="2" fill="rgba(120,192,33,0.08)" stroke="#78c021" stroke-width="1"/>
+        <text x="60" y="692" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Central entity</text>
+        <rect x="152" y="684" width="14" height="10" rx="2" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <text x="172" y="692" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Entity</text>
+        <text x="1080" y="692" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif" text-anchor="end"># key  ·  → foreign key  ·  1, N, 0..1, 1..* cardinality at each end</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1160 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="packages-dark-title packages-dark-desc" id="packages-dark-root">
+        <title id="packages-dark-title">Package dependencies</title>
+        <desc id="packages-dark-desc">Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles.</desc>
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #packages-dark-root { font-family: 'Inter', system-ui, sans-serif; color: #f7f9fc; }
+      #packages-dark-root .diagram-container { width: 100%; overflow-x: auto; }
+      #packages-dark-root .diagram-container { overflow-x: visible; }</style><marker id="packages-dark-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a3a7af"/></marker><marker id="packages-dark-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#78c021"/></marker><marker id="packages-dark-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7f9cf0"/></marker></defs>
+        <rect width="100%" height="100%" fill="#181a1d"/>
+        <path d="M 192,96 V 120 Q 192,128 184,128 H 128 Q 120,128 120,136 V 160" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 248,96 V 120 Q 248,128 256,128 H 312 Q 320,128 320,136 V 160" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 120,216 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 592,96 V 240 Q 592,248 584,248 H 528 Q 520,248 520,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 648,96 V 240 Q 648,248 656,248 H 744 Q 752,248 752,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 912,96 V 240 Q 912,248 904,248 H 816 Q 808,248 808,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <path d="M 968,96 V 240 Q 968,248 976,248 H 1032 Q 1040,248 1040,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <rect x="140" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="140" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="264" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="278" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="220" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Streamlit app</text>
+        <text x="220" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">app/streamlit_app.py</text>
+        <rect x="540" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="540" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="664" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="678" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="620" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">retail_generator</text>
+        <text x="620" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">generate-data CLI</text>
+        <rect x="860" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="860" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="984" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="998" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="940" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_wrangler</text>
+        <text x="940" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">load · split</text>
+        <rect x="40" y="160" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="40" y="160" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="164" y="168" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="178" y="177" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="120" y="195" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_insights</text>
+        <text x="120" y="210" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">rollups · risk</text>
+        <rect x="240" y="160" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="240" y="160" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="364" y="168" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="378" y="177" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="320" y="195" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_charts</text>
+        <text x="320" y="210" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Plotly figures</text>
+        <rect x="40" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="40" y="280" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="164" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="178" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="120" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">jev_classifier</text>
+        <text x="120" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">questions · cache</text>
+        <rect x="440" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="440" y="280" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="564" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="578" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="520" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_writer</text>
+        <text x="520" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Foundry · Key Vault</text>
+        <rect x="700" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="700" y="280" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="824" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="838" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">2 in</text>
+        <text x="780" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">retail_model</text>
+        <text x="780" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">schemas · storage</text>
+        <rect x="960" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="960" y="280" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="1084" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="1098" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="1040" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">customer_features</text>
+        <text x="1040" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">point in time</text>
+        <line x1="40" y1="368" x2="1120" y2="368" stroke="#f7f9fc" stroke-opacity="0.10" stroke-width="0.8"/>
+        <text x="40" y="384" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.18em">LEGEND</text>
+        <rect x="40" y="400" width="14" height="10" rx="2" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <text x="60" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Imports other packages</text>
+        <rect x="188" y="400" width="14" height="10" rx="2" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
+        <text x="208" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Leaf: imports no project package</text>
+        <line x1="384" y1="405" x2="408" y2="405" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#packages-dark-arrow)"/>
+        <text x="416" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Imports</text>
+        <text x="1120" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif" text-anchor="end">N in: how many packages import it</text>
+      </svg>

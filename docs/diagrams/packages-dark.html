@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Package dependencies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Drawn with the diagram-design skill, endjin profile (tokens from endjin.com). Light and dark share one layout. -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #181a1d; color: #f7f9fc; padding: 3rem 2rem; }
+    .frame { max-width: 1200px; margin: 0 auto; }
+    .eyebrow { font-family: Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em;
+               text-transform: uppercase; color: #a3a7af; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: 1.75rem; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    svg { width: 100%; min-width: 1160px; display: block; }
+    @media print { .diagram-container { overflow-x: visible; } svg { min-width: 0; } }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Architecture · retail review knowledge mining</p>
+    <h1>Package dependencies</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1160 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="packages-dark-title packages-dark-desc">
+        <title id="packages-dark-title">Package dependencies</title>
+        <desc id="packages-dark-desc">Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles.</desc>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a3a7af"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#78c021"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7f9cf0"/></marker></defs>
+        <rect width="100%" height="100%" fill="#181a1d"/>
+        <path d="M 192,96 V 120 Q 192,128 184,128 H 128 Q 120,128 120,136 V 160" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 248,96 V 120 Q 248,128 256,128 H 312 Q 320,128 320,136 V 160" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 120,216 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 592,96 V 240 Q 592,248 584,248 H 528 Q 520,248 520,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 648,96 V 240 Q 648,248 656,248 H 744 Q 752,248 752,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 912,96 V 240 Q 912,248 904,248 H 816 Q 808,248 808,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 968,96 V 240 Q 968,248 976,248 H 1032 Q 1040,248 1040,256 V 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <rect x="140" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="140" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="264" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="278" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="220" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Streamlit app</text>
+        <text x="220" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">app/streamlit_app.py</text>
+        <rect x="540" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="540" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="664" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="678" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="620" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">retail_generator</text>
+        <text x="620" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">generate-data CLI</text>
+        <rect x="860" y="40" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="860" y="40" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="984" y="48" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="998" y="57" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="940" y="75" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_wrangler</text>
+        <text x="940" y="90" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">load · split</text>
+        <rect x="40" y="160" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="40" y="160" width="160" height="56" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="164" y="168" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="178" y="177" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="120" y="195" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_insights</text>
+        <text x="120" y="210" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">rollups · risk</text>
+        <rect x="240" y="160" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="240" y="160" width="160" height="56" rx="6" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="364" y="168" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="378" y="177" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="320" y="195" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_charts</text>
+        <text x="320" y="210" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Plotly figures</text>
+        <rect x="40" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="40" y="280" width="160" height="56" rx="6" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="164" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="178" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="120" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">jev_classifier</text>
+        <text x="120" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">questions · cache</text>
+        <rect x="440" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="440" y="280" width="160" height="56" rx="6" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="564" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="578" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="520" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_writer</text>
+        <text x="520" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Foundry · Key Vault</text>
+        <rect x="700" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="700" y="280" width="160" height="56" rx="6" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="824" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="838" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">2 in</text>
+        <text x="780" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">retail_model</text>
+        <text x="780" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">schemas · storage</text>
+        <rect x="960" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
+        <rect x="960" y="280" width="160" height="56" rx="6" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <rect x="1084" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="rgba(247,249,252,0.22)" stroke-width="0.8"/>
+        <text x="1098" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="1040" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">customer_features</text>
+        <text x="1040" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">point in time</text>
+        <line x1="40" y1="368" x2="1120" y2="368" stroke="rgba(247,249,252,0.10)" stroke-width="0.8"/>
+        <text x="40" y="384" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.18em">LEGEND</text>
+        <rect x="40" y="400" width="14" height="10" rx="2" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <text x="60" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Imports other packages</text>
+        <rect x="188" y="400" width="14" height="10" rx="2" fill="rgba(247,249,252,0.05)" stroke="#a3a7af" stroke-width="1"/>
+        <text x="208" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Leaf: imports no project package</text>
+        <line x1="384" y1="405" x2="408" y2="405" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <text x="416" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif">Imports</text>
+        <text x="1120" y="408" fill="#a3a7af" font-size="8.5" font-family="'Inter', system-ui, sans-serif" text-anchor="end">N in: how many packages import it</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
