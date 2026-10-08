@@ -1,0 +1,33 @@
+# Prepares the environment GitHub Copilot's cloud agent works in, so it can run
+# the tests and the linter from its first step. Copilot only uses a job named
+# `copilot-setup-steps`, and only once this file is on the default branch.
+# https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment
+name: Copilot Setup Steps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+
+      - name: Install the environment
+        run: uv sync --locked --python 3.12
+
+      - name: Check the environment works
+        run: uv run pytest -q

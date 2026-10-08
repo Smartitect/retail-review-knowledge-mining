@@ -1,57 +1,140 @@
-# retail-review-knowledge-mining
-A demo of various techniques for mining insights from semi structured data.
+# Retail review knowledge mining
 
-## The demo: classifying BBQ reviews with Jev
+A demo of mining actionable insight from semi-structured customer feedback: free-text product reviews, in several languages, tied to structured customer and order data.
 
-A fictional barbecue retailer, generated deterministically: customers (Faker), their orders over time (with
-seasonality and realistic buying patterns), and the reviews a biased subset of them chose to write, in English or
-their own language, written by a chat model on Azure AI Foundry. See [`docs/data-model.md`](docs/data-model.md).
+It is built around a fictional barbecue retailer, so it can be shared, rerun and scaled without any real customer data:
 
-[`notebooks/01_classify_reviews_with_jev.ipynb`](notebooks/01_classify_reviews_with_jev.ipynb) generates the dataset,
-loads one row per review with point-in-time customer features, splits reviews into sentences, and asks
-[TypeSafe AI's Jev](https://docs.typesafe.ai/introduction) about every sentence, with the whole review as context:
+1. **Generate** a realistic retail dataset: customers, their orders over time, and the reviews a biased subset of them chose to write. A chat model on Azure AI Foundry writes the review text, in English or the customer's own language.
+2. **Classify** every review sentence with [TypeSafe AI's Jev](https://docs.typesafe.ai/introduction), which answers typed questions with probabilities rather than generating text: how frustrated is the customer, what kind of problem is it, which products are mentioned, is there a safety concern or a churn signal?
+3. **Explore** the answers in a notebook and an interactive dashboard: which products have which problems, which customers are at risk, and how much revenue they represent.
 
-- **frustration** (Score 0–4), **problem category** (Choice), **products mentioned** (one Noul per catalogue product), **language** (Choice)
-- plus sentiment, recommendation, churn risk, safety concern, improvement suggestion and competitor mention
+Jev is never shown the star rating, so "does frustration track the stars?" is a fair test of the model. The generator records what each review was meant to say, so Jev's answers can be checked against the truth.
 
-The rating and customer facts are not sent, so frustration vs star rating is a fair check of the model. The
-generator records what each review was meant to be about and in which language (`review_truth`), so Jev can be
-scored against it.
+| Document | What it covers |
+|---|---|
+| [`docs/requirements.md`](docs/requirements.md) | What the demo must do, and the test that verifies each requirement |
+| [`docs/architecture.md`](docs/architecture.md) | The pipeline, the packages, where data lives, and how to extend it |
+| [`docs/data-model.md`](docs/data-model.md) | The tables, keys and rules, and how the generator behaves |
+| [`AGENTS.md`](AGENTS.md) | Instructions for AI coding agents such as GitHub Copilot |
 
-## Getting started
+## What you need
 
-Open the repository in VS Code and choose **Reopen in Container**. The dev container provides PowerShell (the default
-terminal), the GitHub CLI, the Azure CLI, and uv, which owns the Python interpreter.
-`.devcontainer/postCreateCommand.ps1` installs uv, runs `uv sync --python 3.12`, and generates a PowerShell profile
-that activates `.venv` automatically in every terminal.
+| | Needed for | Notes |
+|---|---|---|
+| [VS Code](https://code.visualstudio.com/) with the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, and [Docker](https://www.docker.com/) (or another container runtime) | Everything | Or use [GitHub Codespaces](https://github.com/features/codespaces), which needs neither. Running without a container is covered in [step 1](#step-1-open-the-repository). |
+| An Azure subscription with an **Azure AI Foundry** chat model deployment | Writing review text (step 4) | Any chat model works, for example `gpt-4.1-mini`. |
+| An **Azure Key Vault** you can read secrets from | Step 4 | Holds the Foundry endpoint, key, API version and deployment name. |
+| A **TypeSafe AI** API key | Classifying (step 5) | From [typesafe.ai](https://typesafe.ai). |
 
-Then copy `.env.example` to `.env` (it is gitignored) and fill in:
+You can do steps 1 and 2, and read all the code and docs, without any Azure or TypeSafe account. The tests never call a live service.
 
-- `TYPESAFE_API_KEY` for Jev.
-- `KG_KEY_VAULT_URI` and `KG_REFLECTION_MODEL_SECRETS` for Azure AI Foundry. No Foundry secret lives in `.env`: the
-  endpoint, key, API version and deployment are read from Key Vault with your identity, so run `az login` first.
+## Step 1: Open the repository
 
-## 1. Generate the dataset
+1. Clone the repository and open the folder in VS Code.
+2. When prompted, choose **Reopen in Container**. If you are not prompted, run **Dev Containers: Reopen in Container** from the command palette.
+3. Wait for the container to build. The first build takes a few minutes. `.devcontainer/postCreateCommand.ps1` installs [uv](https://docs.astral.sh/uv/), installs Python 3.12 and every dependency into `.venv`, and sets up the terminal to use it.
 
-The dataset grows in batches with `generate-data`, so you choose how much compute, storage and API spend to take on:
+The container provides PowerShell (the default terminal), the GitHub CLI, the Azure CLI and uv. Every command in this README also works in bash.
+
+<details>
+<summary>Without a dev container</summary>
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and the [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli), then run this from the repository root:
+
+```powershell
+uv sync --python 3.12
+```
+
+uv downloads Python 3.12 if you don't have it. Run every command through `uv run`, as below.
+</details>
+
+## Step 2: Check it works
+
+```powershell
+uv run pytest
+```
+
+All tests should pass in about 10 seconds. They stub Azure AI Foundry and Jev, so they need no credentials.
+
+## Step 3: Connect to Azure AI Foundry and Jev
+
+The Foundry settings live in Key Vault rather than in a file, and are read with your own Azure identity. `.env` holds only where to find them, plus the Jev key.
+
+### 3a. Put the Foundry settings in Key Vault
+
+In the [Azure AI Foundry portal](https://ai.azure.com), open your resource and note its endpoint (`https://<resource>.services.ai.azure.com/`), its API key, and the name of your chat deployment. Then store them as four secrets that share a prefix. This example uses the prefix `review-writer`:
+
+```powershell
+az login
+$vault = "<your-key-vault-name>"
+az keyvault secret set --vault-name $vault --name review-writer-endpoint    --value "https://<resource>.services.ai.azure.com/"
+az keyvault secret set --vault-name $vault --name review-writer-key         --value "<api-key>"
+az keyvault secret set --vault-name $vault --name review-writer-api-version --value "v1"
+az keyvault secret set --vault-name $vault --name review-writer-deployment  --value "<deployment-name>"
+```
+
+Use the API version `v1` unless you have a reason to pin a dated Azure OpenAI version. Anyone who runs the demo needs permission to read secrets in the vault: the **Key Vault Secrets User** role, or `get` in the vault's access policy.
+
+### 3b. Create `.env`
+
+```powershell
+Copy-Item .env.example .env      # bash: cp .env.example .env
+```
+
+Then fill it in:
+
+| Variable | Value |
+|---|---|
+| `TYPESAFE_API_KEY` | Your TypeSafe AI API key |
+| `KG_KEY_VAULT_URI` | `https://<your-key-vault-name>.vault.azure.net/` |
+| `KG_REFLECTION_MODEL_SECRETS` | The secret prefix from step 3a, for example `review-writer` |
+
+`.env` is gitignored, so it is never committed.
+
+### 3c. Check the connection
+
+```powershell
+az login        # if you haven't already in this container
+uv run python -c "from dotenv import load_dotenv; load_dotenv(); from review_writer import model_settings; print(model_settings())"
+```
+
+This prints the endpoint, API version and deployment it found. The key is never printed. If it fails, the error names what is missing; see [Troubleshooting](#troubleshooting).
+
+## Step 4: Generate the dataset
+
+The dataset grows in batches, so you choose how much compute, storage and spend to take on. Start a dataset, then see what a batch of 1,000 customers will cost before paying for it:
 
 ```powershell
 uv run generate-data init --seed 42 --as-of 2026-06-30
 uv run generate-data add-customers --count 1000 --dry-run --foundry-input-price 0.15 --foundry-output-price 0.60
-uv run generate-data add-customers --count 1000            # review text from Azure AI Foundry
-uv run generate-data add-customers --total 5000            # idempotent: tops up to 5,000
-uv run generate-data advance --to 2026-12-31               # existing customers keep buying and reviewing
-uv run generate-data fill-texts                            # retry any review text that failed
+```
+
+`--dry-run` writes nothing and calls nothing. The prices are your deployment's USD per million input and output tokens; leave them out and you get token counts only. When you're happy with the estimate, generate it for real:
+
+```powershell
+uv run generate-data add-customers --count 1000     # about 8 minutes: Foundry writes ~1,500 reviews
 uv run generate-data status
 ```
 
-- **Batches** are files: `data/generated/<table>/batch-NNNN.parquet`, plus `manifest.json`. A batch is atomic: the manifest is written last, and readers only see batches it lists.
-- **Deterministic:** the same seed gives the same data, and two batches of 1,000 customers equal one batch of 2,000. Advancing time gives exactly what generating to the later date would have.
-- **Idempotent:** `--total` and `advance --to` do nothing when the dataset is already there.
-- **Cached text:** review text is cached by prompt and model, so a rerun reuses it. Foundry refuses to run unconfigured rather than falling back to anything.
-- **Costed first:** every batch reports what its reviews will cost to write and to classify, and `--dry-run` reports without writing. Jev only pays for sentences it has not seen: the notebook classifies from a cache.
+The data is written to `data/generated/` (gitignored). Other commands, when you want them:
 
-Measured on the defaults (1,000 and 10,000 customers; 100,000 extrapolated). Jev is at ~2,750 input tokens and ~0.3 s per sentence, $0.042 per million tokens, concurrency 8. Foundry times assume ~2.5 s per review at concurrency 8 (1,000 customers took 8.3 min on `gpt-5.6-terra`), and its cost depends on the deployment's prices.
+```powershell
+uv run generate-data add-customers --total 5000     # idempotent: tops up to 5,000 customers
+uv run generate-data advance --to 2026-12-31        # existing customers keep buying and reviewing
+uv run generate-data fill-texts                     # retry any review text that failed
+uv run generate-data --help
+```
+
+How it behaves:
+
+- **Deterministic.** The same seed gives the same data, and two batches of 1,000 customers equal one batch of 2,000. Advancing time gives exactly what generating straight to the later date would have.
+- **Idempotent.** `--total` and `advance --to` do nothing when the dataset is already there.
+- **Safe to interrupt.** A batch only counts once `manifest.json` lists it, so an interrupted batch is invisible and is replaced on the next run.
+- **Cached.** Review text is cached by prompt and model in `data/generated/review_text_cache.parquet`, so a rerun reuses it. A failed text is reported and retried, never cached.
+
+### How far to scale
+
+Measured on the defaults (1,000 and 10,000 customers; 100,000 extrapolated). Jev uses about 2,750 input tokens and 0.3 seconds per sentence, at $0.042 per million tokens and a concurrency of 8. Foundry times assume about 2.5 seconds per review at a concurrency of 8 (1,000 customers took 8.3 minutes on `gpt-5.6-terra`); Foundry's cost depends on your deployment's prices.
 
 | Customers | Orders | Reviews | Sentences | Generate | Storage | Foundry tokens (in / out) | Foundry time | Jev cost | Jev time |
 |---|---|---|---|---|---|---|---|---|---|
@@ -59,67 +142,95 @@ Measured on the defaults (1,000 and 10,000 customers; 100,000 extrapolated). Jev
 | 10,000 | ~76,000 | ~13,700 | ~61,000 | ~15 s | ~3 MB | 3.6M / 1.7M | ~70 min | ~$7 | ~40 min |
 | 100,000 | ~760,000 | ~137,000 | ~610,000 | ~2.5 min | ~30 MB | 36M / 17M | ~12 h | ~$71 | ~8.5 h |
 
-At 100,000 customers Jev's published limit of 1,200 requests a minute, not concurrency, sets the pace. Grow in batches, and classify each before adding the next.
+At 100,000 customers, Jev's published limit of 1,200 requests a minute sets the pace, not concurrency. Grow in batches, and classify each batch before adding the next.
 
-## 2. Classify with Jev
+## Step 5: Classify the reviews with Jev
 
-Run the notebook. It tops the dataset up to `CUSTOMERS`, then classifies every sentence and writes
-`data/output/sentences_classified.parquet`. Answers are cached in `data/output/` (gitignored) under the question-set
-version, so changing a question in `questions.py` means bumping `QUESTION_SET_VERSION`.
+1. Open [`notebooks/01_classify_reviews_with_jev.ipynb`](notebooks/01_classify_reviews_with_jev.ipynb).
+2. Choose **Select Kernel** → **Python Environments** → `.venv`.
+3. Choose **Run All**.
 
-To see the JSON sent to and received from Jev, call `jev_classifier.transcript.log_to_stdout()` before classifying:
-each exchange prints as one JSON object with the request and response bodies exactly as they crossed the wire, the
-request ID and latency. The question set prints in full once per run (`full_questions=True` prints it every time), and
-the API key is never printed. It is off by default; `transcript.silence()` turns it off again.
+The notebook:
 
-## 3. Explore in the dashboard
+1. Tops the dataset up to `CUSTOMERS` (1,000 by default, with seed 42). If you already generated 1,000 customers in step 4, it reuses them. If you used a different seed, change `SEED` in the notebook to match.
+2. Loads one row per review, with what was known about the customer at the moment they wrote it.
+3. Splits each review into sentences.
+4. Asks Jev 26 questions about every sentence, and writes `data/output/sentences_classified.parquet`.
+5. Analyses the answers: frustration against stars, problems by product, language, escalations, suggestions, competitors, and the low-confidence sentences to send to a person.
+
+For 1,000 customers, classification takes about 4 minutes and costs about $0.79. Answers are cached in `data/output/jev_sentence_answers.parquet` (gitignored), so running it again costs nothing. The cache is keyed on the question-set version, so changing a question in `src/jev_classifier/questions.py` means bumping `QUESTION_SET_VERSION`.
+
+To see exactly what is sent to and received from Jev, call `jev_classifier.transcript.log_to_stdout()` before classifying. Each exchange prints as one JSON object, with the request and response bodies as they crossed the wire, the request ID and the latency. The API key is never printed. `transcript.silence()` turns it off again. The notebook's "Watch the wire" section does this for two sentences.
+
+## Step 6: Explore the dashboard
 
 ```powershell
 uv run streamlit run app/streamlit_app.py
 ```
 
-Reads `data/output/sentences_classified.parquet`, so run the notebook first.
+VS Code offers to open the forwarded port; otherwise browse to <http://localhost:8501>. The dashboard reads `data/output/sentences_classified.parquet`, so run the notebook first.
 
-- **Sentiment flow** - a Sankey from review sentiment through product category and product to each review's
-  *primary issue* (the problem in its most frustrated sentence), so every review is exactly one path and widths
-  are review counts. Sentiment can come from the text (Jev) or the star rating; a drill-down lists the reviews
-  behind any issue.
-- **Customers at risk** - one mark per customer at their most recent review: tenure against lifetime revenue as at
-  that review (log scale), shaped and coloured by risk tier. Box or lasso select to list customers. Risk thresholds
-  are set in the sidebar.
+- **Sentiment flow:** a Sankey from review sentiment through product category and product to each review's *primary issue* (the problem in its most frustrated sentence). Every review is exactly one path, and widths are review counts. Sentiment can come from the text (Jev) or from the star rating, so you can see where they disagree. A drill-down lists the reviews behind any issue.
+- **Customers at risk:** one mark per customer at their most recent review, plotting tenure against lifetime revenue as at that review, shaped and coloured by risk tier. Box or lasso select to list customers. Set the risk thresholds in the sidebar.
 
-Colours are endjin's (read from endjin.com), assigned by role and checked for colour-blind separation; see
-`src/review_charts/palette.py`. They are validated for the light theme, which `.streamlit/config.toml` pins.
+Filter by product category, product and country across both views. The colours are endjin's, assigned by role and checked for colour-blind separation (`src/review_charts/palette.py`). They are validated for the light theme, which `.streamlit/config.toml` pins.
+
+## Troubleshooting
+
+| Symptom | Cause and fix |
+|---|---|
+| `Azure AI Foundry is not configured: set KG_KEY_VAULT_URI, …` | `.env` is missing or incomplete. See [step 3b](#3b-create-env). |
+| `could not read '<prefix>-endpoint' … (have you run az login?)` | Run `az login`. If you have, check that your identity can read secrets in the vault. |
+| `AADSTS50078: Presented multi-factor authentication has expired` | Your sign-in is older than your organisation's MFA policy allows. Run `az login` again: `az account show` can still succeed when the token has expired. |
+| `secret '<prefix>-…' is not in https://…` | A secret is missing, or the prefix in `.env` doesn't match the secret names. All four of `-endpoint`, `-key`, `-api-version` and `-deployment` are needed. |
+| `… already holds a dataset with different settings; use another directory` | The notebook's `SEED` differs from the seed `generate-data init` used. Make them match, or pass `--dir` to use another directory. |
+| `N review(s) have no text yet and are left out.` | Some Foundry calls failed. Run `uv run generate-data fill-texts`. |
+| Sentences classified with errors | Jev calls failed (for example, rate limits). They are not cached: rerun the classification cell. |
+| `No classified reviews at data/output/sentences_classified.parquet` in the dashboard | Run the notebook (step 5) first. |
+| `python --version` reports a system Python | Open a new terminal, or run commands through `uv run`. |
 
 ## Code map
 
-| Package | Responsibility |
+| Path | Responsibility |
 |---|---|
 | `src/retail_model` | Table schemas (pandera), cross-table integrity, review propensity, dataset storage |
-| `src/retail_generator` | Deterministic customers, orders and reviews; every knob in `GeneratorConfig`; the `generate-data` CLI |
-| `src/review_writer` | Review text from Azure AI Foundry, settings from Key Vault, cached by prompt |
+| `src/retail_generator` | Deterministic customers, orders and reviews; every setting in `GeneratorConfig`; the `generate-data` CLI |
+| `src/review_writer` | Review text from Azure AI Foundry, with settings from Key Vault, cached by prompt |
 | `src/customer_features` | Point-in-time features: only data from before each review, never after |
-| `src/review_wrangler` | Load reviews with their text, product and features; split into sentences |
+| `src/review_wrangler` | Load reviews with their text, product and features; split them into sentences |
 | `src/jev_classifier` | The question set, and async classification with a Parquet cache |
 | `src/review_insights` | Review and customer views, Sankey flows, risk tiers, escalation and review queues |
-| `src/review_charts` | Plotly figures and endjin colour roles for the dashboard |
+| `src/review_charts` | Plotly figures and colour roles for the dashboard |
 | `app/streamlit_app.py` | The dashboard: layout and state only |
+| `notebooks/` | The end-to-end walkthrough. It calls `src/` and holds no logic of its own. |
+| `reference_data/products.csv` | The 17-product catalogue |
+| `tests/unit/` | Unit tests. They never call a live service. |
+
+See [`docs/architecture.md`](docs/architecture.md) for how the packages depend on each other and how to extend them.
 
 ## Development
 
 ```powershell
-uv add <package>            # runtime dependency
-uv add --dev <package>      # tooling
+uv add <package>            # add a runtime dependency
+uv add --dev <package>      # add a development tool
 uv sync                     # after a pull that changes pyproject.toml or uv.lock
-uv run pytest               # unit tests: no live service is ever called
-uv run ruff check
+uv run pytest               # unit tests
+uv run ruff check           # lint
 ```
 
-Never `pip install`, and never activate the virtualenv by hand: `uv run` syncs first. `pyproject.toml` is the only
-place dependencies are declared, and `uv.lock` is committed. The tests stub Jev and Foundry (`tests/unit/stub_writer.py`
-writes review text from the brief).
+- **Use uv, never pip.** `pyproject.toml` is the only place dependencies are declared, and `uv.lock` is committed. `uv run` syncs the environment before it runs, so there's no need to activate the virtualenv.
+- **Don't run `ruff format`.** The code is hand-formatted; `ruff check` is the gate.
+- **CI** runs `ruff check` and `pytest` on every pull request ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
+- **Pull requests** branch from `main` and describe why, what changed and how it was tested.
 
-### Smoke test after a container rebuild
+### Working with AI coding agents
+
+[`AGENTS.md`](AGENTS.md) holds the instructions for coding agents: the commands, the invariants the tests protect, where code belongs, and the rules on cost and secrets.
+
+- **GitHub Copilot** reads `AGENTS.md` and [`.github/copilot-instructions.md`](.github/copilot-instructions.md). The dev container installs Copilot and turns on `chat.useAgentsMdFile`, so agent mode in VS Code picks `AGENTS.md` up. [`.github/workflows/copilot-setup-steps.yml`](.github/workflows/copilot-setup-steps.yml) prepares the environment for Copilot's cloud agent, so it can run the tests from its first step.
+- **Claude Code** reads [`CLAUDE.md`](CLAUDE.md), which imports `AGENTS.md`.
+
+### Smoke test after rebuilding the container
 
 ```powershell
 uv --version
@@ -129,5 +240,8 @@ az --version
 pytest --version
 ```
 
-Rebuild *without cache* periodically: a definition that only works incrementally is broken for the next person who
-clones it.
+Rebuild *without cache* now and then: a container definition that only works incrementally is broken for the next person who clones it.
+
+## License
+
+[MIT](LICENSE)
