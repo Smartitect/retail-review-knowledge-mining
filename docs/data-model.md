@@ -1,6 +1,6 @@
 # Retail data model
 
-This dataset replaces the flat review file with a small, realistic retail model. Customers buy products over time, and review a biased subset of what they bought. Tracked in #1; this note covers #2.
+A small, realistic retail model. Customers buy products over time, and review a biased subset of what they bought. For how the dataset fits into the pipeline, see [`architecture.md`](architecture.md).
 
 ```mermaid
 erDiagram
