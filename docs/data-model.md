@@ -62,9 +62,8 @@ The result is a review corpus that over-represents 1★ and 5★ against the pur
 
 Text is written from a **brief**: product, stars, how the customer feels, the aspect to focus on, the language and a length. See `src/review_writer`.
 
-- **Azure AI Foundry** (`FoundryReviewWriter`) is the intended source. It uses the OpenAI-compatible API, so any chat deployment works. Its endpoint, key, API version and deployment are secrets in Key Vault, read with your `az login` identity; `.env` holds only `KG_KEY_VAULT_URI` and `KG_REFLECTION_MODEL_SECRETS`, the prefix of the four secrets (see `.env.example`).
-- **Templates** (`TemplateReviewWriter`) reuse the 168 hand-written reviews in `data/input/product_reviews.json`, matched on product and nearest rating. This is for offline runs and tests only. It is chosen explicitly, never as a silent fallback, and its rows say `text_source = "template"`. It writes English only.
-- **Caching.** Texts are cached on `review_id` + `prompt_hash`. The hash covers the model and the rendered prompt, so the same seed reuses the same text: reproducible even though the model is not. A different writer or model, or a changed brief, writes afresh. Each row records `text_source`, `model` and `generated_at`. Failed calls are reported and retried on the next run, never cached.
+- **Azure AI Foundry** (`FoundryReviewWriter`) writes it. It uses the OpenAI-compatible API, so any chat deployment works. Its endpoint, key, API version and deployment are secrets in Key Vault, read with your `az login` identity; `.env` holds only `KG_KEY_VAULT_URI` and `KG_REFLECTION_MODEL_SECRETS`, the prefix of the four secrets (see `.env.example`).
+- **Caching.** Texts are cached on `review_id` + `prompt_hash`. The hash covers the model and the rendered prompt, so the same seed reuses the same text: reproducible even though the model is not. A different model or a changed brief writes afresh. Each row records the `language`, the `model` (deployment) and `generated_at`. Failed calls are reported and retried on the next run, never cached.
 
 ## Catalogue and buying patterns
 
@@ -86,11 +85,11 @@ Each customer draws from their own streams, so generating to a later date reprod
 
 ## Reviews and point-in-time features
 
-`retail_generator.generate_reviews` gives every order line a hidden satisfaction drawn from a Beta distribution around its product's quality. Quality is calibrated from the original reviews' mean stars as (★ − 1) / 4, so the BackYard King stays the dud it was. The line is then reviewed with the U-shaped propensity above.
+`retail_generator.generate_reviews` gives every order line a hidden satisfaction drawn from a Beta distribution around its product's quality. Quality is calibrated from the mean stars of the demo's original hand-written reviews as (★ − 1) / 4, so the BackYard King stays the dud it was. The line is then reviewed with the U-shaped propensity above.
 
 - **When:** a review arrives a lognormal delay after the order (median 9 days), sooner when the customer is unhappy.
 - **About what:** unhappy reviews focus on an *issue* using Jev's own problem-category labels (weighted by product category); happy ones on a *praise* aspect. `review_truth` records it, so Jev can later be scored against it.
-- **Language:** about a third of customers in non-English-speaking countries ask for their own language. Only the Foundry writer honours it.
+- **Language:** about a third of customers in non-English-speaking countries (35%, `local_language_share`) write in their own: German, Brazilian Portuguese, Spanish (Costa Rica), Japanese, Simplified Chinese, Zulu (South Africa) or Swahili (Tanzania). Zulu is not one of Jev's language options, which tests how it handles a language it does not know.
 - **ID:** `R` + the reviewed line's digits.
 
 Each line draws from its own stream, and a review belongs to the time slice its `reviewed_at` falls in, even when the order came earlier.
@@ -104,8 +103,6 @@ Each line draws from its own stream, and a review belongs to the time slice its 
 | `days_since_last_order` | Since the most recent earlier order |
 | `previous_reviews` | This customer's earlier reviews |
 | `age`, `gender`, `country` | Age in whole years; the others are fixed |
-
-The original `product_reviews.json` is retired as pipeline input. It remains the source for the template writer.
 
 ## Growing the dataset
 

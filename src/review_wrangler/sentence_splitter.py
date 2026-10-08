@@ -1,8 +1,9 @@
 """
 Break reviews into sentences, entirely in Polars expressions.
 
-A sentence ends at `.`, `!` or `?` (or a run of them) followed by whitespace.
-That is deliberately simple: the sample has no abbreviations, decimals before
+A sentence ends at `.`, `!` or `?` (or a run of them) followed by whitespace,
+or at the full-width `。`, `！` or `？` that Chinese and Japanese use with no
+space after. That is deliberately simple: the sample has no abbreviations, decimals before
 a space, quotations or line breaks, which are what trip a regex splitter. If
 real data arrives with those, swap this stage for a proper segmenter; nothing
 downstream depends on how the split was made.
@@ -24,7 +25,7 @@ def split_sentences(reviews: pl.LazyFrame) -> pl.LazyFrame:
         reviews.with_columns(
             sentence=pl.col("review_text")
             .str.replace_all(r"\s+", " ")
-            .str.replace_all(r"([.!?]+) ", "${1}" + BOUNDARY)
+            .str.replace_all(r"([.!?]+) |([。！？]+) ?", "${1}${2}" + BOUNDARY)
             .str.split(BOUNDARY)
         )
         .explode("sentence", empty_as_null=False)

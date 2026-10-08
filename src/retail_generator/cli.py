@@ -4,14 +4,12 @@
     uv run generate-data init --seed 42 --as-of 2026-06-30
     uv run generate-data add-customers --count 1000 --dry-run      # estimate only
     uv run generate-data add-customers --count 1000                # Azure AI Foundry text
-    uv run generate-data add-customers --total 5000 --writer template
+    uv run generate-data add-customers --total 5000                # idempotent
     uv run generate-data advance --to 2026-12-31
     uv run generate-data fill-texts                                # retry failed text
     uv run generate-data status
 
-Review text comes from Azure AI Foundry by default (settings in Key Vault, see .env.example).
-`--writer template` reuses hand-written reviews offline instead; it is never
-chosen silently.
+Review text comes from Azure AI Foundry (settings in Key Vault, see .env.example).
 """
 
 import argparse
@@ -23,7 +21,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from retail_model import DEFAULT_DIR
-from review_writer import FoundryReviewWriter, TemplateReviewWriter
+from review_writer import FoundryReviewWriter
 
 from .incremental import add_customers, advance, fill_texts, init_dataset, status
 
@@ -42,12 +40,9 @@ def _parser() -> argparse.ArgumentParser:
     init.add_argument("--as-of", type=_date, required=True, help="the dataset's current date, e.g. 2026-06-30")
 
     def batch_options(p):
-        p.add_argument("--writer", choices=["foundry", "template"], default="foundry",
-                       help="who writes review text (default: foundry)")
         p.add_argument("--dry-run", action="store_true", help="generate and estimate, but write nothing")
         p.add_argument("--foundry-input-price", type=float, help="USD per million input tokens, to cost Foundry")
         p.add_argument("--foundry-output-price", type=float, help="USD per million output tokens, to cost Foundry")
-        p.add_argument("--concurrency", type=int, default=8)
 
     add = commands.add_parser("add-customers", help="add customers with their orders and reviews")
     how_many = add.add_mutually_exclusive_group(required=True)
@@ -75,7 +70,7 @@ async def _run(args) -> list[str]:
 
     writer = None
     if not args.dry_run:
-        writer = FoundryReviewWriter.from_env() if args.writer == "foundry" else TemplateReviewWriter()
+        writer = FoundryReviewWriter.from_env()
     prices = {k: v for k, v in (("foundry_usd_per_million_input", args.foundry_input_price),
                                 ("foundry_usd_per_million_output", args.foundry_output_price)) if v is not None}
     common = {"writer": writer, "dry_run": args.dry_run, "prices": prices}

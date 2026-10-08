@@ -25,7 +25,8 @@
         "charliermarsh.ruff",
         "ms-vscode.powershell",
         "tamasfe.even-better-toml",
-        "Anthropic.claude-code"
+        "Anthropic.claude-code",
+        "ms-toolsai.jupyter"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "pwsh",

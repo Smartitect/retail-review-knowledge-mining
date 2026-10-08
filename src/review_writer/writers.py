@@ -1,32 +1,21 @@
 """
-Two ways to turn a brief into review text, behind one interface.
+Turn a brief into review text.
 
-- `FoundryReviewWriter` asks a chat model deployed on Azure AI Foundry. This is
-  the intended source. It reads its endpoint, key, API version and deployment
-  from Key Vault (`model_secrets`), and talks to Foundry's OpenAI-compatible
-  API, so any chat deployment in the Foundry catalogue works.
-- `TemplateReviewWriter` needs no service: it picks one of the hand-written
-  reviews in `data/input/product_reviews.json` for the same product and
-  (nearest) star rating. It is for running offline and in tests, is only used
-  when chosen explicitly, and labels its output `template` so it can never be
-  mistaken for generated text. It writes English only, whatever the brief asks.
+`FoundryReviewWriter` asks a chat model deployed on Azure AI Foundry. It reads
+its endpoint, key, API version and deployment from Key Vault (`model_secrets`),
+and talks to Foundry's OpenAI-compatible API, so any chat deployment in the
+Foundry catalogue works. `ReviewWriter` is the interface the text cache needs,
+so tests can stand in for the service.
 """
 
-import json
-from pathlib import Path
 from typing import Protocol
 
 from .model_secrets import ModelSettings, model_settings
 from .prompt import LANGUAGE_NAMES, SYSTEM, ReviewBrief, render, stable_int
 
-LEGACY_REVIEWS = Path(__file__).resolve().parents[2] / "data" / "input" / "product_reviews.json"
-
 
 class ReviewWriter(Protocol):
-    source: str  # "foundry" | "template"
-    model: str   # what produced the text, recorded with it
-
-    def language_written(self, brief: ReviewBrief) -> str: ...
+    model: str  # what produced the text, recorded with it
 
     async def write(self, brief: ReviewBrief) -> str: ...
 
@@ -34,8 +23,6 @@ class ReviewWriter(Protocol):
 
 
 class FoundryReviewWriter:
-    source = "foundry"
-
     def __init__(self, *, endpoint: str, api_key: str, deployment: str, api_version: str = "v1",
                  temperature: float | None = None, max_tokens: int = 400, http_client=None):
         """`endpoint` is the resource root. API version "v1" is the version-less `/openai/v1/` API;
@@ -62,9 +49,6 @@ class FoundryReviewWriter:
         """The reflection model named in `.env`, with its settings read from Key Vault."""
         return cls.from_settings(model_settings(), **kwargs)
 
-    def language_written(self, brief: ReviewBrief) -> str:
-        return brief.language
-
     async def write(self, brief: ReviewBrief) -> str:
         response = await self._client.chat.completions.create(
             model=self.model,
@@ -82,32 +66,5 @@ class FoundryReviewWriter:
         await self._client.close()
 
 
-class TemplateReviewWriter:
-    source = "template"
 
-    def __init__(self, path: Path | str = LEGACY_REVIEWS):
-        records = json.loads(Path(path).read_text(encoding="utf-8"))
-        self.model = f"template:{Path(path).name}"
-        self._texts: dict[str, dict[int, list[str]]] = {}
-        for r in records:
-            by_rating = self._texts.setdefault(r["product_name"], {})
-            texts = by_rating.setdefault(r["rating"], [])
-            if r["review_text"] not in texts:
-                texts.append(r["review_text"])
-
-    def language_written(self, brief: ReviewBrief) -> str:
-        return "english"
-
-    async def write(self, brief: ReviewBrief) -> str:
-        by_rating = self._texts.get(brief.product_name)
-        if not by_rating:
-            raise KeyError(f"no template reviews for {brief.product_name!r}")
-        nearest = min(by_rating, key=lambda r: (abs(r - brief.rating), r))
-        texts = by_rating[nearest]
-        return texts[stable_int(brief.review_id) % len(texts)]
-
-    async def aclose(self) -> None:
-        return None
-
-
-__all__ = ["LANGUAGE_NAMES", "FoundryReviewWriter", "ReviewWriter", "TemplateReviewWriter"]
+__all__ = ["LANGUAGE_NAMES", "FoundryReviewWriter", "ReviewWriter"]
