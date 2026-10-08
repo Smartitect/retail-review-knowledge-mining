@@ -11,12 +11,13 @@ The diagrams in [`architecture.md`](../architecture.md) and [`data-model.md`](..
 
 ## Changing a diagram
 
-The `.html` file is the source; the `.svg` beside it is exported from it.
+[`build_diagrams.py`](build_diagrams.py) is the source. It holds one layout per diagram and draws it in both themes, so the light and dark variants cannot drift apart. The `.html` files are its output, and each `.svg` is exported from its `.html`.
 
-1. Edit the `.html` file, and make the same change in its `-dark.html` twin. The two share one layout and differ only in colours.
-2. Open it in a browser to check it.
-3. Export the SVG. With the diagram-design Claude Code skill installed, run its `export_svg.py` script on the file, or ask your coding agent to export it. Without the skill, copy the `<svg>` element out of the HTML into the `.svg` file.
-4. Check both variants on GitHub, in light and dark themes.
+1. Change the diagram's function in `build_diagrams.py`.
+2. Regenerate the HTML: `uv run python docs/diagrams/build_diagrams.py`.
+3. Open the `.html` files in a browser to check them.
+4. Export each changed `.html` to `.svg`. With the diagram-design Claude Code skill installed, run its `export_svg.py` script on the file, or ask your coding agent to export it. Without the skill, copy the `<svg>` element out of the HTML into the `.svg` file.
+5. Check both variants on GitHub, in light and dark themes.
 
 Keep to the style the diagrams already use: positions on a 4px grid, straight or right-angled connectors only, labels on a background mask beside their line rather than on it, and endjin's colours, with green reserved for the one or two things each diagram is about.
 
