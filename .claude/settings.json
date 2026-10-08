@@ -19,6 +19,7 @@
     "python-pandera-validation@endjin-data": true,
     "explanatory-output-style@claude-plugins-official": true,
     "remember@claude-plugins-official": true,
-    "learning-output-style@claude-plugins-official": true
+    "learning-output-style@claude-plugins-official": true,
+    "diagram-design@diagram-design": true
   }
 }
