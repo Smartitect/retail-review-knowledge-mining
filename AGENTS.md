@@ -30,11 +30,12 @@ uv run streamlit run app/streamlit_app.py       # the dashboard
 
 - **Use uv for everything.** `uv add <pkg>` for runtime dependencies, `uv add --dev <pkg>` for tooling, and `uv run <cmd>` to run anything. Never use `pip install`, never edit `uv.lock` by hand, and never activate the virtualenv yourself.
 - **Python 3.12.** Dependencies are declared only in `pyproject.toml`.
+- **DSPy uses its `lm15` engine** (`dspy_classifier/foundry.py`). Its `litellm` engine does not import alongside `openai` 3.x, so never switch to it, and never `import litellm` in a process that has already imported `dspy`.
 - **A new package under `src/` must be added** to `[tool.hatch.build.targets.wheel].packages` in `pyproject.toml`, or it will not import.
 
 ### Cost and secrets
 
-- **Never call a paid service unless asked to.** `generate-data add-customers`, `advance` and `fill-texts` (without `--dry-run`) call Azure AI Foundry. Running the notebook calls both Foundry and Jev. Use `--dry-run` to see what a batch would cost.
+- **Never call a paid service unless asked to.** `generate-data add-customers`, `advance` and `fill-texts` (without `--dry-run`) call Azure AI Foundry. Running either notebook calls both Foundry and Jev. Use `--dry-run` to see what a batch would cost.
 - **Never delete or rewrite the caches** `data/generated/review_text_cache.parquet` or `data/output/jev_sentence_answers.parquet`. They hold work that was paid for.
 - **Never commit** `.env`, anything under `data/`, or any key, endpoint or deployment name. Foundry settings live in Azure Key Vault; `.env` holds only the vault URI, the secret prefix and the Jev key.
 - **Never print a secret.** Keep `ModelSettings.__repr__` hiding the key, and never record request headers in `jev_classifier.transcript`.

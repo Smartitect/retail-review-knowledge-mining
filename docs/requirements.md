@@ -12,7 +12,7 @@ It has to answer, credibly:
 
 - **Product teams:** which products have which problems, how frustrated customers are about them, and what customers suggest.
 - **Customer teams:** which customers are at risk of leaving, and how much revenue they represent.
-- **Data teams:** how to get typed, auditable answers from text with a model like TypeSafe AI's Jev, and how to check those answers against the truth.
+- **Data teams:** how to get typed, auditable answers from text with a model like TypeSafe AI's Jev, how that compares with prompting a foundation model, and how to check both against the truth.
 
 ## Scope
 
@@ -114,6 +114,22 @@ It has to answer, credibly:
 | INS-05 | Provide work queues: safety and churn escalations, suggestions, competitor mentions, cross-product mentions, and low-confidence sentences to route to a person. | Notebook, section 5 |
 | INS-06 | Show a dashboard with a sentiment Sankey (sentiment → category → product → primary issue) and a customers-at-risk scatter, filterable by category, product and country, with drill-down to the reviews behind each. | Manual: `uv run streamlit run app/streamlit_app.py` |
 
+### Comparison with a foundation model
+
+A DSPy program asks a foundation model on Azure AI Foundry the same questions Jev answers, so the two can be compared (#19).
+
+| ID | Requirement | Verified by |
+|---|---|---|
+| CMP-01 | Build the DSPy signature from Jev's question set, so both classifiers ask the same questions with the same labels: a typed field per question, with a 0–1 confidence for each Score and Choice, and a 0–1 probability for each Noul. | `test_dspy_classifier.py::test_every_jev_question_becomes_typed_output_fields` |
+| CMP-02 | Return rows in Jev's `RESULT_SCHEMA`, plus `output_tokens`, with out-of-range answers clipped to their scale, so the insights code works on either classifier. | `test_dspy_classifier.py::test_answers_become_a_row_shaped_like_jevs`, `::test_out_of_range_answers_are_clipped_to_their_scale`, `::test_mentions_below_the_threshold_are_left_out` |
+| CMP-03 | Send the model the same state Jev is sent, never the star rating or the customer. | `test_dspy_classifier.py::test_the_model_is_never_sent_the_rating_or_the_customer` |
+| CMP-04 | Ask about each distinct sentence once; cache answers by sentence, question-set version and model; never cache or fill in a failure. | `test_dspy_classifier.py::test_duplicate_sentences_are_asked_once`, `::test_cached_sentences_are_not_asked_again`, `::test_another_models_cached_answers_are_kept_but_not_reused`, `::test_a_failure_is_recorded_not_filled_in_and_not_cached` |
+| CMP-05 | Use the reflection deployment through Foundry's `v1` API, with the settings a reasoning model needs and an optional reasoning effort; refuse a dated API version with a clear message. | `test_dspy_classifier.py::test_foundry_lm_uses_the_v1_api_with_reasoning_model_settings`, `::test_foundry_lm_refuses_a_dated_api_version` |
+| CMP-06 | Compare on a sample of whole reviews, stratified by language and star rating, reproducible from a seed. | `test_classifier_comparison.py::test_the_sample_takes_whole_reviews_from_every_stratum`, `::test_the_sample_is_reproducible` |
+| CMP-07 | Report speed (median and 95th-percentile latency, throughput, time for the whole dataset) and cost (tokens and dollars per sentence and per 1,000 customers) from live runs at the same concurrency. | `test_classifier_comparison.py::test_speed_and_cost` |
+| CMP-08 | Report agreement per question on the sentences both answered, and accuracy against `review_truth` (language heard, intended issue found, intended issue primary). | `test_classifier_comparison.py::test_agreement_per_question`, `::test_failed_sentences_are_left_out_of_agreement`, `::test_accuracy_against_the_generators_truth` |
+| CMP-09 | Estimate the cost before calling either service, and keep each live run so the analysis can be repeated without paying again. | `test_classifier_comparison.py::test_prompt_tokens_are_counted_per_distinct_sentence`, `::test_a_saved_run_comes_back_unchanged` |
+
 ## Non-functional requirements
 
 | ID | Requirement | How it is met |
@@ -132,6 +148,7 @@ It has to answer, credibly:
 - **Python 3.12**, managed by **uv**. `pyproject.toml` is the only place dependencies are declared, and `uv.lock` is committed.
 - **Azure AI Foundry** for review text, with its settings in **Azure Key Vault**. The developer needs an Azure identity that can read the vault's secrets.
 - **TypeSafe AI Jev** for classification, with a `TYPESAFE_API_KEY`.
+- **DSPy** with its `lm15` engine for the foundation-model classifier, which supports Foundry's `v1` API only: DSPy's `litellm` engine does not import alongside `openai` 3.x.
 - **Timestamps are naive UTC** throughout the data model.
 
 ## Assumptions

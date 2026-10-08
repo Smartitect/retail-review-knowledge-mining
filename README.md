@@ -175,6 +175,19 @@ VS Code offers to open the forwarded port; otherwise browse to <http://localhost
 
 Filter by product category, product and country across both views. The colours are endjin's, assigned by role and checked for colour-blind separation (`src/review_charts/palette.py`). They are validated for the light theme, which `.streamlit/config.toml` pins.
 
+## Step 7 (optional): Compare Jev with a foundation model
+
+[`notebooks/02_compare_jev_and_foundry.ipynb`](notebooks/02_compare_jev_and_foundry.ipynb) asks Jev's 26 questions of a foundation model too: the Azure AI Foundry deployment that writes the reviews, through a zero-shot [DSPy](https://dspy.ai) program built from Jev's own question set. It runs both classifiers live on the same sample of whole reviews, at the same concurrency, and compares them on:
+
+- **speed:** latency per sentence and throughput;
+- **cost:** tokens and dollars per sentence, and per 1,000 customers;
+- **agreement:** per question, how often the two give the same answer, with examples where they differ;
+- **accuracy:** both scored against what each review was written to say (`review_truth`).
+
+Run notebook 01 first. Set `FOUNDRY_PRICES` to your deployment's prices to cost it, and `REASONING_EFFORT` to trade the foundation model's accuracy for speed. The notebook estimates the cost before calling anything. A 300-sentence target samples about 370 sentences: about $0.05 of Jev, and roughly 1.9 million Foundry input tokens plus the model's reasoning. Each run is saved to `data/output/comparison/`, and the analysis reuses it unless you set `RERUN = True`.
+
+The foundation model reports its confidences rather than measuring them, so they fill the same columns as Jev's but are not calibrated.
+
 ## Troubleshooting
 
 | Symptom | Cause and fix |
@@ -185,6 +198,7 @@ Filter by product category, product and country across both views. The colours a
 | `secret '<prefix>-…' is not in https://…` | A secret is missing, or the prefix in `.env` doesn't match the secret names. All four of `-endpoint`, `-key`, `-api-version` and `-deployment` are needed. |
 | `… already holds a dataset with different settings; use another directory` | The notebook's `SEED` differs from the seed `generate-data init` used. Make them match, or pass `--dir` to use another directory. |
 | `N review(s) have no text yet and are left out.` | Some Foundry calls failed. Run `uv run generate-data fill-texts`. |
+| `the DSPy classifier needs Foundry's v1 API` | Set the `-api-version` secret to `v1`. DSPy's route for dated Azure OpenAI versions does not work alongside `openai` 3.x. |
 | Sentences classified with errors | Jev calls failed (for example, rate limits). They are not cached: rerun the classification cell. |
 | `No classified reviews at data/output/sentences_classified.parquet` in the dashboard | Run the notebook (step 5) first. |
 | `python --version` reports a system Python | Open a new terminal, or run commands through `uv run`. |
@@ -199,10 +213,11 @@ Filter by product category, product and country across both views. The colours a
 | `src/customer_features` | Point-in-time features: only data from before each review, never after |
 | `src/review_wrangler` | Load reviews with their text, product and features; split them into sentences |
 | `src/jev_classifier` | The question set, and async classification with a Parquet cache |
+| `src/dspy_classifier` | The same questions asked of a foundation model on Azure AI Foundry through DSPy, and the comparison with Jev |
 | `src/review_insights` | Review and customer views, Sankey flows, risk tiers, escalation and review queues |
 | `src/review_charts` | Plotly figures and colour roles for the dashboard |
 | `app/streamlit_app.py` | The dashboard: layout and state only |
-| `notebooks/` | The end-to-end walkthrough. It calls `src/` and holds no logic of its own. |
+| `notebooks/` | `01`: the end-to-end walkthrough. `02`: Jev against a foundation model. They call `src/` and hold no logic of their own. |
 | `reference_data/products.csv` | The 17-product catalogue |
 | `tests/unit/` | Unit tests. They never call a live service. |
 
