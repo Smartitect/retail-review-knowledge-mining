@@ -9,10 +9,16 @@ an endpoint and key are all Foundry needs. `.env` is gitignored, and
 
 The API version defaults to `v1`, the version-less OpenAI API, which is also the
 only one the DSPy classifier supports.
+
+The endpoint is cut back to the resource root (scheme and host). The Foundry
+portal shows several longer URLs for the same resource, such as
+`.../openai/v1/responses` or a project's `.../api/projects/<name>`, and the
+writers add their own API path, so pasting any of them would otherwise give a 404.
 """
 
 import os
 from dataclasses import dataclass
+from urllib.parse import urlsplit
 
 REFLECTION_MODEL = "KG_REFLECTION_MODEL"  # the chat model that writes review text, and the DSPy classifier's default
 
@@ -43,5 +49,14 @@ def model_settings(prefix: str = REFLECTION_MODEL) -> ModelSettings:
             f"Azure AI Foundry is not configured: set {', '.join(missing)} in .env "
             f"(the resource endpoint, its API key and the deployment name; see .env.example)."
         )
-    return ModelSettings(endpoint=read("ENDPOINT"), api_key=read("KEY"),
+    return ModelSettings(endpoint=resource_root(read("ENDPOINT")), api_key=read("KEY"),
                          api_version=read("API_VERSION") or DEFAULT_API_VERSION, deployment=read("DEPLOYMENT"))
+
+
+def resource_root(endpoint: str) -> str:
+    """`https://<resource>.services.ai.azure.com/`, from any URL on that resource."""
+    url = urlsplit(endpoint)
+    if not (url.scheme and url.netloc):
+        raise RuntimeError(f"Azure AI Foundry endpoint {endpoint!r} is not a URL: expected "
+                           "https://<resource>.services.ai.azure.com/")
+    return f"{url.scheme}://{url.netloc}/"

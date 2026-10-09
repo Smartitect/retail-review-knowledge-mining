@@ -66,7 +66,7 @@ Both services are reached with keys you put in `.env`. No Azure sign-in is neede
 
 In the [Azure AI Foundry portal](https://ai.azure.com), open your resource and note three things:
 
-- its **endpoint**, the resource root: `https://<resource>.services.ai.azure.com/`;
+- its **endpoint**, the resource root: `https://<resource>.services.ai.azure.com/`. A longer URL the portal shows for the same resource, such as `…/openai/v1/responses`, also works: only the scheme and host are used;
 - its **API key**;
 - the **name of your chat deployment**.
 

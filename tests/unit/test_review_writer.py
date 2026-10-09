@@ -88,6 +88,27 @@ def test_another_model_role_reads_its_own_prefix_and_the_api_version_defaults_to
                                                              api_version="v1", deployment="gpt-judge")
 
 
+@pytest.mark.parametrize("pasted", [
+    "https://r.services.ai.azure.com",
+    "https://r.services.ai.azure.com/openai/v1/responses",
+    "https://r.services.ai.azure.com/openai/deployments/gpt-test/chat/completions?api-version=2025-04-01-preview",
+    "https://r.services.ai.azure.com/api/projects/demo",
+])
+def test_any_url_the_portal_shows_becomes_the_resource_root(monkeypatch, pasted):
+    monkeypatch.setenv("KG_REFLECTION_MODEL_ENDPOINT", pasted)
+    monkeypatch.setenv("KG_REFLECTION_MODEL_KEY", "k")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_DEPLOYMENT", "gpt-test")
+    assert model_settings().endpoint == "https://r.services.ai.azure.com/"
+
+
+def test_an_endpoint_that_is_not_a_url_is_refused(monkeypatch):
+    monkeypatch.setenv("KG_REFLECTION_MODEL_ENDPOINT", "r.services.ai.azure.com")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_KEY", "k")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_DEPLOYMENT", "gpt-test")
+    with pytest.raises(RuntimeError, match="is not a URL"):
+        model_settings()
+
+
 def test_foundry_writer_routes_by_api_version():
     urls = []
 
