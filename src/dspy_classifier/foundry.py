@@ -1,7 +1,7 @@
 """
 The DSPy language model for an Azure AI Foundry deployment.
 
-Settings come from Key Vault exactly as for review writing (`review_writer.model_settings`),
+Settings come from `.env` exactly as for review writing (`review_writer.model_settings`),
 so the classifier runs on the same reflection deployment unless told otherwise.
 
 Two details matter:
@@ -36,5 +36,5 @@ def foundry_lm(settings: ModelSettings, *, reasoning_effort: str | None = None, 
 
 
 def foundry_lm_from_env(**kwargs) -> dspy.LM:
-    """The reflection deployment named in `.env`, with its settings read from Key Vault."""
+    """The reflection deployment, with its settings read from `.env`."""
     return foundry_lm(model_settings(), **kwargs)

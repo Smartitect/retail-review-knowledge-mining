@@ -56,22 +56,36 @@ def test_foundry_writer_sends_the_prompt_to_the_deployment():
     assert text == "Text for Product:"  # surrounding quotes stripped
 
 
+FOUNDRY_ENV = ("KG_REFLECTION_MODEL_ENDPOINT", "KG_REFLECTION_MODEL_KEY", "KG_REFLECTION_MODEL_DEPLOYMENT",
+               "KG_REFLECTION_MODEL_API_VERSION")
+
+
 def test_foundry_writer_explains_missing_configuration(monkeypatch):
-    for name in ("KG_KEY_VAULT_URI", "KG_REFLECTION_MODEL_SECRETS"):
+    for name in FOUNDRY_ENV:
         monkeypatch.delenv(name, raising=False)
-    with pytest.raises(RuntimeError, match="KG_KEY_VAULT_URI, KG_REFLECTION_MODEL_SECRETS"):
+    monkeypatch.setenv("KG_REFLECTION_MODEL_KEY", "secret")
+    with pytest.raises(RuntimeError, match="set KG_REFLECTION_MODEL_ENDPOINT, KG_REFLECTION_MODEL_DEPLOYMENT in .env"):
         FoundryReviewWriter.from_env()
 
 
-def test_model_settings_come_from_the_prefixed_secret_bundle(monkeypatch):
-    monkeypatch.setenv("KG_KEY_VAULT_URI", "https://vault.invalid/")
-    monkeypatch.setenv("KG_REFLECTION_MODEL_SECRETS", "reflection")
-    vault = {"reflection-endpoint": "https://r.services.ai.azure.com/", "reflection-key": "secret\n",
-             "reflection-api-version": "v1", "reflection-deployment": "gpt-test"}
-    settings = model_settings(get_secret=vault.__getitem__)
+def test_model_settings_come_from_the_prefixed_environment_variables(monkeypatch):
+    monkeypatch.setenv("KG_REFLECTION_MODEL_ENDPOINT", "https://r.services.ai.azure.com/")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_KEY", "secret\n")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_API_VERSION", "2025-04-01-preview")
+    monkeypatch.setenv("KG_REFLECTION_MODEL_DEPLOYMENT", "gpt-test")
+    settings = model_settings()
     assert settings == ModelSettings(endpoint="https://r.services.ai.azure.com/", api_key="secret",
-                                     api_version="v1", deployment="gpt-test")
+                                     api_version="2025-04-01-preview", deployment="gpt-test")
     assert "secret" not in repr(settings)
+
+
+def test_another_model_role_reads_its_own_prefix_and_the_api_version_defaults_to_v1(monkeypatch):
+    monkeypatch.setenv("KG_JUDGE_MODEL_ENDPOINT", "https://j.services.ai.azure.com/")
+    monkeypatch.setenv("KG_JUDGE_MODEL_KEY", "k")
+    monkeypatch.setenv("KG_JUDGE_MODEL_DEPLOYMENT", "gpt-judge")
+    monkeypatch.delenv("KG_JUDGE_MODEL_API_VERSION", raising=False)
+    assert model_settings("KG_JUDGE_MODEL") == ModelSettings(endpoint="https://j.services.ai.azure.com/", api_key="k",
+                                                             api_version="v1", deployment="gpt-judge")
 
 
 def test_foundry_writer_routes_by_api_version():

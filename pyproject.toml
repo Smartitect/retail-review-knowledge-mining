@@ -9,8 +9,6 @@ authors = [
 ]
 license = "MIT"
 dependencies = [
-    "azure-identity>=1.25.3",
-    "azure-keyvault-secrets>=4.11.2",
     "dspy>=3.4.0",
     "faker>=40.39.0",
     "ipykernel",

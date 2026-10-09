@@ -22,8 +22,7 @@ Jev is never shown the star rating, so "does frustration track the stars?" is a 
 | | Needed for | Notes |
 |---|---|---|
 | [VS Code](https://code.visualstudio.com/) with the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, and [Docker](https://www.docker.com/) (or another container runtime) | Everything | Or use [GitHub Codespaces](https://github.com/features/codespaces), which needs neither. Running without a container is covered in [step 1](#step-1-open-the-repository). |
-| An Azure subscription with an **Azure AI Foundry** chat model deployment | Writing review text (step 4) | Any chat model works, for example `gpt-4.1-mini`. |
-| An **Azure Key Vault** you can read secrets from | Step 4 | Holds the Foundry endpoint, key, API version and deployment name. |
+| An **Azure AI Foundry** chat model deployment: its endpoint, API key and deployment name | Writing review text (step 4), and the comparison with Jev | Any chat model works, for example `gpt-4.1-mini`. You don't need an Azure login of your own, only these three values. |
 | A **TypeSafe AI** API key | Classifying (step 5) | From [typesafe.ai](https://typesafe.ai). |
 
 You can do steps 1 and 2, and read all the code and docs, without any Azure or TypeSafe account. The tests never call a live service.
@@ -42,7 +41,7 @@ The container provides PowerShell (the default terminal), the GitHub CLI, the Az
 <details>
 <summary>Without a dev container</summary>
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and the [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli), then run this from the repository root:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run this from the repository root:
 
 ```powershell
 uv sync --python 3.12
@@ -61,24 +60,17 @@ All tests should pass in about 10 seconds. They stub Azure AI Foundry and Jev, s
 
 ## Step 3: Connect to Azure AI Foundry and Jev
 
-The Foundry settings live in Key Vault rather than in a file, and are read with your own Azure identity. `.env` holds only where to find them, plus the Jev key.
+Both services are reached with keys you put in `.env`. No Azure sign-in is needed.
 
-### 3a. Put the Foundry settings in Key Vault
+### 3a. Find the Foundry settings
 
-In the [Azure AI Foundry portal](https://ai.azure.com), open your resource and note its endpoint (`https://<resource>.services.ai.azure.com/`), its API key, and the name of your chat deployment. Then store them as four secrets that share a prefix. This example uses the prefix `review-writer`:
+In the [Azure AI Foundry portal](https://ai.azure.com), open your resource and note three things:
 
-```powershell
-az login
-$vault = "<your-key-vault-name>"
-az keyvault secret set --vault-name $vault --name review-writer-endpoint    --value "https://<resource>.services.ai.azure.com/"
-az keyvault secret set --vault-name $vault --name review-writer-key         --value "<api-key>"
-az keyvault secret set --vault-name $vault --name review-writer-api-version --value "v1"
-az keyvault secret set --vault-name $vault --name review-writer-deployment  --value "<deployment-name>"
-```
+- its **endpoint**, the resource root: `https://<resource>.services.ai.azure.com/`;
+- its **API key**;
+- the **name of your chat deployment**.
 
-If the browser sign-in doesn't complete inside the container, use `az login --use-device-code` instead.
-
-Use the API version `v1` unless you have a reason to pin a dated Azure OpenAI version. Anyone who runs the demo needs permission to read secrets in the vault: the **Key Vault Secrets User** role, or `get` in the vault's access policy.
+If someone else manages the Foundry resource, ask them for these three values.
 
 ### 3b. Create `.env`
 
@@ -91,15 +83,16 @@ Then fill it in:
 | Variable | Value |
 |---|---|
 | `TYPESAFE_API_KEY` | Your TypeSafe AI API key |
-| `KG_KEY_VAULT_URI` | `https://<your-key-vault-name>.vault.azure.net/` |
-| `KG_REFLECTION_MODEL_SECRETS` | The secret prefix from step 3a, for example `review-writer` |
+| `KG_REFLECTION_MODEL_ENDPOINT` | The endpoint from step 3a |
+| `KG_REFLECTION_MODEL_KEY` | The API key from step 3a |
+| `KG_REFLECTION_MODEL_DEPLOYMENT` | The deployment name from step 3a |
+| `KG_REFLECTION_MODEL_API_VERSION` | `v1`, already set. Change it only to pin a dated Azure OpenAI version for review text; the DSPy classifier needs `v1`. |
 
-`.env` is gitignored, so it is never committed.
+`.env` is gitignored, so it is never committed. Treat it as a secret: it holds both keys.
 
 ### 3c. Check the connection
 
 ```powershell
-az login        # if you haven't already in this container
 uv run python -c "from dotenv import load_dotenv; load_dotenv(); from review_writer import model_settings; print(model_settings())"
 ```
 
@@ -197,13 +190,12 @@ The foundation model reports its confidences rather than measuring them, so they
 
 | Symptom | Cause and fix |
 |---|---|
-| `Azure AI Foundry is not configured: set KG_KEY_VAULT_URI, …` | `.env` is missing or incomplete. See [step 3b](#3b-create-env). |
-| `could not read '<prefix>-endpoint' … (have you run az login?)` | Run `az login`. If you have, check that your identity can read secrets in the vault. |
-| `AADSTS50078: Presented multi-factor authentication has expired` | Your sign-in is older than your organisation's MFA policy allows. Run `az login` again: `az account show` can still succeed when the token has expired. |
-| `secret '<prefix>-…' is not in https://…` | A secret is missing, or the prefix in `.env` doesn't match the secret names. All four of `-endpoint`, `-key`, `-api-version` and `-deployment` are needed. |
+| `Azure AI Foundry is not configured: set KG_REFLECTION_MODEL_…` | `.env` is missing, or the variables it names are empty. See [step 3b](#3b-create-env). |
+| `401` or `Access denied due to invalid subscription key` from Foundry | `KG_REFLECTION_MODEL_KEY` is wrong, or belongs to a different resource from `KG_REFLECTION_MODEL_ENDPOINT`. |
+| `404` or `DeploymentNotFound` from Foundry | `KG_REFLECTION_MODEL_DEPLOYMENT` doesn't match a deployment on that resource. Use the deployment name, not the model name. |
 | `… already holds a dataset with different settings; use another directory` | The notebook's `SEED` differs from the seed `generate-data init` used. Make them match, or pass `--dir` to use another directory. |
 | `N review(s) have no text yet and are left out.` | Some Foundry calls failed. Run `uv run generate-data fill-texts`. |
-| `the DSPy classifier needs Foundry's v1 API` | Set the `-api-version` secret to `v1`. DSPy's route for dated Azure OpenAI versions does not work alongside `openai` 3.x. |
+| `the DSPy classifier needs Foundry's v1 API` | Set `KG_REFLECTION_MODEL_API_VERSION=v1` in `.env`. DSPy's route for dated Azure OpenAI versions does not work alongside `openai` 3.x. |
 | Sentences classified with errors | Jev calls failed (for example, rate limits). They are not cached: rerun the classification cell. |
 | `No classified reviews at data/output/sentences_classified.parquet` in the dashboard | Run the notebook (step 5) first. |
 | `python --version` reports a system Python | Open a new terminal, or run commands through `uv run`. |
@@ -214,7 +206,7 @@ The foundation model reports its confidences rather than measuring them, so they
 |---|---|
 | `src/retail_model` | Table schemas (pandera), cross-table integrity, review propensity, dataset storage |
 | `src/retail_generator` | Deterministic customers, orders and reviews; every setting in `GeneratorConfig`; the `generate-data` CLI |
-| `src/review_writer` | Review text from Azure AI Foundry, with settings from Key Vault, cached by prompt |
+| `src/review_writer` | Review text from Azure AI Foundry, with settings from `.env`, cached by prompt |
 | `src/customer_features` | Point-in-time features: only data from before each review, never after |
 | `src/review_wrangler` | Load reviews with their text, product and features; split them into sentences |
 | `src/jev_classifier` | The question set, and async classification with a Parquet cache |

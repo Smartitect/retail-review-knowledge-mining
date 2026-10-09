@@ -1,20 +1,23 @@
 """
-Connection settings for a model deployed on Azure AI Foundry, read from Key Vault.
+Connection settings for a model deployed on Azure AI Foundry, read from `.env`.
 
-Nothing but the vault's address and a secret prefix lives in `.env`. Each model
-role has a bundle of four secrets, `<prefix>-endpoint`, `-key`, `-api-version`
-and `-deployment`, read with whatever identity `DefaultAzureCredential` finds,
-which in the dev container is your `az login`.
+Each model role has four variables sharing a prefix: `<prefix>_ENDPOINT`,
+`_KEY`, `_DEPLOYMENT` and `_API_VERSION`. They live in `.env` rather than in a
+key vault so that the demo runs for someone with no Azure identity of their own:
+an endpoint and key are all Foundry needs. `.env` is gitignored, and
+`ModelSettings` never prints the key.
+
+The API version defaults to `v1`, the version-less OpenAI API, which is also the
+only one the DSPy classifier supports.
 """
 
 import os
-from collections.abc import Callable
 from dataclasses import dataclass
 
-VAULT_ENV = "KG_KEY_VAULT_URI"
-REFLECTION_MODEL_ENV = "KG_REFLECTION_MODEL_SECRETS"  # the chat model that writes review text
+REFLECTION_MODEL = "KG_REFLECTION_MODEL"  # the chat model that writes review text, and the DSPy classifier's default
 
-PARTS = ("endpoint", "key", "api-version", "deployment")
+REQUIRED = ("ENDPOINT", "KEY", "DEPLOYMENT")
+DEFAULT_API_VERSION = "v1"
 
 
 @dataclass(frozen=True)
@@ -29,38 +32,16 @@ class ModelSettings:
                 f"deployment={self.deployment!r})")
 
 
-def model_settings(prefix_env: str = REFLECTION_MODEL_ENV,
-                   get_secret: Callable[[str], str] | None = None) -> ModelSettings:
-    """Read the bundle named by `prefix_env`. `get_secret` replaces Key Vault, for tests."""
-    missing = [name for name in (VAULT_ENV, prefix_env) if not os.environ.get(name)]
+def model_settings(prefix: str = REFLECTION_MODEL) -> ModelSettings:
+    """Read the role named by `prefix` from the environment, which `load_dotenv` fills from `.env`."""
+    def read(part: str) -> str:
+        return os.environ.get(f"{prefix}_{part}", "").strip()
+
+    missing = [f"{prefix}_{part}" for part in REQUIRED if not read(part)]
     if missing:
         raise RuntimeError(
             f"Azure AI Foundry is not configured: set {', '.join(missing)} in .env "
-            f"(the Key Vault URI, and the prefix of its -endpoint, -key, -api-version and -deployment secrets)."
+            f"(the resource endpoint, its API key and the deployment name; see .env.example)."
         )
-    prefix = os.environ[prefix_env]
-    get_secret = get_secret or _key_vault_reader(os.environ[VAULT_ENV])
-    values = {part: get_secret(f"{prefix}-{part}").strip() for part in PARTS}
-    return ModelSettings(endpoint=values["endpoint"], api_key=values["key"], api_version=values["api-version"],
-                         deployment=values["deployment"])
-
-
-def _key_vault_reader(vault_uri: str) -> Callable[[str], str]:
-    from azure.core.exceptions import AzureError, ResourceNotFoundError
-    from azure.identity import DefaultAzureCredential
-    from azure.keyvault.secrets import SecretClient
-
-    client = SecretClient(vault_url=vault_uri, credential=DefaultAzureCredential())
-
-    def get_secret(name: str) -> str:
-        try:
-            value = client.get_secret(name).value
-        except ResourceNotFoundError as exc:
-            raise RuntimeError(f"secret {name!r} is not in {vault_uri}") from exc
-        except AzureError as exc:
-            raise RuntimeError(f"could not read {name!r} from {vault_uri} (have you run `az login`?): {exc}") from exc
-        if not value:
-            raise RuntimeError(f"secret {name!r} in {vault_uri} is empty")
-        return value
-
-    return get_secret
+    return ModelSettings(endpoint=read("ENDPOINT"), api_key=read("KEY"),
+                         api_version=read("API_VERSION") or DEFAULT_API_VERSION, deployment=read("DEPLOYMENT"))

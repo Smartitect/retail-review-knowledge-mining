@@ -2,7 +2,7 @@
 Turn a brief into review text.
 
 `FoundryReviewWriter` asks a chat model deployed on Azure AI Foundry. It reads
-its endpoint, key, API version and deployment from Key Vault (`model_secrets`),
+its endpoint, key, API version and deployment from `.env` (`model_secrets`),
 and talks to Foundry's OpenAI-compatible API, so any chat deployment in the
 Foundry catalogue works. `ReviewWriter` is the interface the text cache needs,
 so tests can stand in for the service.
@@ -46,7 +46,7 @@ class FoundryReviewWriter:
 
     @classmethod
     def from_env(cls, **kwargs) -> "FoundryReviewWriter":
-        """The reflection model named in `.env`, with its settings read from Key Vault."""
+        """The reflection model, with its settings read from `.env`."""
         return cls.from_settings(model_settings(), **kwargs)
 
     async def write(self, brief: ReviewBrief) -> str:
