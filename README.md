@@ -30,11 +30,14 @@ You can do steps 1 and 2, and read all the code and docs, without any Azure or T
 
 ## Step 1: Open the repository
 
-1. Clone the repository and open the folder in VS Code.
-2. When prompted, choose **Reopen in Container**. If you are not prompted, run **Dev Containers: Reopen in Container** from the command palette.
-3. Wait for the container to build. The first build takes a few minutes. `.devcontainer/postCreateCommand.ps1` installs [uv](https://docs.astral.sh/uv/), installs Python 3.12 and every dependency into `.venv`, and sets up the terminal to use it.
+1. Get the code, either way:
+   - **Clone it:** `git clone https://github.com/Smartitect/retail-review-knowledge-mining.git`
+   - **Or download it:** on GitHub choose **Code** → **Download ZIP**, then unzip it. You get a folder called `retail-review-knowledge-mining-main`. Git is not needed; everything the demo requires is in the zip, and the data, caches and `.env` are generated or created later.
+2. Start Docker, then open the folder in VS Code (**File** → **Open Folder**). Open the folder that holds `README.md` and `pyproject.toml`, not its parent.
+3. When prompted, choose **Reopen in Container**. If you are not prompted, run **Dev Containers: Reopen in Container** from the command palette.
+4. Wait for the container to build. The first build takes a few minutes and needs internet access. `.devcontainer/postCreateCommand.ps1` installs [uv](https://docs.astral.sh/uv/), installs Python 3.12 and every dependency into `.venv`, and sets up the terminal to use it.
 
-The container provides PowerShell (the default terminal), the GitHub CLI, the Azure CLI and uv. Every command in this README also works in bash.
+The container provides PowerShell (the default terminal), the GitHub CLI, the Azure CLI and uv. Every command in this README also works in bash. The folder name doesn't matter.
 
 <details>
 <summary>Without a dev container</summary>
@@ -72,6 +75,8 @@ az keyvault secret set --vault-name $vault --name review-writer-key         --va
 az keyvault secret set --vault-name $vault --name review-writer-api-version --value "v1"
 az keyvault secret set --vault-name $vault --name review-writer-deployment  --value "<deployment-name>"
 ```
+
+If the browser sign-in doesn't complete inside the container, use `az login --use-device-code` instead.
 
 Use the API version `v1` unless you have a reason to pin a dated Azure OpenAI version. Anyone who runs the demo needs permission to read secrets in the vault: the **Key Vault Secrets User** role, or `get` in the vault's access policy.
 
