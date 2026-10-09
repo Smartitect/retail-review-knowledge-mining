@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 1160 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="packages-title packages-desc" id="packages-root">
         <title id="packages-title">Package dependencies</title>
-        <desc id="packages-desc">Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles.</desc>
+        <desc id="packages-desc">Four entry points import downwards into five leaf packages; retail_model, jev_classifier and review_writer are each imported by two others, and there are no cycles.</desc>
         <defs>
       <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
       #packages-root { font-family: 'Inter', system-ui, sans-serif; color: #181a1d; }
@@ -15,12 +15,20 @@
         <path d="M 648,96 V 240 Q 648,248 656,248 H 744 Q 752,248 752,256 V 280" fill="none" stroke="#636871" stroke-width="1.2" marker-end="url(#packages-arrow)"/>
         <path d="M 912,96 V 240 Q 912,248 904,248 H 816 Q 808,248 808,256 V 280" fill="none" stroke="#636871" stroke-width="1.2" marker-end="url(#packages-arrow)"/>
         <path d="M 968,96 V 240 Q 968,248 976,248 H 1032 Q 1040,248 1040,256 V 280" fill="none" stroke="#636871" stroke-width="1.2" marker-end="url(#packages-arrow)"/>
+        <path d="M 416,96 V 240 Q 416,248 408,248 H 184 Q 176,248 176,256 V 280" fill="none" stroke="#636871" stroke-width="1.2" marker-end="url(#packages-arrow)"/>
+        <path d="M 480,96 V 280" fill="none" stroke="#636871" stroke-width="1.2" marker-end="url(#packages-arrow)"/>
         <rect x="140" y="40" width="160" height="56" rx="6" fill="#fafafa"/>
         <rect x="140" y="40" width="160" height="56" rx="6" fill="#ffffff" stroke="#181a1d" stroke-width="1"/>
         <rect x="264" y="48" width="28" height="12" rx="2" fill="#fafafa" stroke="#181a1d" stroke-opacity="0.22" stroke-width="0.8"/>
         <text x="278" y="57" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
         <text x="220" y="75" fill="#181a1d" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Streamlit app</text>
         <text x="220" y="90" fill="#636871" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">app/streamlit_app.py</text>
+        <rect x="340" y="40" width="160" height="56" rx="6" fill="#fafafa"/>
+        <rect x="340" y="40" width="160" height="56" rx="6" fill="#ffffff" stroke="#181a1d" stroke-width="1"/>
+        <rect x="464" y="48" width="28" height="12" rx="2" fill="#fafafa" stroke="#181a1d" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="478" y="57" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">0 in</text>
+        <text x="420" y="75" fill="#181a1d" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">dspy_classifier</text>
+        <text x="420" y="90" fill="#636871" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">DSPy · comparison</text>
         <rect x="540" y="40" width="160" height="56" rx="6" fill="#fafafa"/>
         <rect x="540" y="40" width="160" height="56" rx="6" fill="#ffffff" stroke="#181a1d" stroke-width="1"/>
         <rect x="664" y="48" width="28" height="12" rx="2" fill="#fafafa" stroke="#181a1d" stroke-opacity="0.22" stroke-width="0.8"/>
@@ -48,13 +56,13 @@
         <rect x="40" y="280" width="160" height="56" rx="6" fill="#fafafa"/>
         <rect x="40" y="280" width="160" height="56" rx="6" fill="#181a1d" fill-opacity="0.05" stroke="#636871" stroke-width="1"/>
         <rect x="164" y="288" width="28" height="12" rx="2" fill="#fafafa" stroke="#181a1d" stroke-opacity="0.22" stroke-width="0.8"/>
-        <text x="178" y="297" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="178" y="297" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">2 in</text>
         <text x="120" y="315" fill="#181a1d" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">jev_classifier</text>
         <text x="120" y="330" fill="#636871" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">questions · cache</text>
         <rect x="440" y="280" width="160" height="56" rx="6" fill="#fafafa"/>
         <rect x="440" y="280" width="160" height="56" rx="6" fill="#181a1d" fill-opacity="0.05" stroke="#636871" stroke-width="1"/>
         <rect x="564" y="288" width="28" height="12" rx="2" fill="#fafafa" stroke="#181a1d" stroke-opacity="0.22" stroke-width="0.8"/>
-        <text x="578" y="297" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
+        <text x="578" y="297" fill="#636871" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">2 in</text>
         <text x="520" y="315" fill="#181a1d" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_writer</text>
         <text x="520" y="330" fill="#636871" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Foundry · text cache</text>
         <rect x="700" y="280" width="160" height="56" rx="6" fill="#fafafa"/>

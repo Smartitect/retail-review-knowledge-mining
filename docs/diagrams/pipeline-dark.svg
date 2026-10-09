@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 960 488" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="pipeline-dark-title pipeline-dark-desc" id="pipeline-dark-root">
         <title id="pipeline-dark-title">Pipeline with cached paid services</title>
-        <desc id="pipeline-dark-desc">Generate, classify and explore stages run left to right; each paid service, Azure AI Foundry and TypeSafe AI Jev, is reached only through a cache, so only cache misses are paid for.</desc>
+        <desc id="pipeline-dark-desc">Generate, classify and explore stages run left to right. Sentences are classified by TypeSafe AI Jev or, through DSPy, by a foundation model on Azure AI Foundry, and an optional comparison runs both. Each paid service is reached only through a cache, so only cache misses are paid for.</desc>
         <defs>
       <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
       #pipeline-dark-root { font-family: 'Inter', system-ui, sans-serif; color: #f7f9fc; }
       #pipeline-dark-root .diagram-container { width: 100%; overflow-x: auto; }
       #pipeline-dark-root .diagram-container { overflow-x: visible; }</style><marker id="pipeline-dark-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#a3a7af"/></marker><marker id="pipeline-dark-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#78c021"/></marker><marker id="pipeline-dark-arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#7f9cf0"/></marker></defs>
         <rect width="100%" height="100%" fill="#181a1d"/>
-        <path d="M 120,184 V 104" fill="none" stroke="#7f9cf0" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow-link)"/>
+        <path d="M 120,184 V 80 Q 120,72 128,72 H 280" fill="none" stroke="#7f9cf0" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow-link)"/>
+        <path d="M 560,184 V 80 Q 560,72 552,72 H 440" fill="none" stroke="#7f9cf0" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow-link)"/>
+        <path d="M 640,184 V 80 Q 640,72 648,72 H 760" fill="none" stroke="#7f9cf0" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow-link)"/>
         <path d="M 120,248 V 328" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
-        <path d="M 600,184 V 104" fill="none" stroke="#7f9cf0" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow-link)"/>
         <path d="M 600,248 V 328" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
         <path d="M 200,216 H 280" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
         <path d="M 440,216 H 520" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
         <path d="M 680,216 H 760" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
-        <rect x="128" y="138" width="64" height="12" rx="2" fill="#181a1d"/>
-        <text x="160" y="147" fill="#7f9cf0" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">MISSES ONLY</text>
+        <path d="M 680,240 H 712 Q 720,240 720,248 V 352 Q 720,360 728,360 H 760" fill="none" stroke="#a3a7af" stroke-width="1.2" marker-end="url(#pipeline-dark-arrow)"/>
+        <rect x="154" y="52" width="100" height="12" rx="2" fill="#181a1d"/>
+        <text x="204" y="61" fill="#7f9cf0" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">TEXT · MISSES ONLY</text>
+        <rect x="446" y="52" width="100" height="12" rx="2" fill="#181a1d"/>
+        <text x="496" y="61" fill="#7f9cf0" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">DSPY · MISSES ONLY</text>
+        <rect x="656" y="52" width="96" height="12" rx="2" fill="#181a1d"/>
+        <text x="704" y="61" fill="#7f9cf0" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">JEV · MISSES ONLY</text>
         <rect x="128" y="282" width="76" height="12" rx="2" fill="#181a1d"/>
         <text x="166" y="291" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CHECK + STORE</text>
-        <rect x="608" y="138" width="64" height="12" rx="2" fill="#181a1d"/>
-        <text x="640" y="147" fill="#7f9cf0" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">MISSES ONLY</text>
         <rect x="608" y="282" width="76" height="12" rx="2" fill="#181a1d"/>
         <text x="646" y="291" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">CHECK + STORE</text>
         <rect x="222" y="196" width="36" height="12" rx="2" fill="#181a1d"/>
@@ -29,18 +33,18 @@
         <text x="480" y="205" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">LISTED ONLY</text>
         <rect x="692" y="196" width="56" height="12" rx="2" fill="#181a1d"/>
         <text x="720" y="205" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.06em">SENTENCES</text>
-        <rect x="40" y="40" width="160" height="64" rx="6" fill="#181a1d"/>
-        <rect x="40" y="40" width="160" height="64" rx="6" fill="#f7f9fc" fill-opacity="0.03" stroke="#f7f9fc" stroke-opacity="0.30" stroke-width="1"/>
-        <rect x="48" y="48" width="28" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
-        <text x="62" y="57" fill="#858891" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">PAID</text>
-        <text x="120" y="79" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Azure AI Foundry</text>
-        <text x="120" y="94" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">chat deployment</text>
-        <rect x="520" y="40" width="160" height="64" rx="6" fill="#181a1d"/>
-        <rect x="520" y="40" width="160" height="64" rx="6" fill="#f7f9fc" fill-opacity="0.03" stroke="#f7f9fc" stroke-opacity="0.30" stroke-width="1"/>
-        <rect x="528" y="48" width="28" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
-        <text x="542" y="57" fill="#858891" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">PAID</text>
-        <text x="600" y="79" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">TypeSafe AI Jev</text>
-        <text x="600" y="94" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">26 questions each</text>
+        <rect x="280" y="40" width="160" height="64" rx="6" fill="#181a1d"/>
+        <rect x="280" y="40" width="160" height="64" rx="6" fill="#f7f9fc" fill-opacity="0.03" stroke="#f7f9fc" stroke-opacity="0.30" stroke-width="1"/>
+        <rect x="288" y="48" width="28" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="302" y="57" fill="#858891" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">PAID</text>
+        <text x="360" y="79" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Azure AI Foundry</text>
+        <text x="360" y="94" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">chat deployment</text>
+        <rect x="760" y="40" width="160" height="64" rx="6" fill="#181a1d"/>
+        <rect x="760" y="40" width="160" height="64" rx="6" fill="#f7f9fc" fill-opacity="0.03" stroke="#f7f9fc" stroke-opacity="0.30" stroke-width="1"/>
+        <rect x="768" y="48" width="28" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
+        <text x="782" y="57" fill="#858891" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">PAID</text>
+        <text x="840" y="79" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">TypeSafe AI Jev</text>
+        <text x="840" y="94" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">26 questions each</text>
         <rect x="40" y="184" width="160" height="64" rx="6" fill="#181a1d"/>
         <rect x="40" y="184" width="160" height="64" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
         <rect x="48" y="192" width="20" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.40" stroke-width="0.8"/>
@@ -58,7 +62,7 @@
         <rect x="528" y="192" width="20" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.40" stroke-width="0.8"/>
         <text x="538" y="201" fill="#f7f9fc" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">02</text>
         <text x="600" y="223" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Classify</text>
-        <text x="600" y="238" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">jev_classifier</text>
+        <text x="600" y="238" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Jev or DSPy</text>
         <rect x="760" y="184" width="160" height="64" rx="6" fill="#181a1d"/>
         <rect x="760" y="184" width="160" height="64" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
         <rect x="768" y="192" width="20" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.40" stroke-width="0.8"/>
@@ -75,8 +79,14 @@
         <rect x="520" y="328" width="160" height="64" rx="6" fill="#78c021" fill-opacity="0.08" stroke="#78c021" stroke-width="1"/>
         <rect x="528" y="336" width="32" height="12" rx="2" fill="none" stroke="#78c021" stroke-opacity="0.50" stroke-width="0.8"/>
         <text x="544" y="345" fill="#78c021" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">CACHE</text>
-        <text x="600" y="367" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Jev answer cache</text>
-        <text x="600" y="382" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">sentence + version</text>
+        <text x="600" y="367" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Answer caches</text>
+        <text x="600" y="382" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">one per classifier</text>
+        <rect x="760" y="328" width="160" height="64" rx="6" fill="#181a1d"/>
+        <rect x="760" y="328" width="160" height="64" rx="6" fill="#26292e" stroke="#f7f9fc" stroke-width="1"/>
+        <rect x="768" y="336" width="48" height="12" rx="2" fill="none" stroke="#f7f9fc" stroke-opacity="0.40" stroke-width="0.8"/>
+        <text x="792" y="345" fill="#f7f9fc" font-size="7" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle" letter-spacing="0.08em">OPTIONAL</text>
+        <text x="840" y="367" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">Compare</text>
+        <text x="840" y="382" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">both · notebook 02</text>
         <line x1="40" y1="420" x2="920" y2="420" stroke="#f7f9fc" stroke-opacity="0.10" stroke-width="0.8"/>
         <text x="40" y="436" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" letter-spacing="0.18em">LEGEND</text>
         <rect x="40" y="452" width="14" height="10" rx="2" fill="#78c021" fill-opacity="0.08" stroke="#78c021" stroke-width="1"/>

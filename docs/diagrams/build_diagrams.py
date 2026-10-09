@@ -179,33 +179,41 @@ def pipeline(theme):
     d = D(theme)
     W, H = 960, 488
     # Arrows first. Columns x = 40, 280, 520, 760 (160 wide, 80 gaps); rows y = 40, 184, 328 (64 tall).
+    # Paid calls rise to y = 72 and turn into the service, so Classify reaches both without crossing either.
+    d.path("M 120,184 V 80 Q 120,72 128,72 H 280", "link")      # generate -> Foundry, misses only
+    d.path("M 560,184 V 80 Q 560,72 552,72 H 440", "link")      # classify (DSPy) -> Foundry, misses only
+    d.path("M 640,184 V 80 Q 640,72 648,72 H 760", "link")      # classify (Jev) -> Jev, misses only
     for cx in (120, 600):
-        d.path(f"M {cx},184 V 104", "link")                      # stage -> paid service, misses only
         d.path(f"M {cx},248 V 328")                              # stage -> its cache
     d.path("M 200,216 H 280")                                    # generate -> dataset
     d.path("M 440,216 H 520")                                    # dataset -> classify
     d.path("M 680,216 H 760")                                    # classify -> explore
+    d.path("M 680,240 H 712 Q 720,240 720,248 V 352 Q 720,360 728,360 H 760")  # classify -> compare
+    d.label(204, 58, "TEXT · MISSES ONLY", "link")
+    d.label(496, 58, "DSPY · MISSES ONLY", "link")
+    d.label(704, 58, "JEV · MISSES ONLY", "link")
     for cx in (120, 600):
-        d.label(cx + 8, 144, "MISSES ONLY", "link", anchor="start")
         d.label(cx + 8, 288, "CHECK + STORE", anchor="start")
     d.label(240, 202, "BATCH")
     d.label(480, 202, "LISTED ONLY")
     d.label(720, 202, "SENTENCES")
     # Nodes.
-    d.node(40, 40, 160, 64, "external", "PAID", "Azure AI Foundry", "chat deployment")
-    d.node(520, 40, 160, 64, "external", "PAID", "TypeSafe AI Jev", "26 questions each")
+    d.node(280, 40, 160, 64, "external", "PAID", "Azure AI Foundry", "chat deployment")
+    d.node(760, 40, 160, 64, "external", "PAID", "TypeSafe AI Jev", "26 questions each")
     d.node(40, 184, 160, 64, "backend", "01", "Generate", "generate-data")
     d.node(280, 184, 160, 64, "store", "FILES", "Dataset", "data/generated/")
-    d.node(520, 184, 160, 64, "backend", "02", "Classify", "jev_classifier")
+    d.node(520, 184, 160, 64, "backend", "02", "Classify", "Jev or DSPy")
     d.node(760, 184, 160, 64, "backend", "03", "Explore", "notebook · dashboard")
     d.node(40, 328, 160, 64, "focal", "CACHE", "Review text cache", "review + prompt hash")
-    d.node(520, 328, 160, 64, "focal", "CACHE", "Jev answer cache", "sentence + version")
+    d.node(520, 328, 160, 64, "focal", "CACHE", "Answer caches", "one per classifier")
+    d.node(760, 328, 160, 64, "backend", "OPTIONAL", "Compare", "both · notebook 02")
     d.legend(420, W, [("focal", "Cache: paid work is kept"), ("backend", "Pipeline stage"), ("store", "Data on disk"),
                       ("external", "Paid service"), ("link", "Paid call"), ("arrow", "Data flow")])
     return page("pipeline", theme, "Architecture · retail review knowledge mining", "The pipeline and its caches",
                 "Pipeline with cached paid services",
-                "Generate, classify and explore stages run left to right; each paid service, Azure AI Foundry and "
-                "TypeSafe AI Jev, is reached only through a cache, so only cache misses are paid for.",
+                "Generate, classify and explore stages run left to right. Sentences are classified by TypeSafe AI Jev "
+                "or, through DSPy, by a foundation model on Azure AI Foundry, and an optional comparison runs both. "
+                "Each paid service is reached only through a cache, so only cache misses are paid for.",
                 W, H, "\n        ".join(d.parts))
 
 
@@ -221,13 +229,16 @@ def packages(theme):
     d.path("M 648,96 V 240 Q 648,248 656,248 H 744 Q 752,248 752,256 V 280")    # generator -> model
     d.path("M 912,96 V 240 Q 912,248 904,248 H 816 Q 808,248 808,256 V 280")    # wrangler -> model
     d.path("M 968,96 V 240 Q 968,248 976,248 H 1032 Q 1040,248 1040,256 V 280")  # wrangler -> features
+    d.path("M 416,96 V 240 Q 416,248 408,248 H 184 Q 176,248 176,256 V 280")    # dspy -> jev (the question set)
+    d.path("M 480,96 V 280")                                                     # dspy -> writer (Foundry settings)
     d.node(140, 40, 160, 56, "backend", None, "Streamlit app", "app/streamlit_app.py", "0 in")
+    d.node(340, 40, 160, 56, "backend", None, "dspy_classifier", "DSPy · comparison", "0 in")
     d.node(540, 40, 160, 56, "backend", None, "retail_generator", "generate-data CLI", "0 in")
     d.node(860, 40, 160, 56, "backend", None, "review_wrangler", "load · split", "0 in")
     d.node(40, 160, 160, 56, "backend", None, "review_insights", "rollups · risk", "1 in")
     d.node(240, 160, 160, 56, "store", None, "review_charts", "Plotly figures", "1 in")
-    d.node(40, 280, 160, 56, "store", None, "jev_classifier", "questions · cache", "1 in")
-    d.node(440, 280, 160, 56, "store", None, "review_writer", "Foundry · text cache", "1 in")
+    d.node(40, 280, 160, 56, "store", None, "jev_classifier", "questions · cache", "2 in")
+    d.node(440, 280, 160, 56, "store", None, "review_writer", "Foundry · text cache", "2 in")
     d.node(700, 280, 160, 56, "store", None, "retail_model", "schemas · storage", "2 in")
     d.node(960, 280, 160, 56, "store", None, "customer_features", "point in time", "1 in")
     d.legend(368, W, [("backend", "Imports other packages"), ("store", "Leaf: imports no project package"),
@@ -236,8 +247,8 @@ def packages(theme):
           f'text-anchor="end">N in: how many packages import it</text>')
     return page("packages", theme, "Architecture · retail review knowledge mining", "Package dependencies",
                 "Package dependencies",
-                "Three entry points import downwards into five leaf packages; retail_model is the only package "
-                "imported by two others, and there are no cycles.",
+                "Four entry points import downwards into five leaf packages; retail_model, jev_classifier and "
+                "review_writer are each imported by two others, and there are no cycles.",
                 W, H, "\n        ".join(d.parts))
 
 
