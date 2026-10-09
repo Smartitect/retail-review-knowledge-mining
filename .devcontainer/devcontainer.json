@@ -13,8 +13,10 @@
 
   "containerEnv": {
     // Inside the workspace so rebuilds do not re-download, and on the same
-    // filesystem as .venv so uv can hardlink rather than copy.
-    "UV_CACHE_DIR": "/workspaces/retail-review-knowledge-mining/.uv-cache"
+    // filesystem as .venv so uv can hardlink rather than copy. Not a literal path:
+    // a GitHub zip unpacks to a folder named after the branch (...-main), and the
+    // container mounts it under that name.
+    "UV_CACHE_DIR": "${containerWorkspaceFolder}/.uv-cache"
   },
 
   "customizations": {
