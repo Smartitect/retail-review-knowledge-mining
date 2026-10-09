@@ -6,20 +6,22 @@ How the pieces fit together, where data lives, and the decisions that shape the 
 
 The demo is a batch pipeline in four stages. Every stage writes Parquet, so any stage can be rerun without repeating the ones before it, and each external call is cached so a rerun costs nothing.
 
+Classification can be done two ways: by TypeSafe AI's Jev, or by a foundation model on Azure AI Foundry through DSPy. The two are interchangeable (see [Two classifiers, side by side](#two-classifiers-side-by-side)), and an optional comparison runs both on the same sentences.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="diagrams/pipeline-dark.svg">
-  <img alt="Generate, classify and explore stages run left to right; each paid service, Azure AI Foundry and TypeSafe AI Jev, is reached only through a cache, so only cache misses are paid for." src="diagrams/pipeline.svg">
+  <img alt="Generate, classify and explore stages run left to right. Sentences are classified by TypeSafe AI Jev or, through DSPy, by a foundation model on Azure AI Foundry, and an optional comparison runs both. Each paid service is reached only through a cache, so only cache misses are paid for." src="diagrams/pipeline.svg">
 </picture>
 
-*The stages run left to right, each handing the next a Parquet file. Each paid service is reached only through its cache (green), so a rerun pays only for what is new. Not shown: `review_writer` reads the Foundry endpoint and key from `.env`.*
+*The stages run left to right, each handing the next a Parquet file. Each paid service is reached only through a cache (green), so a rerun pays only for what is new. Classify calls Jev or, through DSPy, the same Foundry deployment that writes the reviews. Compare runs both live and uncached, so their timings are fair. Not shown: the Foundry endpoint and key come from `.env`.*
 
 | Stage | Entry point | Reads | Writes | External service |
 |---|---|---|---|---|
 | 1. Generate | `uv run generate-data …`, or notebook section 1 | `reference_data/products.csv` | `data/generated/` | Azure AI Foundry (review text) |
 | 2. Load and split | Notebook sections 2–3 | `data/generated/` | In memory | None |
-| 3. Classify | Notebook section 4 | Sentences | `data/output/jev_sentence_answers.parquet` (cache), `data/output/sentences_classified.parquet` | TypeSafe AI Jev |
+| 3. Classify | Notebook section 4 (Jev); `dspy_classifier.classify_sentences` for the foundation model | Sentences | `data/output/jev_sentence_answers.parquet` (cache), `data/output/sentences_classified.parquet` | TypeSafe AI Jev, or Azure AI Foundry through DSPy |
 | 4. Explore | `uv run streamlit run app/streamlit_app.py`, or notebook section 5 | `data/output/sentences_classified.parquet` | Nothing | None |
-| Compare (optional) | `notebooks/02_compare_jev_and_foundry.ipynb` | Sentences, `review_truth` | `data/output/comparison/` | TypeSafe AI Jev and Azure AI Foundry, live |
+| Compare (optional) | `notebooks/02_compare_jev_and_foundry.ipynb` | Sentences, `review_truth` | `data/output/comparison/` | TypeSafe AI Jev and Azure AI Foundry (through DSPy), live and uncached |
 
 The notebook [`notebooks/01_classify_reviews_with_jev.ipynb`](../notebooks/01_classify_reviews_with_jev.ipynb) runs stages 1 to 3 and the analysis half of stage 4. It contains no logic of its own: every cell calls a function in `src/`.
 
@@ -29,10 +31,10 @@ Each package under `src/` has one job. Dependencies only point one way, and the 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="diagrams/packages-dark.svg">
-  <img alt="Three entry points import downwards into five leaf packages; retail_model is the only package imported by two others, and there are no cycles." src="diagrams/packages.svg">
+  <img alt="Four entry points import downwards into five leaf packages; retail_model, jev_classifier and review_writer are each imported by two others, and there are no cycles." src="diagrams/packages.svg">
 </picture>
 
-*Each arrow points from a package to one it imports, and each badge counts a package's importers. Every arrow points downwards, so there are no cycles. `retail_model` is the one package two others share. The notebook sits outside the diagram and may import any package. Also not shown: `dspy_classifier`, the optional foundation-model classifier, which imports `jev_classifier` (for the question set) and `review_writer` (for the Foundry settings).*
+*Each arrow points from a package to one it imports, and each badge counts a package's importers. Every arrow points downwards, so there are no cycles. Three leaf packages are shared by two importers: `retail_model`; `jev_classifier`, whose question set `dspy_classifier` reuses; and `review_writer`, whose Foundry settings it reuses. The notebooks sit outside the diagram and may import any package.*
 
 | Package | Responsibility | Key modules |
 |---|---|---|
@@ -48,6 +50,25 @@ Each package under `src/` has one job. Dependencies only point one way, and the 
 | `app/streamlit_app.py` | The dashboard: layout, filters and state only | |
 
 All nine packages are registered in `pyproject.toml` (`[tool.hatch.build.targets.wheel]`), so they import by name from anywhere: the notebook, the app and the tests need no `sys.path` changes. A new package must be added to that list.
+
+## Two classifiers, side by side
+
+`jev_classifier` and `dspy_classifier` answer the same 26 questions about the same sentences, and return the same rows. Either can feed `review_insights`, and `dspy_classifier.comparison` can measure any two result frames against each other.
+
+| | Jev (`jev_classifier`) | Foundation model (`dspy_classifier`) |
+|---|---|---|
+| Model | TypeSafe AI's Jev, a *System One* model built to answer typed questions | Any chat deployment on Azure AI Foundry; by default the one that writes the reviews |
+| Questions | `questions.build_questions`, versioned by `QUESTION_SET_VERSION` | A DSPy signature built from the same `build_questions`, never written by hand, so a changed question reaches both |
+| Input | `questions.build_state`: the sentence and its whole review, never the rating or the customer | The same `build_state` |
+| How it is asked | One request per sentence, with every question typed (`Score`, `Choice`, `Noul`) | One zero-shot `dspy.Predict` call per sentence, answering every question as typed output fields |
+| Output | `RESULT_SCHEMA`, one row per sentence | `RESULT_SCHEMA` plus `output_tokens`, with out-of-range answers clipped; `jev_model` names the model |
+| Confidence | Measured: probabilities over the labels | Reported by the model, in the same columns, and not calibrated |
+| Cache key | `review_key` + `sentence_index` + `question_set_version` | The same, plus the model, so answers from several models share a file without being mixed up |
+| Cost | Input tokens only | Input and output tokens; a reasoning model's hidden thinking is billed as output and dominates |
+
+Three rules keep the comparison fair. Both classifiers are built from one question set and one state, so they are asked the same thing. Both use `KEY` and one result schema, so `agreement` and `accuracy` pair their answers row for row. And notebook 02 runs both live, uncached, on one stratified sample at one concurrency, so the timings are like for like. It saves each run to `data/output/comparison/` so the analysis can be repeated without paying again, and records the foundation model's reasoning effort with its timings.
+
+The DSPy side has two constraints of its own, both in `foundry.py`. It is pinned to DSPy's `lm15` engine, because the `litellm` engine does not import alongside `openai` 3.x. And so it needs Foundry's `v1` API: dated Azure OpenAI versions route through `litellm`.
 
 ## Where data lives
 
@@ -82,6 +103,7 @@ Both paid services sit behind a Parquet cache, and every cache key includes what
 |---|---|---|
 | Review text | `review_id` + `prompt_hash` (model + system prompt + rendered brief) | A different deployment, a changed prompt, or a changed brief |
 | Jev answers | `review_key` (product + text) + `sentence_index` + `question_set_version` | Changing a question in `questions.py`, which must come with a bump to `QUESTION_SET_VERSION` |
+| Foundation-model answers (when a `cache_path` is given) | As for Jev, plus the model (`jev_model`) | As for Jev, or switching deployment. Other models' answers stay in the file, ready if you switch back |
 
 Before any batch is written, `estimate.py` reports the tokens, cost and time it will take for both services. `--dry-run` reports without writing.
 
@@ -101,7 +123,7 @@ Every `generate-data` command that changes the dataset (`add-customers`, `advanc
 A failed external call is never papered over:
 
 - **Foundry:** a failed review text is reported, not cached, and retried on the next batch or by `generate-data fill-texts`. The review stays in the dataset, and the loader leaves it out and prints how many it left out.
-- **Jev:** a failed sentence gets a row with the error and nulls. It is not cached, so the next run retries it.
+- **Jev and the foundation model:** a failed sentence gets a row with the error and nulls. It is not cached, so the next run retries it, and the comparison leaves it out of agreement rather than counting it as a disagreement.
 - **Batches are atomic:** files are written first and `manifest.json` last, so readers never see a half-written batch, and the next run replaces its files. See [How a batch is committed](#how-a-batch-is-committed).
 
 ### Validation at the boundaries
@@ -113,9 +135,9 @@ Every table is validated against its pandera schema whenever it is written or re
 Two rules keep the data honest for machine learning and for evaluation:
 
 - **Point in time.** Every customer feature is computed by `point_in_time`, an as-of join that only admits events strictly before the review. A test appends huge future orders and reviews and checks that no feature moves.
-- **Truth is separate.** `review_truth` holds what the generator intended: the hidden satisfaction, the aspect and the language. It lives in its own table so that using it is deliberate, and it is only for scoring Jev.
+- **Truth is separate.** `review_truth` holds what the generator intended: the hidden satisfaction, the aspect and the language. It lives in its own table so that using it is deliberate, and it is only for scoring the classifiers.
 
-Jev is also never sent the star rating or the customer's demographics (`questions.build_state`). That keeps "does frustration track the stars?" a fair test of the model.
+Neither classifier is sent the star rating or the customer's demographics: both build their input with `questions.build_state`. That keeps "does frustration track the stars?" a fair test of either model.
 
 ### Secrets
 
@@ -126,13 +148,13 @@ Jev is also never sent the star rating or the customer's demographics (`question
 
 ### Testing
 
-`uv run pytest` runs the unit tests in `tests/unit/`, which never call a live service. Foundry is replaced by `tests/unit/stub_writer.py` or a mock HTTP transport, and Jev by stub responses. The tests prove the properties above directly: two batches equal one, advancing time equals generating straight to the later date, an interrupted batch is invisible, future data cannot move a feature, failures are never cached, and the API key is never printed.
+`uv run pytest` runs the unit tests in `tests/unit/`, which never call a live service. Foundry is replaced by `tests/unit/stub_writer.py` or a mock HTTP transport, Jev by stub responses, and the DSPy classifier's model by a stub engine. The tests prove the properties above directly: two batches equal one, advancing time equals generating straight to the later date, an interrupted batch is invisible, future data cannot move a feature, failures are never cached, and the API key is never printed.
 
 ## Extending the demo
 
 | To… | Change | Then |
 |---|---|---|
-| Ask Jev a new question, or reword one | `src/jev_classifier/questions.py` | Bump `QUESTION_SET_VERSION`. Add the answer to `RESULT_SCHEMA` and `flatten` in `sentence_classifier.py` if it needs its own column. |
+| Ask a new question, or reword one | `src/jev_classifier/questions.py` | Bump `QUESTION_SET_VERSION`. If it needs its own column, add it to `RESULT_SCHEMA` and to `CHOICES` or `NOULS` in `sentence_classifier.py`: both classifiers' `flatten` read those lists. The DSPy signature picks the question up by itself. |
 | Change a buying pattern, rate or date | `src/retail_generator/config.py` | Start a new dataset directory: the config hash is in the manifest, and a changed config is refused for an existing dataset. |
 | Add a product | `reference_data/products.csv`, plus its quality in `ReviewContent.product_quality` (and popularity or accessory weights if relevant) | Start a new dataset. Jev's mention questions pick the product up automatically. |
 | Add a country or language | `COUNTRIES` in `tabular_schemas.py`, `LOCALES` and `local_language` in `config.py`, `LANGUAGE_NAMES` in `review_writer/prompt.py` | Add it to Jev's `LANGUAGES` if Jev should recognise it. |

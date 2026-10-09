@@ -8,6 +8,8 @@ For how the system meets these requirements, see [`architecture.md`](architectur
 
 Show how to mine actionable insight from semi-structured customer feedback: free-text product reviews in several languages, tied to structured customer and order data. The demo is built around a fictional barbecue retailer, so it can be shared, rerun and scaled without any real customer data.
 
+Every sentence can be classified two ways, side by side: by TypeSafe AI's Jev, a model built to answer typed questions, and by a general-purpose foundation model on Azure AI Foundry, prompted through DSPy with the same questions. Both return answers in the same shape, so the same analysis runs on either, and the two can be compared on the same sentences.
+
 It has to answer, credibly:
 
 - **Product teams:** which products have which problems, how frustrated customers are about them, and what customers suggest.
@@ -20,6 +22,8 @@ It has to answer, credibly:
 
 - A synthetic retail dataset: customers, orders, order lines, reviews, review text and the generator's ground truth.
 - Sentence-level classification of every review with Jev.
+- The same classification with a foundation model on Azure AI Foundry, through a DSPy program built from Jev's question set, with the same inputs and the same output schema.
+- A side-by-side comparison of the two on a stratified sample of reviews: speed, cost, agreement per question, and accuracy against the generator's truth.
 - Review- and customer-level analysis in a notebook and an interactive dashboard.
 
 **Out of scope:**
@@ -27,6 +31,8 @@ It has to answer, credibly:
 - Real customer data, or connectors to a real retail system.
 - Production hosting, authentication or multi-user access for the dashboard.
 - Model training. The point-in-time features are prepared so that a model could be trained without leakage, but none is.
+- Optimising the DSPy program. It is zero-shot (`dspy.Predict`), with no examples or optimiser, so the comparison is of the models as they come.
+- Calibrating the foundation model's confidences. It reports them, and they fill the same columns as Jev's measured ones, but they are its own estimate.
 
 ## Functional requirements
 
@@ -114,14 +120,14 @@ It has to answer, credibly:
 | INS-05 | Provide work queues: safety and churn escalations, suggestions, competitor mentions, cross-product mentions, and low-confidence sentences to route to a person. | Notebook, section 5 |
 | INS-06 | Show a dashboard with a sentiment Sankey (sentiment → category → product → primary issue) and a customers-at-risk scatter, filterable by category, product and country, with drill-down to the reviews behind each. | Manual: `uv run streamlit run app/streamlit_app.py` |
 
-### Comparison with a foundation model
+### Classification with a foundation model, and the comparison
 
-A DSPy program asks a foundation model on Azure AI Foundry the same questions Jev answers, so the two can be compared (#19).
+A DSPy program asks a foundation model on Azure AI Foundry the same questions Jev answers (#19). It is a drop-in alternative to `jev_classifier`: the same sentences and state go in, and rows in the same schema come out, so the two classifiers can run side by side and either one's answers can feed the insights code. The comparison then measures them against each other and against the truth.
 
 | ID | Requirement | Verified by |
 |---|---|---|
 | CMP-01 | Build the DSPy signature from Jev's question set, so both classifiers ask the same questions with the same labels: a typed field per question, with a 0–1 confidence for each Score and Choice, and a 0–1 probability for each Noul. | `test_dspy_classifier.py::test_every_jev_question_becomes_typed_output_fields` |
-| CMP-02 | Return rows in Jev's `RESULT_SCHEMA`, plus `output_tokens`, with out-of-range answers clipped to their scale, so the insights code works on either classifier. | `test_dspy_classifier.py::test_answers_become_a_row_shaped_like_jevs`, `::test_out_of_range_answers_are_clipped_to_their_scale`, `::test_mentions_below_the_threshold_are_left_out` |
+| CMP-02 | Return rows in Jev's `RESULT_SCHEMA`, plus `output_tokens`, with out-of-range answers clipped to their scale, so the insights code works on either classifier. Record the model's name in `jev_model`, so mixed results stay distinguishable. | `test_dspy_classifier.py::test_answers_become_a_row_shaped_like_jevs`, `::test_out_of_range_answers_are_clipped_to_their_scale`, `::test_mentions_below_the_threshold_are_left_out` |
 | CMP-03 | Send the model the same state Jev is sent, never the star rating or the customer. | `test_dspy_classifier.py::test_the_model_is_never_sent_the_rating_or_the_customer` |
 | CMP-04 | Ask about each distinct sentence once; cache answers by sentence, question-set version and model; never cache or fill in a failure. | `test_dspy_classifier.py::test_duplicate_sentences_are_asked_once`, `::test_cached_sentences_are_not_asked_again`, `::test_another_models_cached_answers_are_kept_but_not_reused`, `::test_a_failure_is_recorded_not_filled_in_and_not_cached` |
 | CMP-05 | Use the reflection deployment through Foundry's `v1` API, with the settings a reasoning model needs and an optional reasoning effort; refuse a dated API version with a clear message. | `test_dspy_classifier.py::test_foundry_lm_uses_the_v1_api_with_reasoning_model_settings`, `::test_foundry_lm_refuses_a_dated_api_version` |
@@ -142,6 +148,7 @@ A DSPy program asks a foundation model on Azure AI Foundry the same questions Je
 | NFR-06 **Testability** | Every unit test runs offline, with no credentials and no live service. | Stubs for Foundry and Jev; enforced by CI |
 | NFR-07 **Accessibility** | Dashboard colours are distinguishable with colour-vision deficiency, and colour never carries meaning alone. | `review_charts/palette.py`: validated palette, plus a marker shape per risk tier |
 | NFR-08 **Reproducible environment** | A fresh clone builds and passes its tests with no manual setup beyond credentials. | Dev container, `uv.lock`, CI |
+| NFR-09 **Fair comparison** | The two classifiers are compared on equal terms: the same sentences, the same questions, the same state, the same concurrency, each timed fresh rather than from a cache, and with the foundation model's reasoning effort recorded alongside its timings. | One question set for both (CMP-01, CMP-03); notebook 02 runs both uncached on one sample (CMP-06, CMP-07) |
 
 ## Constraints
 
@@ -162,7 +169,9 @@ A DSPy program asks a foundation model on Azure AI Foundry the same questions Je
 
 These are not requirements yet. They are where the demo could go next:
 
-- Score Jev against `review_truth` systematically (aspect against problem category, language against language) and report precision and recall.
+- Extend the accuracy scoring (CMP-08) from a sample to the whole dataset, with precision and recall per problem category, for both classifiers.
+- Let the dashboard switch between Jev's answers and the foundation model's. They share a schema, so only the loading needs to change.
+- Optimise the DSPy program, with few-shot examples or a DSPy optimiser, and see how far that closes the gap with Jev.
 - Replace the regex sentence splitter with a proper segmenter, ready for real reviews.
 - Run the pipeline on a schedule, writing to a lakehouse rather than local Parquet.
 - Use the point-in-time features to train and evaluate a churn model.
