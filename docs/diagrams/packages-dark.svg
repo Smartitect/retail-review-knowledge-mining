@@ -56,7 +56,7 @@
         <rect x="564" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>
         <text x="578" y="297" fill="#a3a7af" font-size="8" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">1 in</text>
         <text x="520" y="315" fill="#f7f9fc" font-size="12" font-weight="600" font-family="'Inter', system-ui, sans-serif" text-anchor="middle">review_writer</text>
-        <text x="520" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Foundry · Key Vault</text>
+        <text x="520" y="330" fill="#a3a7af" font-size="9" font-family="Consolas, Menlo, Inconsolata, 'DejaVu Sans Mono', monospace" text-anchor="middle">Foundry · text cache</text>
         <rect x="700" y="280" width="160" height="56" rx="6" fill="#181a1d"/>
         <rect x="700" y="280" width="160" height="56" rx="6" fill="#f7f9fc" fill-opacity="0.05" stroke="#a3a7af" stroke-width="1"/>
         <rect x="824" y="288" width="28" height="12" rx="2" fill="#181a1d" stroke="#f7f9fc" stroke-opacity="0.22" stroke-width="0.8"/>

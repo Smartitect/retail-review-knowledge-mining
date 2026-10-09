@@ -9,7 +9,7 @@
     uv run generate-data fill-texts                                # retry failed text
     uv run generate-data status
 
-Review text comes from Azure AI Foundry (settings in Key Vault, see .env.example).
+Review text comes from Azure AI Foundry (settings in .env, see .env.example).
 """
 
 import argparse

@@ -69,7 +69,7 @@ It has to answer, credibly:
 | ID | Requirement | Verified by |
 |---|---|---|
 | TXT-01 | Write each review's text with a chat model on Azure AI Foundry, from a brief: product, stars, feeling, aspect, language and length. | `test_review_writer.py::test_foundry_writer_sends_the_prompt_to_the_deployment` |
-| TXT-02 | Read the Foundry endpoint, key, API version and deployment from Azure Key Vault, using the developer's Azure identity. `.env` holds only the vault URI and a secret prefix. | `test_review_writer.py::test_model_settings_come_from_the_prefixed_secret_bundle` |
+| TXT-02 | Read the Foundry endpoint, key, deployment and API version from `.env`, as variables sharing a prefix per model role (`KG_REFLECTION_MODEL_…`), with the API version defaulting to `v1`. No Azure identity is needed, so the demo runs for someone given only an endpoint and key. Any URL on the resource is accepted as the endpoint and cut back to its root. | `test_review_writer.py::test_model_settings_come_from_the_prefixed_environment_variables`, `::test_another_model_role_reads_its_own_prefix_and_the_api_version_defaults_to_v1`, `::test_any_url_the_portal_shows_becomes_the_resource_root`, `::test_an_endpoint_that_is_not_a_url_is_refused` |
 | TXT-03 | Support both the version-less `v1` API and dated Azure OpenAI API versions. | `test_review_writer.py::test_foundry_writer_routes_by_api_version` |
 | TXT-03a | Support reasoning deployments, which accept only their default temperature: send no temperature unless one is given. | Not yet tested. Verified live on `gpt-5.6-terra`. |
 | TXT-04 | Refuse to run when Foundry is unconfigured, with a message naming what is missing. Never fall back to another source of text. | `test_review_writer.py::test_foundry_writer_explains_missing_configuration` |
@@ -138,7 +138,7 @@ A DSPy program asks a foundation model on Azure AI Foundry the same questions Je
 | NFR-02 **Cost transparency** | No paid call without an estimate first; reruns cost nothing for work already done. | `estimate.py`, `--dry-run`, both caches (INC-07, TXT-05, JEV-04) |
 | NFR-03 **Scale** | Run on a laptop from 1,000 to 100,000 customers; classify in batches within Jev's limit of 1,200 requests a minute. | Polars in memory; concurrency 8; sizing table in the README |
 | NFR-04 **No leakage** | Features never see the future; ground truth is never a feature. | PIT-01 to PIT-03, GEN-07 |
-| NFR-05 **Security** | No secret in git or in logs. Foundry secrets live in Key Vault, accessed with the developer's identity. | `.env` gitignored; `ModelSettings.__repr__` hides the key; transcript omits headers (TXT-02, JEV-06) |
+| NFR-05 **Security** | No secret in git or in logs. The Foundry and Jev keys live only in `.env`, which is gitignored. | `.env` gitignored; `ModelSettings.__repr__` hides the key; transcript omits headers (TXT-02, JEV-06) |
 | NFR-06 **Testability** | Every unit test runs offline, with no credentials and no live service. | Stubs for Foundry and Jev; enforced by CI |
 | NFR-07 **Accessibility** | Dashboard colours are distinguishable with colour-vision deficiency, and colour never carries meaning alone. | `review_charts/palette.py`: validated palette, plus a marker shape per risk tier |
 | NFR-08 **Reproducible environment** | A fresh clone builds and passes its tests with no manual setup beyond credentials. | Dev container, `uv.lock`, CI |
@@ -146,7 +146,7 @@ A DSPy program asks a foundation model on Azure AI Foundry the same questions Je
 ## Constraints
 
 - **Python 3.12**, managed by **uv**. `pyproject.toml` is the only place dependencies are declared, and `uv.lock` is committed.
-- **Azure AI Foundry** for review text, with its settings in **Azure Key Vault**. The developer needs an Azure identity that can read the vault's secrets.
+- **Azure AI Foundry** for review text, with its endpoint, key and deployment in `.env`. No Azure sign-in is needed.
 - **TypeSafe AI Jev** for classification, with a `TYPESAFE_API_KEY`.
 - **DSPy** with its `lm15` engine for the foundation-model classifier, which supports Foundry's `v1` API only: DSPy's `litellm` engine does not import alongside `openai` 3.x.
 - **Timestamps are naive UTC** throughout the data model.

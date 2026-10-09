@@ -227,7 +227,7 @@ def packages(theme):
     d.node(40, 160, 160, 56, "backend", None, "review_insights", "rollups · risk", "1 in")
     d.node(240, 160, 160, 56, "store", None, "review_charts", "Plotly figures", "1 in")
     d.node(40, 280, 160, 56, "store", None, "jev_classifier", "questions · cache", "1 in")
-    d.node(440, 280, 160, 56, "store", None, "review_writer", "Foundry · Key Vault", "1 in")
+    d.node(440, 280, 160, 56, "store", None, "review_writer", "Foundry · text cache", "1 in")
     d.node(700, 280, 160, 56, "store", None, "retail_model", "schemas · storage", "2 in")
     d.node(960, 280, 160, 56, "store", None, "customer_features", "point in time", "1 in")
     d.legend(368, W, [("backend", "Imports other packages"), ("store", "Leaf: imports no project package"),

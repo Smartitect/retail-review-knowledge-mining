@@ -37,7 +37,7 @@ uv run streamlit run app/streamlit_app.py       # the dashboard
 
 - **Never call a paid service unless asked to.** `generate-data add-customers`, `advance` and `fill-texts` (without `--dry-run`) call Azure AI Foundry. Running either notebook calls both Foundry and Jev. Use `--dry-run` to see what a batch would cost.
 - **Never delete or rewrite the caches** `data/generated/review_text_cache.parquet` or `data/output/jev_sentence_answers.parquet`. They hold work that was paid for.
-- **Never commit** `.env`, anything under `data/`, or any key, endpoint or deployment name. Foundry settings live in Azure Key Vault; `.env` holds only the vault URI, the secret prefix and the Jev key.
+- **Never commit** `.env`, anything under `data/`, or any key, endpoint or deployment name. The Foundry endpoint, key and deployment, and the Jev key, live only in `.env`; `.env.example` holds placeholders.
 - **Never print a secret.** Keep `ModelSettings.__repr__` hiding the key, and never record request headers in `jev_classifier.transcript`.
 
 ### Tests

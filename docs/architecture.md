@@ -11,11 +11,11 @@ The demo is a batch pipeline in four stages. Every stage writes Parquet, so any 
   <img alt="Generate, classify and explore stages run left to right; each paid service, Azure AI Foundry and TypeSafe AI Jev, is reached only through a cache, so only cache misses are paid for." src="diagrams/pipeline.svg">
 </picture>
 
-*The stages run left to right, each handing the next a Parquet file. Each paid service is reached only through its cache (green), so a rerun pays only for what is new. Not shown: `review_writer` reads the Foundry endpoint and key from Azure Key Vault, as your `az login` identity.*
+*The stages run left to right, each handing the next a Parquet file. Each paid service is reached only through its cache (green), so a rerun pays only for what is new. Not shown: `review_writer` reads the Foundry endpoint and key from `.env`.*
 
 | Stage | Entry point | Reads | Writes | External service |
 |---|---|---|---|---|
-| 1. Generate | `uv run generate-data …`, or notebook section 1 | `reference_data/products.csv` | `data/generated/` | Azure AI Foundry (review text), Azure Key Vault (its settings) |
+| 1. Generate | `uv run generate-data …`, or notebook section 1 | `reference_data/products.csv` | `data/generated/` | Azure AI Foundry (review text) |
 | 2. Load and split | Notebook sections 2–3 | `data/generated/` | In memory | None |
 | 3. Classify | Notebook section 4 | Sentences | `data/output/jev_sentence_answers.parquet` (cache), `data/output/sentences_classified.parquet` | TypeSafe AI Jev |
 | 4. Explore | `uv run streamlit run app/streamlit_app.py`, or notebook section 5 | `data/output/sentences_classified.parquet` | Nothing | None |
@@ -38,7 +38,7 @@ Each package under `src/` has one job. Dependencies only point one way, and the 
 |---|---|---|
 | `retail_model` | Table schemas (pandera), cross-table integrity rules, review propensity, reading and writing a dataset | `tabular_schemas.py`, `integrity.py`, `storage.py`, `review_propensity.py` |
 | `retail_generator` | Deterministic customers, orders and reviews; incremental batches; cost estimates; the `generate-data` CLI | `config.py` (every knob), `customers.py`, `orders.py`, `reviews.py`, `incremental.py`, `estimate.py`, `cli.py` |
-| `review_writer` | Turn a review brief into text with Azure AI Foundry, settings from Key Vault, cached by prompt | `prompt.py`, `writers.py`, `model_secrets.py`, `text_cache.py` |
+| `review_writer` | Turn a review brief into text with Azure AI Foundry, settings from `.env`, cached by prompt | `prompt.py`, `writers.py`, `model_secrets.py`, `text_cache.py` |
 | `customer_features` | Point-in-time customer features: only data from strictly before each review | `point_in_time.py`, `review_features.py` |
 | `review_wrangler` | Load one row per review with text, product and features; split into sentences | `review_loader.py`, `sentence_splitter.py` |
 | `jev_classifier` | The question set, async classification with a Parquet cache, and a wire transcript for debugging | `questions.py`, `sentence_classifier.py`, `transcript.py` |
@@ -60,7 +60,7 @@ All nine packages are registered in `pyproject.toml` (`[tool.hatch.build.targets
 | `data/output/jev_sentence_answers.parquet` | Every Jev answer, keyed on `review_key` + `sentence_index` + `question_set_version` | No | **Costly**: deleting it means paying Jev to classify every sentence again |
 | `data/output/sentences_classified.parquet` | The flat result the dashboard reads | No | Yes: the notebook rewrites it from the cache |
 | `data/output/comparison/` | The saved live runs of each classifier from notebook 02, with their timings | No | **Costly**: deleting them means paying both services again to repeat the comparison |
-| `.env` | `TYPESAFE_API_KEY`, the Key Vault URI and the secret prefix | No | No: copy it from `.env.example` |
+| `.env` | `TYPESAFE_API_KEY`, and the Foundry endpoint, key, deployment and API version | No | No: copy it from `.env.example` |
 
 ## Cross-cutting design
 
@@ -119,8 +119,8 @@ Jev is also never sent the star rating or the customer's demographics (`question
 
 ### Secrets
 
-- `.env` holds only `TYPESAFE_API_KEY`, the Key Vault URI and a secret-name prefix. It is gitignored.
-- The Foundry endpoint, key, API version and deployment live in Key Vault, read with `DefaultAzureCredential`, which in the dev container is your `az login`.
+- `.env` holds `TYPESAFE_API_KEY` and the Foundry endpoint, key, deployment and API version. It is gitignored, and `.env.example` holds only placeholders.
+- The Foundry settings are in `.env`, not a key vault, so the demo runs for someone given only an endpoint and a key, with no Azure identity of their own. Each model role is a set of variables sharing a prefix (`KG_REFLECTION_MODEL_ENDPOINT`, `_KEY`, `_DEPLOYMENT`, `_API_VERSION`), read by `review_writer.model_settings(prefix)`.
 - `ModelSettings.__repr__` never prints the key, and the Jev transcript never records request headers.
 - Generated customers use Faker's reserved example domains, so no generated email can reach a real inbox.
 
@@ -136,9 +136,9 @@ Jev is also never sent the star rating or the customer's demographics (`question
 | Change a buying pattern, rate or date | `src/retail_generator/config.py` | Start a new dataset directory: the config hash is in the manifest, and a changed config is refused for an existing dataset. |
 | Add a product | `reference_data/products.csv`, plus its quality in `ReviewContent.product_quality` (and popularity or accessory weights if relevant) | Start a new dataset. Jev's mention questions pick the product up automatically. |
 | Add a country or language | `COUNTRIES` in `tabular_schemas.py`, `LOCALES` and `local_language` in `config.py`, `LANGUAGE_NAMES` in `review_writer/prompt.py` | Add it to Jev's `LANGUAGES` if Jev should recognise it. |
-| Use a different Foundry model | Point the secrets in Key Vault at another deployment | Text is rewritten (the hash includes the model). The old text stays cached in case you switch back. |
+| Use a different Foundry model | Change `KG_REFLECTION_MODEL_DEPLOYMENT` (and the endpoint and key, if it is on another resource) in `.env` | Text is rewritten (the hash includes the model). The old text stays cached in case you switch back. |
 | Write review text another way | Implement the `ReviewWriter` protocol (`model`, `write`, `aclose`) in `review_writer/writers.py` | |
-| Compare Jev with another foundation model | Store its deployment as another secret bundle, and build its LM with `foundry_lm(model_settings("<ENV_VAR>"))` | Its answers are cached separately: the cache key includes the model. |
+| Compare Jev with another foundation model | Add its settings to `.env` under a new prefix (`KG_<ROLE>_MODEL_ENDPOINT`, `_KEY`, `_DEPLOYMENT`), and build its LM with `foundry_lm(model_settings("KG_<ROLE>_MODEL"))` | Its answers are cached separately: the cache key includes the model. |
 | Split sentences properly | Replace `review_wrangler/sentence_splitter.py` | Nothing downstream depends on how the split was made. |
 | Add a dashboard view | Build the frame in `review_insights` and the figure in `review_charts` | Keep `app/streamlit_app.py` to layout and state. |
 

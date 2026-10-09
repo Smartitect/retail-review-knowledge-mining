@@ -164,7 +164,7 @@ def test_cli_end_to_end(tmp_path, capsys, monkeypatch):
     assert json.loads((tmp_path / "ds" / "manifest.json").read_text())["as_of"].startswith("2026-03-31")
 
     monkeypatch.undo()  # the real writer again, now with no configuration
-    for name in ("KG_KEY_VAULT_URI", "KG_REFLECTION_MODEL_SECRETS"):
+    for name in ("KG_REFLECTION_MODEL_ENDPOINT", "KG_REFLECTION_MODEL_KEY", "KG_REFLECTION_MODEL_DEPLOYMENT"):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr("retail_generator.cli.load_dotenv", lambda: None)
     assert main(["--dir", d, "add-customers", "--count", "5"]) == 1
